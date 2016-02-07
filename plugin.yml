@@ -1,5 +1,5 @@
 name: SkyBlock Alpha
-version: 0.1.2 #Latest Bug fix: $name error
+version: 0.1.4
 api: [1.13.0]
 main: SkyBlock\Main
 commands:
