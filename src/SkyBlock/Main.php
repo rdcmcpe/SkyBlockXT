@@ -440,7 +440,7 @@ class Main extends Base implements Listener{
 			// Chest
 			$player->getInventory()->addItem(Item::get(54));
 			
-			$this->getLogger()->info(TextFormat::BLUE."[Skyblock] "$name . TextFormat::YELLOW . " Hiso una isla");
+			$this->getLogger()->info(TextFormat::BLUE."[Skyblock] ".$name . TextFormat::YELLOW . " Hiso una isla");
 		}
 	}
 	
