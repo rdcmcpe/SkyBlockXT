@@ -3,7 +3,8 @@
 * More Coming!
 
 ## Bug Fixers and Contributions:
-* @HotShotHD - Fix syntax BUG
+* @HotShotHD - Fix syntax Error
+* applqpak (PocketMine User) Thx for supporting!
 * @Jelly9912 - Fixed Something on the Island Generator
 
 ### Original Developers:
