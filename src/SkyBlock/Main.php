@@ -45,8 +45,8 @@ class Main extends Base implements Listener{
 	public function onCommand(CommandSender $sender, Command $command, $label, array $args){
 		if(strtolower($command->getName()) == "is"){
 			if(!(isset($args[0]))){
-				$sender->sendMessage(TextFormat::YELLOW . "You didn't add a subcommand");
-				$sender->sendMessage(TextFormat::GREEN . "Use: " . TextFormat::RESET . "/is help");
+				$sender->sendMessage(TextFormat::YELLOW . "No pusiste un subcomando");
+				$sender->sendMessage(TextFormat::GREEN . "Usa: " . TextFormat::RESET . "/is help");
 				return true;
 			}elseif(isset($args[0])){
 				if($args[0] == "help"){
@@ -216,7 +216,7 @@ class Main extends Base implements Listener{
 			
 			// Make a file for the island
 			$levelName = fopen($this->getDataFolder()."Islands/".$name.".txt", "w");
-			ffwrite($levelName, $randX.", ".$randY.", ".$randZ);
+			fwrite($levelName, $randX.", ".$randY.", ".$randZ);
 			$playerFile = fopen($this->getDataFolder()."Players/".$name.".txt", "w");
 			fwrite($playerFile, $player->getLevel()->getName());
 			
