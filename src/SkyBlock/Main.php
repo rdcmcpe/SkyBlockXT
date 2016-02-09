@@ -465,7 +465,6 @@ class Main extends Base implements Listener{
 			//$player->sendMessage(TextFormat::BLUE."[Skyblock]" .$msgwelcomeback " . $player->getName());
 			// testing out MultiLanguage support
 		}else{
-			$this->getServer()->broadcastMessage(TextFormat::BLUE . "[Skyblock] Bienvenido ".TextFormat::RESET.$player->getName().TextFormat::GREEN.
 			$this->getServer()->broadcastMessage(TextFormat::BLUE . "[Skyblock] Bienvenido ".TextFormat::RESET.$player->getName().TextFormat::GREEN." Al Servidor");
 			$file = fopen($this->getDataFolder()."Players/".$player->getName().".txt", "w");
 			fclose($file);
