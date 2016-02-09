@@ -145,7 +145,7 @@ class Main extends Base implements Listener{
 				}elseif($args[0] == "delete"){
 					if($sender->hasPermission("is") || $sender->hasPermission("is.command") || $sender->hasPermission("is.command.delete")){
 						if(!(isset($args[1]))){
-							$sender->sendMessage(TextFormat::ORANGE."[Skyblock] Estas Seguro? Usa /is delete yes para confirmar");
+							$sender->sendMessage(TextFormat::RED."[Skyblock] Estas Seguro? Usa /is delete yes para confirmar");
 							return true;
 						}elseif($args[1] == "yes"){
 								if(file_exists($this->getDataFolder()."Islands/".$sender->getName().".txt")){
@@ -169,8 +169,8 @@ class Main extends Base implements Listener{
 					}elseif($args[0] == "sethome"){
 						if($sender->hasPermission("is") || $sender->hasPermission("is.command") || $sender->hasPermission("is.command.sethome")){
 							if(!(isset($args[1]))){
-								$sender->sendMessage(TextFormat::PINK."[Skyblock] Estas seguro? Asegurate que estas en tu isla");
-								$sender->sendMessage(TextFormat::PINK."[Skyblock] Tu Isla se perdera si no estas en tu isla. Pon /is sethome yes para confirmar");
+								$sender->sendMessage(TextFormat::RED."[Skyblock] Estas seguro? Asegurate que estas en tu isla");
+								$sender->sendMessage(TextFormat::RED."[Skyblock] Tu Isla se perdera si no estas en tu isla. Pon /is sethome yes para confirmar");
 								return true;
 							}elseif($args[1] == "yes"){
 								if(file_exists($this->getDataFolder()."Islands/".$sender->getName().".txt")){
@@ -179,7 +179,7 @@ class Main extends Base implements Listener{
 									unlink($file);
 									$newFile = fopen($file, "w");
 									fwrite($newFile, $sender->x.", ".$sender->y.", ".$sender->z);;
-									$sender->sendMessage(TextFormat::ORANGE."[Skyblock] Pones Home en el lugar que quieres.");
+									$sender->sendMessage(TextFormat::GREEN."[Skyblock] Pones Home en el lugar que quieres.");
 									return true;
 								}else{
 									$sender->sendMessage(TextFormat::RED."[Skyblock] TU no tienes una isla!");
@@ -203,18 +203,31 @@ class Main extends Base implements Listener{
 		}
 	
 	public function makeIsland($name){
+		
 		$player = $this->getServer()->getPlayer($name);
 		if(!($player instanceof Player)){
 			return TextFormat::RED."[Skyblock] Error: Jugador no Encontrado";
 		}else{
-			
-			$randX = rand(30, 1000);
-			$randZ = rand(30, 1000);
-			$randY = rand(15, 100);
-			
-		$levelName = $this->getServer()->getPlayer($name)->getLevel();
-			
 			// Make a file for the island
+			@mkdir($this->getDataFolder()."Islands/".$name.".txt");
+			$level = new Config($this->getDataFolder()."Islands/".$name.".txt", Config::ENUM);
+			$level->set("location", $level.",".$x.",".$y.",".$z);
+			$level->setAll($level->getAll());
+			$level->save();
+
+			//get pos
+
+			$pos = explode(",", $level->get("location"));
+			$level = $pos[0];
+			$x = $pos[1];
+			$y = $pos[2];
+			$z = $pos[3];
+
+			//set block
+
+			$level = $this->getServer()->getLevelByName($level);
+			$level->setBlock(new Position($x, $y, $z, $level), Block::get(Block::GRASS));
+			
 			$levelName = fopen($this->getDataFolder()."Islands/".$name.".txt", "w");
 			fwrite($levelName, $randX.", ".$randY.", ".$randZ);
 			$playerFile = fopen($this->getDataFolder()."Players/".$name.".txt", "w");
@@ -223,104 +236,104 @@ class Main extends Base implements Listener{
 			// Top layer of the island
 			
 			// 1st side
-			$levelName->setBlock(new Vector3($randX, $randY, $randZ), new Grass());
-			$levelName->setBlock(new Vector3($randX+6, $randY, $randZ+6), new Grass());
-			$levelName->setBlock(new Vector3($randX+6, $randY, $randZ+5), new Grass());
-			$levelName->setBlock(new Vector3($randX+6, $randY, $randZ+4), new Grass());
-			$levelName->setBlock(new Vector3($randX+6, $randY, $randZ+3), new Grass());
-			$levelName->setBlock(new Vector3($randX+6, $randY, $randZ+2), new Grass());
-			$levelName->setBlock(new Vector3($randX+6, $randY, $randZ+1), new Grass());
+			$level->setBlock(new Position($x, $y, $z, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+6, $y, $z+6, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+6, $y, $z+5, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+6, $y, $z+4, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+6, $y, $z+3, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+6, $y, $z+2, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+6, $y, $z+1, $level), Block::get(Block::GRASS));
 			
 			// 2nd side
-			$levelName->setBlock(new Vector3($randX+5, $randY, $randZ+6), new Grass());
-			$levelName->setBlock(new Vector3($randX+5, $randY, $randZ+5), new Grass());
-			$levelName->setBlock(new Vector3($randX+5, $randY, $randZ+4), new Grass());
-			$levelName->setBlock(new Vector3($randX+5, $randY, $randZ+3), new Grass());
-			$levelName->setBlock(new Vector3($randX+5, $randY, $randZ+2), new Grass());
-			$levelName->setBlock(new Vector3($randX+5, $randY, $randZ+1), new Grass());
+			$level->setBlock(new Position($x+5, $y, $z+6, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+5, $y, $z+5, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+5, $y, $z+4, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+5, $y, $z+3, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+5, $y, $z+2, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+5, $y, $z+1, $level), Block::get(Block::GRASS));
 			
 			// 3rd side 
-			$levelName->setBlock(new Vector3($randX+4, $randY, $randZ+6), new Grass());
-			$levelName->setBlock(new Vector3($randX+4, $randY, $randZ+5), new Grass());
-			$levelName->setBlock(new Vector3($randX+4, $randY, $randZ+4), new Grass());
-			$levelName->setBlock(new Vector3($randX+4, $randY, $randZ+3), new Grass());
-			$levelName->setBlock(new Vector3($randX+4, $randY, $randZ+2), new Grass());
-			$levelName->setBlock(new Vector3($randX+4, $randY, $randZ+1), new Grass());
+			$level->setBlock(new Position($x+4, $y, $z+6, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+4, $y, $z+5, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+4, $y, $z+4, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+4, $y, $z+3, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+4, $y, $z+2, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+4, $y, $z+1, $level), Block::get(Block::GRASS));
 			
 			// 4th side
-			$levelName->setBlock(new Vector3($randX+3, $randY, $randZ+6), new Grass());
-			$levelName->setBlock(new Vector3($randX+3, $randY, $randZ+5), new Grass());
-			$levelName->setBlock(new Vector3($randX+3, $randY, $randZ+4), new Grass());
-			$levelName->setBlock(new Vector3($randX+3, $randY, $randZ+3), new Grass());
-			$levelName->setBlock(new Vector3($randX+3, $randY, $randZ+2), new Grass());
-			$levelName->setBlock(new Vector3($randX+3, $randY, $randZ+1), new Grass());
+			$level->setBlock(new Position($x+3, $y, $z+6, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+3, $y, $z+5, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+3, $y, $z+4, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+3, $y, $z+3, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+3, $y, $z+2, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+3, $y, $z+1, $level), Block::get(Block::GRASS));
 			
-			// 5th side
-			$levelName->setBlock(new Vector3($randX+2, $randY, $randZ+6), new Grass());
-			$levelName->setBlock(new Vector3($randX+2, $randY, $randZ+5), new Grass());
-			$levelName->setBlock(new Vector3($randX+2, $randY, $randZ+4), new Grass());
-			$levelName->setBlock(new Vector3($randX+2, $randY, $randZ+3), new Grass());
-			$levelName->setBlock(new Vector3($randX+2, $randY, $randZ+2), new Grass());
-			$levelName->setBlock(new Vector3($randX+2, $randY, $randZ+1), new Grass());
+			// 5th side	
+			$level->setBlock(new Position($x+2, $y, $z+6, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+2, $y, $z+5, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+2, $y, $z+4, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+2, $y, $z+3, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+2, $y, $z+2, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+2, $y, $z+1, $level), Block::get(Block::GRASS));
 			
 			// 6th side
-			$levelName->setBlock(new Vector3($randX+1, $randY, $randZ+6), new Grass());
-			$levelName->setBlock(new Vector3($randX+1, $randY, $randZ+5), new Grass());
-			$levelName->setBlock(new Vector3($randX+1, $randY, $randZ+4), new Grass());
-			$levelName->setBlock(new Vector3($randX+1, $randY, $randZ+3), new Grass());
-			$levelName->setBlock(new Vector3($randX+1, $randY, $randZ+2), new Grass());
-			$levelName->setBlock(new Vector3($randX+1, $randY, $randZ+1), new Grass());
+			$level->setBlock(new Position($x+1, $y, $z+6, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+1, $y, $z+5, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+1, $y, $z+4, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+1, $y, $z+3, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+1, $y, $z+2, $level), Block::get(Block::GRASS));
+			$level->setBlock(new Position($x+1, $y, $z+1, $level), Block::get(Block::GRASS));
 			
 			// Middle layer of the island
 			
-			// 1st side
-			$levelName->setBlock(new Vector3($randX, $randY-1, $randZ), new Sand());
-			$levelName->setBlock(new Vector3($randX+6, $randY-1, $randZ+6), new Sand());
-			$levelName->setBlock(new Vector3($randX+6, $randY-1, $randZ+5), new Sand());
-			$levelName->setBlock(new Vector3($randX+6, $randY-1, $randZ+4), new Sand());
-			$levelName->setBlock(new Vector3($randX+6, $randY-1, $randZ+3), new Sand());
-			$levelName->setBlock(new Vector3($randX+6, $randY-1, $randZ+2), new Sand());
-			$levelName->setBlock(new Vector3($randX+6, $randY-1, $randZ+1), new Sand());
+			// 1st Side 
+			$level->setBlock(new Position($x+6 $y-1, $z+6, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+6, $y-1, $z+5, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+6, $y-1, $z+4, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+6, $y-1, $z+3, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+6, $y-1, $z+2, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+6, $y-1, $z+1, $level), Block::get(Block::SAND));
 			
 			// 2nd side
-			$levelName->setBlock(new Vector3($randX+5, $randY-1, $randZ+6), new Sand());
-			$levelName->setBlock(new Vector3($randX+5, $randY-1, $randZ+5), new Sand());
-			$levelName->setBlock(new Vector3($randX+5, $randY-1, $randZ+4), new Sand());
-			$levelName->setBlock(new Vector3($randX+5, $randY-1, $randZ+3), new Sand());
-			$levelName->setBlock(new Vector3($randX+5, $randY-1, $randZ+2), new Sand());
-			$levelName->setBlock(new Vector3($randX+5, $randY-1, $randZ+1), new Sand());
+			$level->setBlock(new Position($x+5 $y-1, $z+6, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+5, $y-1, $z+5, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+5, $y-1, $z+4, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+5, $y-1, $z+3, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+5, $y-1, $z+2, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+5, $y-1, $z+1, $level), Block::get(Block::SAND));
 			
 			// 3rd side
-			$levelName->setBlock(new Vector3($randX+4, $randY-1, $randZ+6), new Sand());
-			$levelName->setBlock(new Vector3($randX+4, $randY-1, $randZ+5), new Sand());
-			$levelName->setBlock(new Vector3($randX+4, $randY-1, $randZ+4), new Sand());
-			$levelName->setBlock(new Vector3($randX+4, $randY-1, $randZ+3), new Sand());
-			$levelName->setBlock(new Vector3($randX+4, $randY-1, $randZ+2), new Sand());
-			$levelName->setBlock(new Vector3($randX+4, $randY-1, $randZ+1), new Sand());
+			$level->setBlock(new Position($x+4 $y-1, $z+6, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+4, $y-1, $z+5, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+4, $y-1, $z+4, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+4, $y-1, $z+3, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+4, $y-1, $z+2, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+4, $y-1, $z+1, $level), Block::get(Block::SAND));
 			
 			// 4th side
-			$levelName->setBlock(new Vector3($randX+3, $randY-1, $randZ+6), new Sand());
-			$levelName->setBlock(new Vector3($randX+3, $randY-1, $randZ+5), new Sand());
-			$levelName->setBlock(new Vector3($randX+3, $randY-1, $randZ+4), new Sand());
-			$levelName->setBlock(new Vector3($randX+3, $randY-1, $randZ+3), new Sand());
-			$levelName->setBlock(new Vector3($randX+3, $randY-1, $randZ+2), new Sand());
-			$levelName->setBlock(new Vector3($randX+3, $randY-1, $randZ+1), new Sand());
+			$level->setBlock(new Position($x+6 $y-1, $z+6, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+6, $y-1, $z+5, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+6, $y-1, $z+4, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+6, $y-1, $z+3, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+6, $y-1, $z+2, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+6, $y-1, $z+1, $level), Block::get(Block::SAND));
 			
 			// 5th side
-			$levelName->setBlock(new Vector3($randX+2, $randY-1, $randZ+6), new Sand());
-			$levelName->setBlock(new Vector3($randX+2, $randY-1, $randZ+5), new Sand());
-			$levelName->setBlock(new Vector3($randX+2, $randY-1, $randZ+4), new Sand());
-			$levelName->setBlock(new Vector3($randX+2, $randY-1, $randZ+3), new Sand());
-			$levelName->setBlock(new Vector3($randX+2, $randY-1, $randZ+2), new Sand());
-			$levelName->setBlock(new Vector3($randX+2, $randY-1, $randZ+1), new Sand());
+			$level->setBlock(new Position($x+6 $y-1, $z+6, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+6, $y-1, $z+5, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+6, $y-1, $z+4, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+6, $y-1, $z+3, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+6, $y-1, $z+2, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+6, $y-1, $z+1, $level), Block::get(Block::SAND));
 			
 			// 6th side
-			$levelName->setBlock(new Vector3($randX+1, $randY-1, $randZ+6), new Sand());
-			$levelName->setBlock(new Vector3($randX+1, $randY-1, $randZ+5), new Sand());
-			$levelName->setBlock(new Vector3($randX+1, $randY-1, $randZ+4), new Sand());
-			$levelName->setBlock(new Vector3($randX+1, $randY-1, $randZ+3), new Sand());
-			$levelName->setBlock(new Vector3($randX+1, $randY-1, $randZ+2), new Sand());
-			$levelName->setBlock(new Vector3($randX+1, $randY-1, $randZ+1), new Sand());
+			
+			$level->setBlock(new Position($x+6 $y-1, $z+6, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+6, $y-1, $z+5, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+6, $y-1, $z+4, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+6, $y-1, $z+3, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+6, $y-1, $z+2, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+6, $y-1, $z+1, $level), Block::get(Block::SAND));
 			
 			
 			
