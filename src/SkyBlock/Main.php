@@ -208,7 +208,7 @@ class Main extends Base implements Listener{
 		if(!($player instanceof Player)){
 			return TextFormat::RED."[Skyblock] Error: Jugador no Encontrado";
 		}else{
-			// Make a file for the island
+		// Make a file for the island
 			@mkdir($this->getDataFolder()."Islands/".$name.".txt");
 			$level = new Config($this->getDataFolder()."Islands/".$name.".txt", Config::ENUM);
 			$level->set("location", $level.",".$x.",".$y.",".$z);
@@ -226,7 +226,6 @@ class Main extends Base implements Listener{
 			//set block
 
 			$level = $this->getServer()->getLevelByName($level);
-			$level->setBlock(new Position($x, $y, $z, $level), Block::get(Block::GRASS));
 			
 			$levelName = fopen($this->getDataFolder()."Islands/".$name.".txt", "w");
 			fwrite($levelName, $randX.", ".$randY.", ".$randZ);
