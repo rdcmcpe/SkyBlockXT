@@ -1,2 +1,9 @@
-# Cual es el lobby del Server (SkyBlock)
+# Whats the Skyblock lobby (Change it so the lobby wont be modified)
+# Do not plase it as the same world that the island will be generated,
 Lobby: "world"
+# Language: Still Making the MultiLanguage Implemention
+# DefaultLanguage: eng
+# Lanugage LIST
+# eng - English
+# spa/esp/es - Spanish
+# More will be added
