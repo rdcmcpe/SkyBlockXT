@@ -15,7 +15,6 @@ use pocketmine\level\Position;
 use pocketmine\level\Level;
 use pocketmine\level\Location;
 use pocketmine\plugin\PluginBase as Base;
-use pocketmine\math\Vector3;
 use pocketmine\block\Dirt;
 use pocketmine\block\Sand;
 use pocketmine\block\Grass;
@@ -208,7 +207,7 @@ class Main extends Base implements Listener{
 		if(!($player instanceof Player)){
 			return TextFormat::RED."[Skyblock] Error: Jugador no Encontrado";
 		}else{
-		// Make a file for the island
+			// Make a file for the island
 			@mkdir($this->getDataFolder()."Islands/".$name.".txt");
 			$level = new Config($this->getDataFolder()."Islands/".$name.".txt", Config::ENUM);
 			$level->set("location", $level.",".$x.",".$y.",".$z);
@@ -226,11 +225,6 @@ class Main extends Base implements Listener{
 			//set block
 
 			$level = $this->getServer()->getLevelByName($level);
-			
-			$levelName = fopen($this->getDataFolder()."Islands/".$name.".txt", "w");
-			fwrite($levelName, $randX.", ".$randY.", ".$randZ);
-			$playerFile = fopen($this->getDataFolder()."Players/".$name.".txt", "w");
-			fwrite($playerFile, $player->getLevel()->getName());
 			
 			// Top layer of the island
 			
@@ -327,12 +321,12 @@ class Main extends Base implements Listener{
 			
 			// 6th side
 			
-			$level->setBlock(new Position($x+6, $y-1, $z+6, $level), Block::get(Block::SAND));
-			$level->setBlock(new Position($x+6, $y-1, $z+5, $level), Block::get(Block::SAND));
-			$level->setBlock(new Position($x+6, $y-1, $z+4, $level), Block::get(Block::SAND));
-			$level->setBlock(new Position($x+6, $y-1, $z+3, $level), Block::get(Block::SAND));
-			$level->setBlock(new Position($x+6, $y-1, $z+2, $level), Block::get(Block::SAND));
-			$level->setBlock(new Position($x+6, $y-1, $z+1, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+1, $y-1, $z+6, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+1, $y-1, $z+5, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+1, $y-1, $z+4, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+1, $y-1, $z+3, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+1, $y-1, $z+2, $level), Block::get(Block::SAND));
+			$level->setBlock(new Position($x+1, $y-1, $z+1, $level), Block::get(Block::SAND));
 			
 			
 			
