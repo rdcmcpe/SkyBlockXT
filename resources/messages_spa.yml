@@ -14,13 +14,26 @@
 #      T:::::::::T      K:::::::K    K:::::KR::::::R     R:::::R      T:::::::::T      
 #      T:::::::::T      K:::::::K    K:::::KR::::::R     R:::::R      T:::::::::T      
 #      TTTTTTTTTTT      KKKKKKKKK    KKKKKKKRRRRRRRR     RRRRRRR      TTTTTTTTTTT
-# Whats the Skyblock Lobby (Users cant create island on Lobby)
-Lobby: "world"
-# Language
-Lang: "en"
-# Available lanugages:
-# spa - Spanish By TKRT
-# eng - English By TKRT
-# More to be added...
-#
-#
+# MultiLanguage Support:
+# Suporte Multilenguaje:
+# Español:
+msgload= "Listo! Mod por TKRT!"
+msgdisabled= ""
+msg1=
+msg2=
+msg3=
+msg4=
+msg5=
+msg6=
+msg7=
+msg8=
+msg9=
+msg10=
+msg11=
+msg12=
+msg13=
+msg14=
+msg15=
+msg16=
+msg17=
+msg18=

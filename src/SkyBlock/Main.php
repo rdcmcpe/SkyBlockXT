@@ -1,7 +1,5 @@
 <?php
-
 namespace SkyBlock;
-
 use pocketmine\Player;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
@@ -25,8 +23,11 @@ use pocketmine\tile\Chest;
 use pocketmine\block\Sapling;
 use pocketmine\utils\Random;
 
+
 class Main extends Base implements Listener{
+
 	public function onEnable(){
+        $this->loadLanguage();
 		$this->saveDefaultConfig();
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		if(!(is_dir($this->getDataFolder()."Players/"))){
@@ -35,12 +36,11 @@ class Main extends Base implements Listener{
 		if(!(is_dir($this->getDataFolder()."Islands/"))){
 			@mkdir($this->getDataFolder()."Islands/");
 		}
-		$this->getLogger()->info(TextFormat::GREEN . "Listo! Mod por TKRT!");
+		$this->getLogger()->notice(TextFormat::AQUA . $msgload);
 	}
 	public function onDisable(){
-		$this->getLogger()->info(TextFormat::RED . "SkyBlock Deshabilitado");
+		$this->getLogger()->error(TextFormat::RED . "SkyBlock Deshabilitado");
 	}
-	
 	public function onCommand(CommandSender $sender, Command $command, $label, array $args){
 		if(strtolower($command->getName()) == "is"){
 			if(!(isset($args[0]))){
@@ -72,7 +72,6 @@ class Main extends Base implements Listener{
 						if($sender->getLevel()->getName() == $this->getConfig()->get("Lobby")){
 							$sender->sendMessage(TextFormat::YELLOW."[Skyblock] No Puedes Hacer una isla en Spawn, desgraciado :L");
 							return true;
-							
 						}else{
 							if(!(file_exists($senderIs))){
 								$this->makeIsland($sender->getName());
@@ -200,9 +199,7 @@ class Main extends Base implements Listener{
 				}
 			}
 		}
-	
 	public function makeIsland($name){
-		
 		$player = $this->getServer()->getPlayer($name);
 		if(!($player instanceof Player)){
 			return TextFormat::RED."[Skyblock] Error: Jugador no Encontrado";
@@ -213,21 +210,15 @@ class Main extends Base implements Listener{
 			$level->set("location", $level.",".$x.",".$y.",".$z);
 			$level->setAll($level->getAll());
 			$level->save();
-
 			//get pos
-
 			$pos = explode(",", $level->get("location"));
 			$level = $pos[0];
 			$x = $pos[1];
 			$y = $pos[2];
 			$z = $pos[3];
-
 			//set block
-
 			$level = $this->getServer()->getLevelByName($level);
-			
 			// Top layer of the island
-			
 			// 1st side
 			$level->setBlock(new Position($x, $y, $z, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+6, $y, $z+6, $level), Block::get(Block::GRASS));
@@ -236,7 +227,6 @@ class Main extends Base implements Listener{
 			$level->setBlock(new Position($x+6, $y, $z+3, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+6, $y, $z+2, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+6, $y, $z+1, $level), Block::get(Block::GRASS));
-			
 			// 2nd side
 			$level->setBlock(new Position($x+5, $y, $z+6, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+5, $y, $z+5, $level), Block::get(Block::GRASS));
@@ -244,15 +234,13 @@ class Main extends Base implements Listener{
 			$level->setBlock(new Position($x+5, $y, $z+3, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+5, $y, $z+2, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+5, $y, $z+1, $level), Block::get(Block::GRASS));
-			
-			// 3rd side 
+			// 3rd side
 			$level->setBlock(new Position($x+4, $y, $z+6, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+4, $y, $z+5, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+4, $y, $z+4, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+4, $y, $z+3, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+4, $y, $z+2, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+4, $y, $z+1, $level), Block::get(Block::GRASS));
-			
 			// 4th side
 			$level->setBlock(new Position($x+3, $y, $z+6, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+3, $y, $z+5, $level), Block::get(Block::GRASS));
@@ -260,15 +248,13 @@ class Main extends Base implements Listener{
 			$level->setBlock(new Position($x+3, $y, $z+3, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+3, $y, $z+2, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+3, $y, $z+1, $level), Block::get(Block::GRASS));
-			
-			// 5th side	
+			// 5th side
 			$level->setBlock(new Position($x+2, $y, $z+6, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+2, $y, $z+5, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+2, $y, $z+4, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+2, $y, $z+3, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+2, $y, $z+2, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+2, $y, $z+1, $level), Block::get(Block::GRASS));
-			
 			// 6th side
 			$level->setBlock(new Position($x+1, $y, $z+6, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+1, $y, $z+5, $level), Block::get(Block::GRASS));
@@ -276,17 +262,14 @@ class Main extends Base implements Listener{
 			$level->setBlock(new Position($x+1, $y, $z+3, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+1, $y, $z+2, $level), Block::get(Block::GRASS));
 			$level->setBlock(new Position($x+1, $y, $z+1, $level), Block::get(Block::GRASS));
-			
 			// Middle layer of the island
-			
-			// 1st Side 
+			// 1st Side
 			$level->setBlock(new Position($x+6, $y-1, $z+6, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+6, $y-1, $z+5, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+6, $y-1, $z+4, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+6, $y-1, $z+3, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+6, $y-1, $z+2, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+6, $y-1, $z+1, $level), Block::get(Block::SAND));
-			
 			// 2nd side
 			$level->setBlock(new Position($x+5, $y-1, $z+6, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+5, $y-1, $z+5, $level), Block::get(Block::SAND));
@@ -294,7 +277,6 @@ class Main extends Base implements Listener{
 			$level->setBlock(new Position($x+5, $y-1, $z+3, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+5, $y-1, $z+2, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+5, $y-1, $z+1, $level), Block::get(Block::SAND));
-			
 			// 3rd side
 			$level->setBlock(new Position($x+4, $y-1, $z+6, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+4, $y-1, $z+5, $level), Block::get(Block::SAND));
@@ -302,7 +284,6 @@ class Main extends Base implements Listener{
 			$level->setBlock(new Position($x+4, $y-1, $z+3, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+4, $y-1, $z+2, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+4, $y-1, $z+1, $level), Block::get(Block::SAND));
-			
 			// 4th side
 			$level->setBlock(new Position($x+3, $y-1, $z+6, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+3, $y-1, $z+5, $level), Block::get(Block::SAND));
@@ -310,7 +291,6 @@ class Main extends Base implements Listener{
 			$level->setBlock(new Position($x+3, $y-1, $z+3, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+3, $y-1, $z+2, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+3, $y-1, $z+1, $level), Block::get(Block::SAND));
-			
 			// 5th side
 			$level->setBlock(new Position($x+2, $y-1, $z+6, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+2, $y-1, $z+5, $level), Block::get(Block::SAND));
@@ -318,20 +298,14 @@ class Main extends Base implements Listener{
 			$level->setBlock(new Position($x+2, $y-1, $z+3, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+2, $y-1, $z+2, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+2, $y-1, $z+1, $level), Block::get(Block::SAND));
-			
 			// 6th side
-			
 			$level->setBlock(new Position($x+1, $y-1, $z+6, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+1, $y-1, $z+5, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+1, $y-1, $z+4, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+1, $y-1, $z+3, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+1, $y-1, $z+2, $level), Block::get(Block::SAND));
 			$level->setBlock(new Position($x+1, $y-1, $z+1, $level), Block::get(Block::SAND));
-			
-			
-			
 			// Bottom layer of the island
-			
 			// 1st side
 			$level->setBlock(new Position($x+6, $y-1, $z+6, $level), Block::get(Block::DIRT));
 			$level->setBlock(new Position($x+6, $y-1, $z+5, $level), Block::get(Block::DIRT));
@@ -339,7 +313,6 @@ class Main extends Base implements Listener{
 			$level->setBlock(new Position($x+6, $y-1, $z+3, $level), Block::get(Block::DIRT));
 			$level->setBlock(new Position($x+6, $y-1, $z+2, $level), Block::get(Block::DIRT));
 			$level->setBlock(new Position($x+6, $y-1, $z+1, $level), Block::get(Block::DIRT));
-			
 			// 2nd side
 			$level->setBlock(new Position($x+5, $y-1, $z+6, $level), Block::get(Block::DIRT));
 			$level->setBlock(new Position($x+5, $y-1, $z+5, $level), Block::get(Block::DIRT));
@@ -347,8 +320,6 @@ class Main extends Base implements Listener{
 			$level->setBlock(new Position($x+5, $y-1, $z+3, $level), Block::get(Block::DIRT));
 			$level->setBlock(new Position($x+5, $y-1, $z+2, $level), Block::get(Block::DIRT));
 			$level->setBlock(new Position($x+5, $y-1, $z+1, $level), Block::get(Block::DIRT));
-			
-			
 			// 3rd side
 			$level->setBlock(new Position($x+4, $y-1, $z+6, $level), Block::get(Block::DIRT));
 			$level->setBlock(new Position($x+4, $y-1, $z+5, $level), Block::get(Block::DIRT));
@@ -356,7 +327,6 @@ class Main extends Base implements Listener{
 			$level->setBlock(new Position($x+4, $y-1, $z+3, $level), Block::get(Block::DIRT));
 			$level->setBlock(new Position($x+4, $y-1, $z+2, $level), Block::get(Block::DIRT));
 			$level->setBlock(new Position($x+4, $y-1, $z+1, $level), Block::get(Block::DIRT));
-
 			// 4th side
 			$level->setBlock(new Position($x+3, $y-1, $z+6, $level), Block::get(Block::DIRT));
 			$level->setBlock(new Position($x+3, $y-1, $z+5, $level), Block::get(Block::DIRT));
@@ -364,7 +334,6 @@ class Main extends Base implements Listener{
 			$level->setBlock(new Position($x+3, $y-1, $z+3, $level), Block::get(Block::DIRT));
 			$level->setBlock(new Position($x+3, $y-1, $z+2, $level), Block::get(Block::DIRT));
 			$level->setBlock(new Position($x+3, $y-1, $z+1, $level), Block::get(Block::DIRT));
-			
 			// 5th side
 			$level->setBlock(new Position($x+2, $y-1, $z+6, $level), Block::get(Block::DIRT));
 			$level->setBlock(new Position($x+2, $y-1, $z+5, $level), Block::get(Block::DIRT));
@@ -372,7 +341,6 @@ class Main extends Base implements Listener{
 			$level->setBlock(new Position($x+2, $y-1, $z+3, $level), Block::get(Block::DIRT));
 			$level->setBlock(new Position($x+2, $y-1, $z+2, $level), Block::get(Block::DIRT));
 			$level->setBlock(new Position($x+2, $y-1, $z+1, $level), Block::get(Block::DIRT));
-			
 			// 6th side
 			$level->setBlock(new Position($x+1, $y-1, $z+6, $level), Block::get(Block::DIRT));
 			$level->setBlock(new Position($x+1, $y-1, $z+5, $level), Block::get(Block::DIRT));
@@ -380,61 +348,49 @@ class Main extends Base implements Listener{
 			$level->setBlock(new Position($x+1, $y-1, $z+3, $level), Block::get(Block::DIRT));
 			$level->setBlock(new Position($x+1, $y-1, $z+2, $level), Block::get(Block::DIRT));
 			$level->setBlock(new Position($x+1, $y-1, $z+1, $level), Block::get(Block::DIRT));
-			
 			// Tree
 			$type = 0;
 			Tree::growTree($level, $x+6, $x+1, $x+6, new Random(mt_rand()), Sapling::OAK);
-			
 			// Teleport the player to their new island
 			$player->teleport(new Position($randX, $randY+5, $randZ, $this->getServer()->getLevelByName($levelName)));
 			$player->sendMessage(TextFormat::GREEN . "[Skyblock] Bienvenido a tu Isla");
 			$player->sendMessage(TextFormat::GREEN . "[Skyblock] Si tu Isla No se Creo,");
 			$player->sendMessage(TextFormat::GREEN . "[Skyblock] Usa /is delete");
 			$player->sendMessage(TextFormat::GREEN . "[Skyblock] Y create otra ;D");
-			
 			// Give the player a starter kit
-			
 			// String
 			$player->getInventory()->addItem(Item::get(287));
 			$player->getInventory()->addItem(Item::get(287));
 			$player->getInventory()->addItem(Item::get(287));
 			$player->getInventory()->addItem(Item::get(287));
 			$player->getInventory()->addItem(Item::get(287));
-			
 			// Emerald
 			$player->getInventory()->addItem(Item::get(388));
 			$player->getInventory()->addItem(Item::get(388));
 			$player->getInventory()->addItem(Item::get(388));
 			$player->getInventory()->addItem(Item::get(388));
 			$player->getInventory()->addItem(Item::get(388));
-			
 			// Sapling
 			$player->getInventory()->addItem(Item::get(6));
 			$player->getInventory()->addItem(Item::get(6));
 			$player->getInventory()->addItem(Item::get(6));
 			$player->getInventory()->addItem(Item::get(6));
 			$player->getInventory()->addItem(Item::get(6));
-			
 			// Water
 			$player->getInventory()->addItem(Item::get(8));
 			$player->getInventory()->addItem(Item::get(8));
-			
 			// Lava
 			$player->getInventory()->addItem(Item::get(10));
-			
 			// Seeds
 			$player->getInventory()->addItem(Item::get(295));
 			$player->getInventory()->addItem(Item::get(295));
 			$player->getInventory()->addItem(Item::get(295));
 			$player->getInventory()->addItem(Item::get(295));
 			$player->getInventory()->addItem(Item::get(295));
-			
 			// Melon seeds
 			$player->getInventory()->addItem(Item::get(362));
-			
 			// Cactus
 			$player->getInventory()->addItem(Item::get(81));
-			
 			// Iron
 			$player->getInventory()->addItem(Item::get(265));
 			$player->getInventory()->addItem(Item::get(265));
@@ -442,14 +398,11 @@ class Main extends Base implements Listener{
 			$player->getInventory()->addItem(Item::get(265));
 			$player->getInventory()->addItem(Item::get(265));
 			$player->getInventory()->addItem(Item::get(265));
-			
 			// Chest
 			$player->getInventory()->addItem(Item::get(54));
-			
 			$this->getLogger()->info(TextFormat::BLUE."[Skyblock] ".$name . TextFormat::YELLOW . " Hiso una isla");
 		}
 	}
-	
 	// When a player joins
 	public function onPlayerJoinEvent(PlayerJoinEvent $event){
 		$player = $event->getPlayer();
@@ -463,4 +416,33 @@ class Main extends Base implements Listener{
 			fclose($file);
 		}
 	}
+    
+    public function loadLanguage(){
+        $lang = $this->getConfig()->get('Lang');
+        if(!(is_dir($this->getDataFolder()."messages_".$lang.".yml")))
+        {
+
+        $this->plugin->saveResource("messages_".$lang.".yml", true);
+        $msgload = $this->getResource("messges_".$lang.".yml")->get('msgload');
+        $msgunload = $this->getResource("messges_".$lang.".yml")->get('msgunload');
+        $msg1 = $this->getResource("messges_".$lang.".yml")->get('msg1');
+        $msg2 = $this->getResource("messges_".$lang.".yml")->get('msg2');
+        $msg3 = $this->getResource("messges_".$lang.".yml")->get('msg3');
+        $msg4 = $this->getResource("messges_".$lang.".yml")->get('msg4');
+        $msg5 = $this->getResource("messges_".$lang.".yml")->get('msg5');
+        $msg6 = $this->getResource("messges_".$lang.".yml")->get('msg6');
+        $msg7 = $this->getResource("messges_".$lang.".yml")->get('msg7');
+        $msg8 = $this->getResource("messges_".$lang.".yml")->get('msg8');
+        $msg9 = $this->getResource("messges_".$lang.".yml")->get('msg9');
+        $msg10 = $this->getResource("messges_".$lang.".yml")->get('msg10');
+        $msg11 = $this->getResource("messges_".$lang.".yml")->get('msg11');
+        $msg12 = $this->getResource("messges_".$lang.".yml")->get('msg12');
+        $msg13 = $this->getResource("messges_".$lang.".yml")->get('msg13');
+        }else{
+        $this->getLogger()->notice(TextFormat::RED. "Language ".$lang." has not been found, please read the");
+        $this->getLogger()->notice(TextFormat::RED. "Whole language list and any spelling error!");
+        }
+           
+       
+    }
 }

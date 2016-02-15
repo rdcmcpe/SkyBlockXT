@@ -1,37 +1,37 @@
 name: SkyBlock Alpha
-version: 0.1.0.4
+version: 0.1.0.9
 api: [1.13.0]
 main: SkyBlock\Main
 commands:
   is:
-    Uso: /is <help> <pagina>
-    description: Lista de comandos de SkyBlock
+    Uso: /is <help>
+    description: Comand list of Skyblock
     permission: is.command.help
 permissions:
   is:
-    default: false
-    description: Permite al Jugador usar las caracteristicas de SkyBlock
+    default: true
+    description: Allows the user to use the Skyblock Features
     children:
       is.command:
-        default: op
-        description: Permite al Jugador usar todos los comandos de SkyBlock
+        default: true
+        description: Allows the user to use the Skyblock Commands
         children:
           is.command.help:
             default: true
-            description: Permite l Jugador usar el comando de ayuda
+            description: Allows the player to use the Help Command
             is.command.create:
             default: true
-            description: Permite al Jugador usar el comando crear
+            description: Allows the player to use the Create Command
           is.command.find:
             default: op
-            description: Permite al Jugador usar el comando Home
+            description: Allows the player to use the find Command
           is.command.delete:
             default: true
-            description: Permite al Jugador elminiar su isla
+            description: Allows the player to use Delete their island
           is.command.sethome:
             default: true
-            description: Permite al Jugador poner el lugar Home
+            description: Allows the player to sethome
           is.command.home:
             default: true
-            description: Permite al jugador a teletransportarse a su isla
+            description: Allows the player to Go to home
         
