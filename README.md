@@ -9,6 +9,6 @@ and will soon be rewritten and updated to PHP7
 
 Read the Credits.md for Contributors
 
-### Check out the [Wiki](https://github.com/TheKillerTacos/SkyBlockPVP/wiki/Commands) page for help!
+### Check out the [Wiki](https://github.com/TheKillerTacos/SkyBlockPVP/wiki) page for help!
 
 > TKRT Creations © 2016, you may use this plugin, but not claim it as yours.
