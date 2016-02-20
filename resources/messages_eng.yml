@@ -16,6 +16,6 @@
 #      TTTTTTTTTTT      KKKKKKKKK    KKKKKKKRRRRRRRR     RRRRRRR      TTTTTTTTTTT
 # MultiLanguage Support:
 # English:
-msg_load= "Done! plugin loaded!"
+msg_load= "Done! Plugin Loaded!"
 msg_disabled= "Plugin Disabled!"
 #More to be added, just for testing
