@@ -4,8 +4,8 @@
 ##SkyblockPVP
 **Implementing KitPVP with Skyblock for more fun!**
 
-This plugins is Created by **@TheKillerTacos**,
-And soon to be Rewroten, and update it to PHP7,
+This plugin was Created by **@TheKillerTacos**,
+And soon to be rewritten and updated to PHP7,
 
 Read the Credits.md for Contributors
 
