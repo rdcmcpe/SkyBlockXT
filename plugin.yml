@@ -19,16 +19,19 @@ permissions:
         children:
           sbpvp.is.help:
             default: true #Set for player
-            description: Allows the player to use the Help Command
+            description: Help command
           sbpvp.is.create:
             default: true
-            description: Allows the player to use the Create Command
+            description: Create an island
           sbpvp.is.delete:
             default: true # Set for Player
-            description: Allows the player to use Delete their island
+            description: Delete your island
+          sbpvp.is.invite:
+            default: true
+            description: Invite specified player to your island
             sbpvp.is.warp:
             default: true #Set for player
-            description: Allows the player to Warp to a players island
+            description: Warp to specified players island
           sbpvp.is.get:
             default: op # Set ONLY for OPs
-            description: Allows the OP to find a players island
+            description: Locate a players island
