@@ -1,7 +1,7 @@
 Here are some notes for Wiki creation and that stuff, you may used it, i dont care at all
 ***
 
-for header use # then the text like:
+For header use # then the text like:
 #Header1
 also try with ## and ### for 3 headers, idk why they did that..
 ##Header2
@@ -32,3 +32,7 @@ and all that.
 use >
 for quotes
 > TKRT Creations
+
+Now trying to do **BOLD** words just use ** at the end and start of a word
+
+I think using one * will make it *Italic*
