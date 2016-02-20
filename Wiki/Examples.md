@@ -36,3 +36,7 @@ for quotes
 Now trying to do **BOLD** words just use ** at the end and start of a word
 
 I think using one * will make it *Italic*
+
+Also for **BOLD** and *Italic* at the same time use *** like ***this***
+
+Ill add more stuff later, thats good for now, Read it as Raw.
