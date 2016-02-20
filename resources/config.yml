@@ -14,7 +14,8 @@
 #      T:::::::::T      K:::::::K    K:::::KR::::::R     R:::::R      T:::::::::T      
 #      T:::::::::T      K:::::::K    K:::::KR::::::R     R:::::R      T:::::::::T      
 #      TTTTTTTTTTT      KKKKKKKKK    KKKKKKKRRRRRRRR     RRRRRRR      TTTTTTTTTTT       Creations
-# Whats the Skyblock Lobby (Islands wont be created here)
+# World for skyblock lobby (Islands wont be created here)
+# In the quotations put the world name (Spaces aren't supported)
 Lobby: "world"
 # Language
 Lang: "eng"
