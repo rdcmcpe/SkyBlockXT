@@ -1,6 +1,7 @@
 name: SkyBlockPVP
 version: 0.0.1
-api: [1.12.0, 1.13.0]
+api: [1.13.0, 2.0.0]
+author: TKRT Creations Team
 main: SkyBlockPVP\Main
 commands:
   is:
