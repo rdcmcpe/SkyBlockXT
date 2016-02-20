@@ -7,7 +7,7 @@
 This plugin was Created by **@TheKillerTacos**
 and will soon be rewritten and updated to PHP7
 
-Read the Credits.md for Contributors
+Read the [Credits](https://github.com/TheKillerTacos/SkyBlockPVP/blob/master/CREDITS.md) for Contributors
 
 ### Check out the [Wiki](https://github.com/TheKillerTacos/SkyBlockPVP/wiki) page for help!
 
