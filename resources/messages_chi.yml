@@ -1,0 +1,21 @@
+#TTTTTTTTTTTTTTTTTTTTTTTKKKKKKKKK    KKKKKKKRRRRRRRRRRRRRRRRR   TTTTTTTTTTTTTTTTTTTTTTT
+#T:::::::::::::::::::::TK:::::::K    K:::::KR::::::::::::::::R  T:::::::::::::::::::::T
+#T:::::::::::::::::::::TK:::::::K    K:::::KR::::::RRRRRR:::::R T:::::::::::::::::::::T
+#T:::::TT:::::::TT:::::TK:::::::K   K::::::KRR:::::R     R:::::RT:::::TT:::::::TT:::::T
+#TTTTTT  T:::::T  TTTTTTKK::::::K  K:::::KKK  R::::R     R:::::RTTTTTT  T:::::T  TTTTTT
+#        T:::::T          K:::::K K:::::K     R::::R     R:::::R        T:::::T        
+#        T:::::T          K::::::K:::::K      R::::RRRRRR:::::R         T:::::T        
+#        T:::::T          K:::::::::::K       R:::::::::::::RR          T:::::T        
+#        T:::::T          K:::::::::::K       R::::RRRRRR:::::R         T:::::T        
+#        T:::::T          K::::::K:::::K      R::::R     R:::::R        T:::::T        
+#        T:::::T          K:::::K K:::::K     R::::R     R:::::R        T:::::T        
+#        T:::::T        KK::::::K  K:::::KKK  R::::R     R:::::R        T:::::T        
+#      TT:::::::TT      K:::::::K   K::::::KRR:::::R     R:::::R      TT:::::::TT      
+#      T:::::::::T      K:::::::K    K:::::KR::::::R     R:::::R      T:::::::::T      
+#      T:::::::::T      K:::::::K    K:::::KR::::::R     R:::::R      T:::::::::T      
+#      TTTTTTTTTTT      KKKKKKKKK    KKKKKKKRRRRRRRR     RRRRRRR      TTTTTTTTTTT
+# MultiLanguage Support:
+# Chinese:
+msg_load= "完成！插件裝！"
+msg_disabled= "插件禁用！"
+#More to be added, just for testing
