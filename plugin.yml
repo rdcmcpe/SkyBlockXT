@@ -23,12 +23,12 @@ permissions:
           sbpvp.is.create:
             default: true
             description: Allows the player to use the Create Command
-          sbpvp.is.get:
-            default: op # Set ONLY for OPs
-            description: Allows the OP to find a players island
           sbpvp.is.delete:
             default: true # Set for Player
             description: Allows the player to use Delete their island
-          sbpvp.is.warp:
-            default: op # Only For OPs
-            description: Allows the OP to Warp to a players island
+            sbpvp.is.warp:
+            default: true #Set for player
+            description: Allows the player to Warp to a players island
+          sbpvp.is.get:
+            default: op # Set ONLY for OPs
+            description: Allows the OP to find a players island
