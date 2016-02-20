@@ -1,20 +1,14 @@
-# SkyBlock
-SkyBlock plugin for PocketMine-MP, By Linuzo, Mod for IT By @TheKillerTacos (TKRT)
+# SkyBlockPVP
+***
 
-* You may use this plugin, 
-* But not claim it as yours but give credit from the Creators and Modifiers
-* The Original version made by Linuzo, 
+##SkyblockPVP
+**Implementing KitPVP with Skyblock for more fun!**
 
-Also this plugin will be in Spanish For the server IT,
-Soon will add Multi-language support
+This plugins is Created by **@TheKillerTacos**,
+And soon to be Rewroten, and update it to PHP7,
 
-# MOD By TKRT
+Read the Credits.md for Contributors
 
-My Server Website: www.Imperio-Taquero.tk , The Website is also in spanish, Coming soon!
+### Check out the Wiki page for help!
 
-# ALSO CHECK THE CREDITS.md
-There will be all the ones who help me out :D
-
-## Wiki
-Hi, and also im looking for person to help me out with the wiki
-and developing this plugin!
+> TKRT Creations © 2016, you may use this plugin, but not claim it as yours.
