@@ -14,7 +14,7 @@
 #      T:::::::::T      K:::::::K    K:::::KR::::::R     R:::::R      T:::::::::T      
 #      T:::::::::T      K:::::::K    K:::::KR::::::R     R:::::R      T:::::::::T      
 #      TTTTTTTTTTT      KKKKKKKKK    KKKKKKKRRRRRRRR     RRRRRRR      TTTTTTTTTTT       Creations
-# Whats the Skyblock Lobby (Users cant create island on Lobby)
+# Whats the Skyblock Lobby (Islands wont be created here)
 Lobby: "world"
 # Language
 Lang: "eng"
