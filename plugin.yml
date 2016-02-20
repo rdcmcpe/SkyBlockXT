@@ -32,6 +32,6 @@ permissions:
             sbpvp.is.warp:
             default: true #Set for player
             description: Warp to specified players island
-          sbpvp.is.get:
+          sbpvp.is.pos:
             default: op #Set ONLY for OPs
-            description: Locate a players island
+            description: Locate specified players island
