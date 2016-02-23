@@ -12,4 +12,6 @@ Read the [Credits](https://github.com/TheKillerTacos/SkyBlockPVP/blob/master/CRE
 
 ### Check out the [Wiki](https://github.com/TheKillerTacos/SkyBlockPVP/wiki) page for help!
 
+### Build Plugin At: pmt.mcpe.me (i think)
+
 > TKRT Creations © 2016, you may use this plugin, but not claim it as yours.
