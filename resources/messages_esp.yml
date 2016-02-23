@@ -25,7 +25,7 @@ msg_helpmorcommandssoon= "Pronto Habra mas comandos."
 #Errores, Mensajes Universales (usados en varios mensajes)
 msg_errorcantseehelpmenu= "No puedes ver el menu de ayuda!"
 msg_errornosubcommand= "No Subcomando Proveido"
-msg_errornosubcommanduse= "Usa:" #/is help
+msg_errornosubcommanduse= "Usa" #/is help
 msg_erroryoucantmakeislandinlobby= "Perdon, Pero no puedes hacer islas en el Lobby!" 
 msg_errorplayernotfound= "Jugador no encontrado!" 
 
