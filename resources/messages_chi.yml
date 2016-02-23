@@ -16,18 +16,18 @@
 #      TTTTTTTTTTT      KKKKKKKKK    KKKKKKKRRRRRRRR     RRRRRRR      TTTTTTTTTTT
 # MultiLanguage Support:
 # Chinese:
-msg_load= "完成！插件裝！"
+msg_load= "裝載的插件！"
 msg_disabled= "插件禁用！"
-msg_showhelplist= "Showing Help List:" #Translate
-msg_helpmorecommandssoon= "More commands to be added"#Translate
+msg_showhelplist= "顯示幫助列表:" #Translate
+msg_helpmorecommandssoon= "要加入更多的命令"#Translate
 
 #Errors, Some are Universal (used in vairous messages)
-msg_errorcantseehelpmenu= "You cant see the Help Menu"#Translate
-msg_errornosubcommand= "No Subcommand Provided"#Translate
-msg_errornosubcommanduse= "Use:" #/is help (do not remove /is help, just this message :P) #Translate
-msg_erroryoucantmakeislandinlobby= "Sorry, You cant make an island on lobby!" #Change when Skyland Generator is created #Translate
-msg_errorplayernotfound= "Player not found!" #Mostly for General Player's not found #Translate
+msg_errorcantseehelpmenu= "你不能看到幫助菜單"#Translate
+msg_errornosubcommand= "無子命令提供"#Translate
+msg_errornosubcommanduse= "使用:" #/is help#Translate
+msg_erroryoucantmakeislandinlobby= "對不起，你不能讓一個島嶼大堂！" #Change when Skyland Generator is created #Translate
+msg_errorplayernotfound= "球員沒有找到！" #Mostly for General Player's not found #Translate
 
 
 #The following text will soon be deprecated as soon that SkyLand Generator is created:
-msg_playermadeisland= "Made a island" #Full Message= [Skyblock] @PlayerName Made a island #Translate
+msg_playermadeisland= "島創建" #Full Message= [Skyblock] @PlayerName Made a island #Translate #Changed to Island Created
