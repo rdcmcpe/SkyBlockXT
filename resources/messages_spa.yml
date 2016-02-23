@@ -18,3 +18,16 @@
 # Espanol:
 msg_load= "Listo! Plugin Cargado!"
 msg_disabled= "Plugin Deshabilitado!"
+msg_showhelplist= "Enseñando lista de Ayuda"
+msg_helpmorcommandssoon= "Pronto Habra mas comandos."
+
+#Errores, Mensajes Universales (usados en varios mensajes)
+msg_errorcantseehelpmenu= "No puedes ver el menu de ayuda!"
+msg_errornosubcommand= "No Subcomando Proveido"
+msg_errornosubcommanduse= "Usa:" #/is help
+msg_erroryoucantmakeislandinlobby= "Perdon, Pero no puedes hacer islas en el Lobby!" 
+msg_errorplayernotfound= "Jugador no encontrado!" 
+
+
+#El siguiente texto sera abandonado hasta que se haga el SkyLang generator:
+msg_playermadeisland= "Hiso una lista" #Mensaje Completo= [Skyblock] @NombreDejugador hiso una isla
