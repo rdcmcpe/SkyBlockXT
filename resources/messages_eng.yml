@@ -16,6 +16,18 @@
 #      TTTTTTTTTTT      KKKKKKKKK    KKKKKKKRRRRRRRR     RRRRRRR      TTTTTTTTTTT
 # MultiLanguage Support:
 # English:
-msg_load= "Done! Plugin Loaded!"
+msg_load= "Done! plugin loaded!"
 msg_disabled= "Plugin Disabled!"
-#More to be added, just for testing
+msg_showhelplist= "Showing Help List:"
+msg_helpmorecommandssoon= "More commands to be added"
+
+#Errors, Some are Universal (used in vairous messages)
+msg_errorcantseehelpmenu= "You cant see the Help Menu"
+msg_errornosubcommand= "No Subcommand Provided"
+msg_errornosubcommanduse= "Use:" #/is help
+msg_erroryoucantmakeislandinlobby= "Sorry, You cant make an island on lobby!" #Change when Skyland Generator is created
+msg_errorplayernotfound= "Player not found!" #Mostly for General Player's not found
+
+
+#The following text will soon be deprecated as soon that SkyLand Generator is created:
+msg_playermadeisland= "Made a island" #Full Message: [Skyblock] @PlayerName Made a island
