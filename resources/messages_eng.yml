@@ -25,9 +25,9 @@ msg_helpmorecommandssoon= "More commands to be added"
 msg_errorcantseehelpmenu= "You cant see the Help Menu"
 msg_errornosubcommand= "No Subcommand Provided"
 msg_errornosubcommanduse= "Use:" #/is help
-msg_erroryoucantmakeislandinlobby= "Sorry, You cant make an island on lobby!" #Change when Skyland Generator is created
+msg_erroryoucantmakeislandinlobby= "Sorry, You cant make an island in the lobby!" #Change when Skyland Generator is created
 msg_errorplayernotfound= "Player not found!" #Mostly for General Player's not found
 
 
 #The following text will soon be deprecated as soon that SkyLand Generator is created:
-msg_playermadeisland= "Made a island" #Full Message= [Skyblock] @PlayerName Made a island
+msg_playermadeisland= "Made an island" #Full Message= [Skyblock] @PlayerName Made an island
