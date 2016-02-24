@@ -30,7 +30,7 @@ use pocketmine\level\Level;
 use pocketmine\level\Location;
 use pocketmine\plugin\PluginBase as Base;
 
-//use SkyBlockPVP\SkyLand\IsleGen as makeIsland;
+use SkyBlockPVP\SkyLand\IsleGen as makeIsland; //Will now use.
 
 class Main extends Base implements Listener{
 
