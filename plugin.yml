@@ -6,9 +6,26 @@ main: SkyBlockPVP\Main
 commands:
   is:
     Use /is <help>
-    description: Comand list of Skyblock
+    description: Command list of Skyblock
     permission: sbpvp.is.help
+  skyland:
+    Use /skyland <help>
+	description: Command List of Skyland generator (WIP)
 permissions:
+  skyland: #Making permissions for 1.0.0 BETA
+    default: op
+	description: Allow Skyland Generator Commands
+	children:
+	  skyland.cmd:
+	  	default: op
+		description: Allow a OP use Skyland Gen Commands
+	  skyland.cmd.gen.map:
+	    default: op
+		description: Generates a SkyWorld with current Config
+	  skyland.cmd.reload:
+	    default: op
+		description: Reloads the Skyland Maps and generator
+		
   sbpvp:
     default: true #when set to Defualt: true, its given For player, no op needed
     description: Allows the user to use the Skyblock Features
@@ -19,19 +36,16 @@ permissions:
         children:
           sbpvp.is.help:
             default: true #Set for player
-            description: Help command
+            description: Allows the player to use the Help Command
           sbpvp.is.create:
             default: true
-            description: Create an island
+            description: Allows the player to use the Create Command
+          sbpvp.is.get:
+            default: op # Set ONLY for OPs
+            description: Allows the OP to find a players island
           sbpvp.is.delete:
-            default: true #Set for Player
-            description: Delete your island
-          sbpvp.is.invite:
-            default: true #Set for player
-            description: Invite specified player to your island
-            sbpvp.is.warp:
-            default: true #Set for player
-            description: Warp to specified players island
-          sbpvp.is.pos:
-            default: op #Set ONLY for OPs
-            description: Locate specified players island
+            default: true # Set for Player
+            description: Allows the player to use Delete their island
+          sbpvp.is.warp:
+            default: op # Only For OPs
+            description: Allows the OP to Warp to a players island
