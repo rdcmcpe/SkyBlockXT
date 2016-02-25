@@ -59,7 +59,7 @@ class Language {
 			$playerconform = $this->getConfig()->get('PlayerFileFormat');
 			@mkdir($this->getDataFolder()."Islands/".$player.".".$playerconform);
 			$level = new Config($this->getDataFolder()."Islands/".$name.".",$playerconform, Config::ENUM);
-			$level->set("location", $level.",".$x.",".$y.",".$z);
+			$level->set("location", $level.",".$x.",".$height.",".$z); #Setting for custom Height
 			$level->setAll($level->getAll());
 			$level->save();
 			$pos = explode(",", $level->get("location"));
