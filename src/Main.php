@@ -28,9 +28,9 @@ use pocketmine\command\Command;
 use pocketmine\level\Position;
 use pocketmine\level\Level;
 use pocketmine\level\Location;
-use pocketmine\plugin\PluginBase as Base;
+use pocketmine\plugin\PluginBase as Base
 
-use SkyBlockPVP\SkyLand\IsleGen as makeIsland; //Will now use.
+use SkyBlockPVP\SkyLand\IsleGen as makeIsland;
 
 class Main extends Base implements Listener{
 
@@ -98,6 +98,11 @@ class Main extends Base implements Listener{
 					}else{
 		
 		}
+			}
+		}
+		}
+	}
+		
 
 	
 	
@@ -116,7 +121,7 @@ class Main extends Base implements Listener{
 		$msgerrornosbcmd = $this->getResource("messages_".$lang.".yml")->get('msg_errornosubcommand');
 		$msgerrornosbcmd = $this->getResource("messages_".$lang.".yml")->get('msg_errornosubcommanduse');
 		$msgerrorycminlobby = $this->getResource("messages_".$lang.".yml")->get('msg_erroryoucantmakeislandinlobby');
-		$msg = $this->getResource("messages_".$lang.".yml")->get('msg_');
+		//$msg = $this->getResource("messages_".$lang.".yml")->get('msg_');
 		//$msg = $this->getResource("messages_".$lang.".yml")->get('msg_');
 		//$msg = $this->getResource("messages_".$lang.".yml")->get('msg_');
 		//$msg = $this->getResource("messages_".$lang.".yml")->get('msg_');
@@ -131,3 +136,4 @@ class Main extends Base implements Listener{
        
     }
 	
+}
