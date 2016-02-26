@@ -19,13 +19,13 @@ permissions:
           skyland.cmd:
             default: op
             description: Allow a OP use Skyland Gen Commands
-          skyland.cmd.gen.map
+          skyland.cmd.gen:
             default: op
             description: Generates a SkyWorld with current Config
           skyland.cmd.reload:
             default: op
             description: Reloads the Skyland Maps and generator
-          skyland.cmd.map
+          skyland.cmd.map:
             description: Allows to load/unload Other worlds
             children:
               skyland.cmd.map.load:
