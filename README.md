@@ -15,3 +15,11 @@ Read the [Credits](https://github.com/TheKillerTacos/SkyBlockPVP/blob/master/CRE
 ### Compile This Plugin At: [Plugin Compiler](http://pmt.mcpe.me/)
 
 > XenoNova Creations © 2016, you may use this plugin, but not claim it as yours.
+#	__   __                 _   _                 	
+#	\ \ / /                | \ | |                	
+#	 \ V /  ___ _ __   ___ |  \| | _____   ____ _ 	
+#	 /   \ / _ \ '_ \ / _ \| . ` |/ _ \ \ / / _` |	
+#	/ /^\ \  __/ | | | (_) | |\  | (_) \ V / (_| |	
+#	\/   \/\___|_| |_|\___/\_| \_/\___/ \_/ \__,_|	
+#                                             
+#                                             Creations
