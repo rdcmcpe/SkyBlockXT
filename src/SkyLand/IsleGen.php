@@ -2,22 +2,14 @@
 #IsleGen, 1.0.0 Beta, This will be soon Replaced by SkyLand ADV Generator
 #IsleGen will also be still available, since this one generates the island. may get buggy
 #SkyLand will generate around 100 islands in 1 World, and wont bug at all, more info at the WIKI.
-#TTTTTTTTTTTTTTTTTTTTTTTKKKKKKKKK    KKKKKKKRRRRRRRRRRRRRRRRR   TTTTTTTTTTTTTTTTTTTTTTT
-#T:::::::::::::::::::::TK:::::::K    K:::::KR::::::::::::::::R  T:::::::::::::::::::::T
-#T:::::::::::::::::::::TK:::::::K    K:::::KR::::::RRRRRR:::::R T:::::::::::::::::::::T
-#T:::::TT:::::::TT:::::TK:::::::K   K::::::KRR:::::R     R:::::RT:::::TT:::::::TT:::::T
-#TTTTTT  T:::::T  TTTTTTKK::::::K  K:::::KKK  R::::R     R:::::RTTTTTT  T:::::T  TTTTTT
-#        T:::::T          K:::::K K:::::K     R::::R     R:::::R        T:::::T        
-#        T:::::T          K::::::K:::::K      R::::RRRRRR:::::R         T:::::T        
-#        T:::::T          K:::::::::::K       R:::::::::::::RR          T:::::T        
-#        T:::::T          K:::::::::::K       R::::RRRRRR:::::R         T:::::T        
-#        T:::::T          K::::::K:::::K      R::::R     R:::::R        T:::::T        
-#        T:::::T          K:::::K K:::::K     R::::R     R:::::R        T:::::T        
-#        T:::::T        KK::::::K  K:::::KKK  R::::R     R:::::R        T:::::T        
-#      TT:::::::TT      K:::::::K   K::::::KRR:::::R     R:::::R      TT:::::::TT      
-#      T:::::::::T      K:::::::K    K:::::KR::::::R     R:::::R      T:::::::::T      
-#      T:::::::::T      K:::::::K    K:::::KR::::::R     R:::::R      T:::::::::T      
-#      TTTTTTTTTTT      KKKKKKKKK    KKKKKKKRRRRRRRR     RRRRRRR      TTTTTTTTTTT		Creations
+#	__   __                 _   _                 	
+#	\ \ / /                | \ | |                	
+#	 \ V /  ___ _ __   ___ |  \| | _____   ____ _ 	
+#	 /   \ / _ \ '_ \ / _ \| . ` |/ _ \ \ / / _` |	
+#	/ /^\ \  __/ | | | (_) | |\  | (_) \ V / (_| |	
+#	\/   \/\___|_| |_|\___/\_| \_/\___/ \_/ \__,_|	
+#                                             
+#                                             Creations
 namespace SkyBlockPVP/SkyLand/IsleGen;
 use pocketmine\item\Item;
 use pocketmine\block\Block;
