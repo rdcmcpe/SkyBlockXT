@@ -18,7 +18,7 @@ permissions:
         children:
           skyland.cmd:
             default: op
-            description: Allow a OP use Skyland Gen Commands
+            description: Allow an OP use Skyland Gen Commands
           skyland.cmd.gen:
             default: op
             description: Generates a SkyWorld with current Config
