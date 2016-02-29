@@ -3,6 +3,9 @@ version: 0.0.1
 api: [1.13.0, 2.0.0]
 author: TKRT Creations Team
 main: SkyBlockPVP\Main
+load: STARTUP #Ill use these now, since there will be a plugin that will load on STOP,(SkyTools)
+description: SkyBlockPVP, another way to play Skyblock!
+#website: http://XenoNova.tk/SkyBlockPVP, im still creating the website.....
 commands:
   is:
     Use /is <help>
