@@ -27,7 +27,7 @@ use pocketmine\block\Sapling;
 use pocketmine\utils\Random;
 
 
-class Language {
+class IsleGen {
 	
 	//Reprecated Stuff??
 	private $plugin;
@@ -37,19 +37,20 @@ class Language {
 	public function getPlugin() {
 		return $this->plugin;
 	}
-	// IDK but if this is not needed, Plz delete
+	// IDK, but if this is not needed, Plz delete
 	
 	public function makeIsland($name){
 		$player = $this->getServer()->getPlayer($name);
         $lang = $this->getConfig()->get('Lang');
 		$msgplymadeisland = $this->getResource("messages_".$lang.".yml")->get('msg_playermadeisland');
-		$msgerrorplrnotfnd = $this->getResource("messages_".$lang.".yml")->get('msg_errorplayernotfound');
+		$msgerrorplrnotfnd = $this->getResource("messages_".$lang.".yml")->get('msg_universalerrorplayernotfound');
 		if(!($player instanceof Player)){
 			return TextFormat::RED."[Skyblock] ".$msgerrorplrnotfnd;
 		}else{
 			// Make a file for the island
 			$playerconform = $this->getConfig()->get('PlayerFileFormat');
 			@mkdir($this->getDataFolder()."Islands/".$player.".".$playerconform);
+			$height = $this->getConfig()
 			$level = new Config($this->getDataFolder()."Islands/".$name.".",$playerconform, Config::ENUM);
 			$level->set("location", $level.",".$x.",".$height.",".$z); #Setting for custom Height
 			$level->setAll($level->getAll());
@@ -59,7 +60,7 @@ class Language {
 			$x = $pos[1];
 			$y = $pos[2];
 			$z = $pos[3];
-			$level = $this->getServer()->getLevelByName($level);
+			$wlevel = $this->getServer()->getLevelByName($level);
 			// Top layer of the island
 			// 1st side
 			$level->setBlock(new Position($x, $y, $z, $level), Block::get(Block::GRASS));
@@ -195,10 +196,11 @@ class Language {
 			Tree::growTree($level, $x+6, $x+1, $x+6, new Random(mt_rand()), Sapling::OAK);
 			// Teleport the player to their new island
 			$player->teleport(new Position($x, $y+5, $z, $this->getServer()->getLevelByName($levelName)));
-			$player->sendMessage(TextFormat::GREEN . "[Skyblock] Bienvenido a tu Isla");
-			$player->sendMessage(TextFormat::GREEN . "[Skyblock] Si tu Isla No se Creo,");
-			$player->sendMessage(TextFormat::GREEN . "[Skyblock] Usa /is delete");
-			$player->sendMessage(TextFormat::GREEN . "[Skyblock] Y create otra ;D");
+			$player->sendMessage(TextFormat::GREEN . "[Skyblock] "#msgwelcometoyourilsland);
+			$player->sendMessage(TextFormat::GREEN . "[Skyblock] "#msgifyourislanddidntcreated);
+			$player->sendMessage(TextFormat::GREEN . "[Skyblock] "#msguse/isdelete);
+			$player->sendMessage(TextFormat::GREEN . "[Skyblock] "#msgandcreateanotherone);
+								 									#Really lazy to update this, gonna take a nap...
 			// Give the player a starter kit
 			// String
 			$player->getInventory()->addItem(Item::get(287));
@@ -206,7 +208,7 @@ class Language {
 			$player->getInventory()->addItem(Item::get(287));
 			$player->getInventory()->addItem(Item::get(287));
 			$player->getInventory()->addItem(Item::get(287));
-			// Emerald
+			// Emerald, WAIT? WHUT? is this ACTUALLY Needed? Opening issue...
 			$player->getInventory()->addItem(Item::get(388));
 			$player->getInventory()->addItem(Item::get(388));
 			$player->getInventory()->addItem(Item::get(388));
@@ -233,7 +235,7 @@ class Language {
 			$player->getInventory()->addItem(Item::get(362));
 			// Cactus
 			$player->getInventory()->addItem(Item::get(81));
-			// Iron
+			// Iron Also this, do we need it?
 			$player->getInventory()->addItem(Item::get(265));
 			$player->getInventory()->addItem(Item::get(265));
 			$player->getInventory()->addItem(Item::get(265));
@@ -248,3 +250,4 @@ class Language {
 
 }
 	
+?>
