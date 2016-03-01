@@ -8,59 +8,59 @@ description: SkyBlockPVP, another way to play Skyblock!
 #website: http://XenoNova.tk/SkyBlockPVP, im still creating the website.....
 commands:
   is:
-    Use /is <help>
-    description: Command list of Skyblock
-    permission: sbpvp.is.help
+    "Use /is <help>"
+    description: "Command list of Skyblock"
+    permission: "sbpvp.is.help"
   skyland:
-    Use /skyland <help>
-        description: Command List of Skyland generator (WIP)
+    "Use /skyland <help>"
+        description: "Command List of Skyland generator (WIP)"
 permissions:
   skyland: #Making permissions for 1.0.0 BETA
     default: op
-        description: Allow Skyland Generator Commands
+        description: "Allow Skyland Generator Commands"
         children:
           skyland.cmd:
             default: op
-            description: Allow an OP use Skyland Gen Commands
+            description: "Allow an OP use Skyland Gen Commands"
           skyland.cmd.gen:
             default: op
-            description: Generates a SkyWorld with current Config
+            description: "Generates a SkyWorld with current Config"
           skyland.cmd.reload:
             default: op
-            description: Reloads the Skyland Maps and generator
+            description: "Reloads the Skyland Maps and generator"
           skyland.cmd.map:
-            description: Allows to load/unload Other worlds
+            description: "Allows to load/unload Other worlds"
             children:
               skyland.cmd.map.load:
                 default: op
-                description: Alows to load a world
+                description: "Allows to load a world"
               skyland.cmd.map.unload:
                 default: op
-                description: Allows to Unload a world
+                description: "Allows to Unload a world"
 
   sbpvp:
     default: true #when set to Defualt: true, its given For player, no op needed
-    description: Allows the user to use the Skyblock Features
+    description: "Allows the user to use the Skyblock Features"
     children:
       sbpvp.is:
         default: true #Set for player
-        description: Allows the user to use the Skyblock Commands
+        description: "Allows the user to use the Skyblock Commands"
         children:
           sbpvp.is.help:
             default: true #Set for player
-            description: Allows the player to use the Help Command
+            description: "Allows the player to use the Help Command"
           sbpvp.is.create:
             default: true
-            description: Allows the player to use the Create Command
+            description: "Allows the player to use the Create Command"
           sbpvp.is.get:
             default: op # Set ONLY for OPs
-            description: Allows the OP to find a players island
+            description: "Allows the OP to find a players island"
           sbpvp.is.delete:
             default: true # Set for Player
-            description: Allows the player to use Delete their island
+            description: "Allows the player to use Delete their island"
           sbpvp.is.warp:
             default: op # Only For OPs
-            description: Allows the OP to Warp to a players island
+            description: "Allows the OP to Warp to a players island"
           sbpvp.is.home:
             default: true
-            description: Allows the player to go to their islands
+            description: "Allows the player to go to their islands"
