@@ -5,9 +5,8 @@ Leading Developer:  @TheKillerTacos
 
 Contributors:
 * @Skyladd
-* 
 
 Main Plugin by:
-* @thebigsmileXD
+* **@thebigsmileXD**
 * ImagicalCorp
 
