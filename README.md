@@ -5,13 +5,17 @@
 
 **Implementing KitPVP with Skyblock for more fun!**
 
-This plugin was Created by **@TheKillerTacos**
+This plugin was Updated by **@TheKillerTacos**
+Supported by **@SkyLadd**
+Main plugin By: ImagicalCorp/@ThebigsmileXD
 
 Read the [Credits](https://github.com/TheKillerTacos/SkyBlockXT/blob/master/CREDITS.md) for Contributors
 
 ### Check out the [Wiki](https://github.com/TheKillerTacos/SkyBlockXT/wiki) page for help!
 
 ### Compile This Plugin At: [Plugin Compiler](http://pmt.mcpe.me/)
+
+> ### or Download the Latest build at http://thekillertacos.tk/Builds/Skyblock.html [WIP]
 
 > XenoNova Creations © 2016, you may use this plugin, but not claim it as yours.
 
