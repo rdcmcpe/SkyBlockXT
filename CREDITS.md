@@ -1,8 +1,13 @@
 # Credits:
 ****
 
-Plugin Created By @TheKillerTacos
+Leading Developer:  @TheKillerTacos
 
 Contributors:
 * @Skyladd
+* 
+
+Main Plugin by:
+* @thebigsmileXD
+* ImagicalCorp
 
