@@ -15,7 +15,7 @@ Read the [Credits](https://github.com/TheKillerTacos/SkyBlockXT/blob/master/CRED
 
 ### Compile This Plugin At: [Plugin Compiler](http://pmt.mcpe.me/)
 
-> ### or Download the Latest build at http://thekillertacos.tk/Builds/Skyblock.html [WIP]
+> ** or Download the Latest build at http://thekillertacos.tk/Builds/Skyblock.html [WIP] **
 
 > XenoNova Creations © 2016, you may use this plugin, but not claim it as yours.
 
