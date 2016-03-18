@@ -1,11 +1,10 @@
-name: SkyBlock
-main: thebigsmileXD\SkyBlock\SkyBlock
-version: 1.0.2
+name: SkyBlockXT
+main: SkyXT\SkyBlock\SkyBlock
+version: 1.0.0
 load: STARTUP
-api: 1.0.0
-author: thebigsmileXD Wies and Exxarion
-description: Plot and protection plugin
-softdepend: [EconomyAPI, PocketMoney]
+author: TheKillerTacos, ImagicalCorp & thebigsmileXD, maybe others....
+description: SkyBlockXT plugin
+softdepend: [EconomyAPI, PocketMoney] #Soon this will change
 
 permissions:
   skyblock.command:
