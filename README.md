@@ -15,7 +15,7 @@
   and more much features planned coming by its way! wait for further release to get the Stable and working plugin!
   
   
-  ##Planned Release Date:## *15/04/16* or Sooner
+### Planned Release Date: *15/04/16* or Sooner
 
 
 > XenoNova Creations © 2016 & TKRT Creations © 2014-2016, you may use this plugin, but not claim it as yours.
