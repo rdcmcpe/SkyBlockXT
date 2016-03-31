@@ -1,6 +1,6 @@
 <?php
 
-namespace SkyBlockXT;
+namespace SkyBlockXT\MCPEBlocks;
 
 use pocketmine\block\Block;
 use pocketmine\item\ItemBlock;
