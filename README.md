@@ -1,4 +1,4 @@
-![Logo?](http://orig09.deviantart.net/44cf/f/2016/050/7/6/sky_block_by_biodrawxel_d50ynd0_by_skyladd-d9se2lq.png)
+![Logo?](http://bgteste.ga/files/FotorCreated.jpg)
 # SkyBlockXT
 
   Cant find a Working Skyblock plugin for your Minecraft servers? here is one for you!
