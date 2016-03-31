@@ -28,6 +28,10 @@ use pocketmine\utils\Random;
 
 class Main extends Base implements Listener{
 	public function onEnable(){
+		
+		if(!(is_dir($this->getDataFolder().""))){ //would it crash?
+			@mkdir($this->getDataFolder()."");
+		}
 		$this->saveDefaultConfig();
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		if(!(is_dir($this->getDataFolder()."Players/"))){
@@ -39,7 +43,8 @@ class Main extends Base implements Listener{
 		$this->getLogger()->info(TextFormat::GREEN . "Done!");
 	}
 	public function onDisable(){
-		$this->getLogger()->info(TextFormat::RED . "SkyBlock disabled");
+		$this->getLogger()->info(TextFormat::RED . "SkyBlock disabled! The Server Crashed or did it stop? [TKRT]");
+		$this->getLogger()->info(TextFormat::GOLD . "or just a little reload?                              [TKRT]");
 	}
 	
 	public function onCommand(CommandSender $sender, Command $command, $label, array $args){
@@ -202,185 +207,190 @@ class Main extends Base implements Listener{
 			}
 		}
 	
-	public function makeIsland($name){
+	public function makeIsland($name){ //Soon to be changed!
 		$player = $this->getServer()->getPlayer($name);
 		if(!($player instanceof Player)){
 			return "Error: Player not found";
 		}else{
 			
-			$randX = rand(1, 800);
-			$randZ = rand(1, 800);
-			$Y = 75;
-			
-			$levelName = $this->getServer()->getPlayer($name)->getLevel();
-			
 			// Make a file for the island
 			$islandFile = fopen($this->getDataFolder()."Islands/".$name.".txt", "w");
-			fwrite($islandFile, $randX.", ".$Y.", ".$randZ);
+			fwrite($islandFile, $x.", ".$Y.", ".$z);
 			$playerFile = fopen($this->getDataFolder()."Players/".$name.".txt", "w");
 			fwrite($playerFile, $player->getLevel()->getName());
 			
 			// Top layer of the island
+			// <Callers:
+			//$x = rand(1, 800);
+			//$z = rand(1, 800);
+			$z = 100;
+			$x = 100;
+			$Y = 75;
+			$id= 2;
+			$idsand = 12;
+			$iddirt = 3;
+			$idwood = 17;
+			$idleaves = 18;
+			$idchest = 54;
+			$sender = $this->getServer()->getPlayer($name)
+			// End of Callers>
 			
 			// 1st side
-			$levelName->setBlock(new Vector3($randX, $Y, $randZ), new Grass());
-			$levelName->setBlock(new Vector3($randX+6, $Y, $randZ+6), new Grass());
-			$levelName->setBlock(new Vector3($randX+6, $Y, $randZ+5), new Grass());
-			$levelName->setBlock(new Vector3($randX+6, $Y, $randZ+4), new Grass());
-			$levelName->setBlock(new Vector3($randX+6, $Y, $randZ+3), new Grass());
-			$levelName->setBlock(new Vector3($randX+6, $Y, $randZ+2), new Grass());
-			$levelName->setBlock(new Vector3($randX+6, $Y, $randZ+1), new Grass());
+			$sender->getLevel()->setBlockIdAt($x, $Y, $z, $id);
+			$sender->getLevel()->setBlockIdAt($x+6, $Y, $z+6, $id);
+			$sender->getLevel()->setBlockIdAt($x+6, $Y, $z+5, $id);
+			$sender->getLevel()->setBlockIdAt($x+6, $Y, $z+4, $id);
+			$sender->getLevel()->setBlockIdAt($x+6, $Y, $z+3, $id);
+			$sender->getLevel()->setBlockIdAt($x+6, $Y, $z+2, $id);
+			$sender->getLevel()->setBlockIdAt($x+6, $Y, $z+1, $id);
 			
 			// 2nd side
-			$levelName->setBlock(new Vector3($randX+5, $Y, $randZ+6), new Grass());
-			$levelName->setBlock(new Vector3($randX+5, $Y, $randZ+5), new Grass());
-			$levelName->setBlock(new Vector3($randX+5, $Y, $randZ+4), new Grass());
-			$levelName->setBlock(new Vector3($randX+5, $Y, $randZ+3), new Grass());
-			$levelName->setBlock(new Vector3($randX+5, $Y, $randZ+2), new Grass());
-			$levelName->setBlock(new Vector3($randX+5, $Y, $randZ+1), new Grass());
+			$sender->getLevel()->setBlockIdAt($x+5, $Y, $z+6, $id);
+			$sender->getLevel()->setBlockIdAt($x+5, $Y, $z+5, $id);
+			$sender->getLevel()->setBlockIdAt($x+5, $Y, $z+4, $id);
+			$sender->getLevel()->setBlockIdAt($x+5, $Y, $z+3, $id);
+			$sender->getLevel()->setBlockIdAt($x+5, $Y, $z+2, $id);
+			$sender->getLevel()->setBlockIdAt($x+5, $Y, $z+1, $id);
 			
 			// 3rd side 
-			$levelName->setBlock(new Vector3($randX+4, $Y, $randZ+6), new Grass());
-			$levelName->setBlock(new Vector3($randX+4, $Y, $randZ+5), new Grass());
-			$levelName->setBlock(new Vector3($randX+4, $Y, $randZ+4), new Grass());
-			$levelName->setBlock(new Vector3($randX+4, $Y, $randZ+3), new Grass());
-			$levelName->setBlock(new Vector3($randX+4, $Y, $randZ+2), new Grass());
-			$levelName->setBlock(new Vector3($randX+4, $Y, $randZ+1), new Grass());
+			$sender->getLevel()->setBlockIdAt($x+4, $Y, $z+6, $id);
+			$sender->getLevel()->setBlockIdAt($x+4, $Y, $z+5, $id);
+			$sender->getLevel()->setBlockIdAt($x+4, $Y, $z+4, $id);
+			$sender->getLevel()->setBlockIdAt($x+4, $Y, $z+3, $id);
+			$sender->getLevel()->setBlockIdAt($x+4, $Y, $z+2, $id);
+			$sender->getLevel()->setBlockIdAt($x+4, $Y, $z+1, $id);
 			
 			// 4th side
-			$levelName->setBlock(new Vector3($randX+3, $Y, $randZ+6), new Grass());
-			$levelName->setBlock(new Vector3($randX+3, $Y, $randZ+5), new Grass());
-			$levelName->setBlock(new Vector3($randX+3, $Y, $randZ+4), new Grass());
-			$levelName->setBlock(new Vector3($randX+3, $Y, $randZ+3), new Grass());
-			$levelName->setBlock(new Vector3($randX+3, $Y, $randZ+2), new Grass());
-			$levelName->setBlock(new Vector3($randX+3, $Y, $randZ+1), new Grass());
+			$sender->getLevel()->setBlockIdAt($x+3, $Y, $z+6, $id);
+			$sender->getLevel()->setBlockIdAt($x+3, $Y, $z+5, $id);
+			$sender->getLevel()->setBlockIdAt($x+3, $Y, $z+4, $id);
+			$sender->getLevel()->setBlockIdAt($x+3, $Y, $z+3, $id);
+			$sender->getLevel()->setBlockIdAt($x+3, $Y, $z+2, $id);
+			$sender->getLevel()->setBlockIdAt($x+3, $Y, $z+1, $id);
 			
 			// 5th side
-			$levelName->setBlock(new Vector3($randX+2, $Y, $randZ+6), new Grass());
-			$levelName->setBlock(new Vector3($randX+2, $Y, $randZ+5), new Grass());
-			$levelName->setBlock(new Vector3($randX+2, $Y, $randZ+4), new Grass());
-			$levelName->setBlock(new Vector3($randX+2, $Y, $randZ+3), new Grass());
-			$levelName->setBlock(new Vector3($randX+2, $Y, $randZ+2), new Grass());
-			$levelName->setBlock(new Vector3($randX+2, $Y, $randZ+1), new Grass());
+			$sender->getLevel()->setBlockIdAt($x+2, $Y, $z+6, $id);
+			$sender->getLevel()->setBlockIdAt($x+2, $Y, $z+5, $id);
+			$sender->getLevel()->setBlockIdAt($x+2, $Y, $z+4, $id);
+			$sender->getLevel()->setBlockIdAt($x+2, $Y, $z+3, $id);
+			$sender->getLevel()->setBlockIdAt($x+2, $Y, $z+2, $id);
+			$sender->getLevel()->setBlockIdAt($x+2, $Y, $z+1, $id);
 			
 			// 6th side
-			$levelName->setBlock(new Vector3($randX+1, $Y, $randZ+6), new Grass());
-			$levelName->setBlock(new Vector3($randX+1, $Y, $randZ+5), new Grass());
-			$levelName->setBlock(new Vector3($randX+1, $Y, $randZ+4), new Grass());
-			$levelName->setBlock(new Vector3($randX+1, $Y, $randZ+3), new Grass());
-			$levelName->setBlock(new Vector3($randX+1, $Y, $randZ+2), new Grass());
-			$levelName->setBlock(new Vector3($randX+1, $Y, $randZ+1), new Grass());
+			$sender->getLevel()->setBlockIdAt($x+1, $Y, $z+6, $id);
+			$sender->getLevel()->setBlockIdAt($x+1, $Y, $z+5, $id);
+			$sender->getLevel()->setBlockIdAt($x+1, $Y, $z+4, $id);
+			$sender->getLevel()->setBlockIdAt($x+1, $Y, $z+3, $id);
+			$sender->getLevel()->setBlockIdAt($x+1, $Y, $z+2, $id);
+			$sender->getLevel()->setBlockIdAt($x+1, $Y, $z+1, $id);
 			
 			// Middle layer of the island
 			
 			// 1st side
-			$levelName->setBlock(new Vector3($randX, $Y-1, $randZ), new Sand());
-			$levelName->setBlock(new Vector3($randX+6, $Y-1, $randZ+6), new Sand());
-			$levelName->setBlock(new Vector3($randX+6, $Y-1, $randZ+5), new Sand());
-			$levelName->setBlock(new Vector3($randX+6, $Y-1, $randZ+4), new Sand());
-			$levelName->setBlock(new Vector3($randX+6, $Y-1, $randZ+3), new Sand());
-			$levelName->setBlock(new Vector3($randX+6, $Y-1, $randZ+2), new Sand());
-			$levelName->setBlock(new Vector3($randX+6, $Y-1, $randZ+1), new Sand());
+			$sender->getLevel()->setBlockIdAt($x, $Y-1, $z, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+6, $Y-1, $z+6, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+6, $Y-1, $z+5, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+6, $Y-1, $z+4, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+6, $Y-1, $z+3, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+6, $Y-1, $z+2, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+6, $Y-1, $z+1, $idsand);
 			
 			// 2nd side
-			$levelName->setBlock(new Vector3($randX+5, $Y-1, $randZ+6), new Sand());
-			$levelName->setBlock(new Vector3($randX+5, $Y-1, $randZ+5), new Sand());
-			$levelName->setBlock(new Vector3($randX+5, $Y-1, $randZ+4), new Sand());
-			$levelName->setBlock(new Vector3($randX+5, $Y-1, $randZ+3), new Sand());
-			$levelName->setBlock(new Vector3($randX+5, $Y-1, $randZ+2), new Sand());
-			$levelName->setBlock(new Vector3($randX+5, $Y-1, $randZ+1), new Sand());
+			$sender->getLevel()->setBlockIdAt($x+5, $Y-1, $z+6, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+5, $Y-1, $z+5, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+5, $Y-1, $z+4, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+5, $Y-1, $z+3, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+5, $Y-1, $z+2, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+5, $Y-1, $z+1, $idsand);
 			
 			// 3rd side
-			$levelName->setBlock(new Vector3($randX+4, $Y-1, $randZ+6), new Sand());
-			$levelName->setBlock(new Vector3($randX+4, $Y-1, $randZ+5), new Sand());
-			$levelName->setBlock(new Vector3($randX+4, $Y-1, $randZ+4), new Sand());
-			$levelName->setBlock(new Vector3($randX+4, $Y-1, $randZ+3), new Sand());
-			$levelName->setBlock(new Vector3($randX+4, $Y-1, $randZ+2), new Sand());
-			$levelName->setBlock(new Vector3($randX+4, $Y-1, $randZ+1), new Sand());
+			$sender->getLevel()->setBlockIdAt($x+4, $Y-1, $z+6, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+4, $Y-1, $z+5, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+4, $Y-1, $z+4, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+4, $Y-1, $z+3, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+4, $Y-1, $z+2, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+4, $Y-1, $z+1, $idsand);
 			
 			// 4th side
-			$levelName->setBlock(new Vector3($randX+3, $Y-1, $randZ+6), new Sand());
-			$levelName->setBlock(new Vector3($randX+3, $Y-1, $randZ+5), new Sand());
-			$levelName->setBlock(new Vector3($randX+3, $Y-1, $randZ+4), new Sand());
-			$levelName->setBlock(new Vector3($randX+3, $Y-1, $randZ+3), new Sand());
-			$levelName->setBlock(new Vector3($randX+3, $Y-1, $randZ+2), new Sand());
-			$levelName->setBlock(new Vector3($randX+3, $Y-1, $randZ+1), new Sand());
+			$sender->getLevel()->setBlockIdAt($x+3, $Y-1, $z+6, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+3, $Y-1, $z+5, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+3, $Y-1, $z+4, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+3, $Y-1, $z+3, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+3, $Y-1, $z+2, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+3, $Y-1, $z+1, $idsand);
 			
 			// 5th side
-			$levelName->setBlock(new Vector3($randX+2, $Y-1, $randZ+6), new Sand());
-			$levelName->setBlock(new Vector3($randX+2, $Y-1, $randZ+5), new Sand());
-			$levelName->setBlock(new Vector3($randX+2, $Y-1, $randZ+4), new Sand());
-			$levelName->setBlock(new Vector3($randX+2, $Y-1, $randZ+3), new Sand());
-			$levelName->setBlock(new Vector3($randX+2, $Y-1, $randZ+2), new Sand());
-			$levelName->setBlock(new Vector3($randX+2, $Y-1, $randZ+1), new Sand());
+			$sender->getLevel()->setBlockIdAt($x+2, $Y-1, $z+6, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+2, $Y-1, $z+5, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+2, $Y-1, $z+4, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+2, $Y-1, $z+3, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+2, $Y-1, $z+2, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+2, $Y-1, $z+1, $idsand);
 			
 			// 6th side
-			$levelName->setBlock(new Vector3($randX+1, $Y-1, $randZ+6), new Sand());
-			$levelName->setBlock(new Vector3($randX+1, $Y-1, $randZ+5), new Sand());
-			$levelName->setBlock(new Vector3($randX+1, $Y-1, $randZ+4), new Sand());
-			$levelName->setBlock(new Vector3($randX+1, $Y-1, $randZ+3), new Sand());
-			$levelName->setBlock(new Vector3($randX+1, $Y-1, $randZ+2), new Sand());
-			$levelName->setBlock(new Vector3($randX+1, $Y-1, $randZ+1), new Sand());
+			$sender->getLevel()->setBlockIdAt($x+1, $Y-1, $z+6, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+1, $Y-1, $z+5, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+1, $Y-1, $z+4, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+1, $Y-1, $z+3, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+1, $Y-1, $z+2, $idsand);
+			$sender->getLevel()->setBlockIdAt($x+1, $Y-1, $z+1, $idsand);
 			
 			
 			
 			// Bottom layer of the island
 			
 			// 1st side
-			$levelName->setBlock(new Vector3($randX, $Y-2, $randZ), new Dirt());
-			$levelName->setBlock(new Vector3($randX+6, $Y-2, $randZ+6), new Dirt());
-			$levelName->setBlock(new Vector3($randX+6, $Y-2, $randZ+5), new Dirt());
-			$levelName->setBlock(new Vector3($randX+6, $Y-2, $randZ+4), new Dirt());
-			$levelName->setBlock(new Vector3($randX+6, $Y-2, $randZ+3), new Dirt());
-			$levelName->setBlock(new Vector3($randX+6, $Y-2, $randZ+2), new Dirt());
-			$levelName->setBlock(new Vector3($randX+6, $Y-2, $randZ+1), new Dirt());
+			$sender->getLevel()->setBlockIdAt($x, $Y-2, $z, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+6, $Y-2, $z+6, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+6, $Y-2, $z+5, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+6, $Y-2, $z+4, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+6, $Y-2, $z+3, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+6, $Y-2, $z+2, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+6, $Y-2, $z+1, $iddirt);
 			
 			// 2nd side
-			$levelName->setBlock(new Vector3($randX+5, $Y-2, $randZ+6), new Dirt());
-			$levelName->setBlock(new Vector3($randX+5, $Y-2, $randZ+5), new Dirt());
-			$levelName->setBlock(new Vector3($randX+5, $Y-2, $randZ+4), new Dirt());
-			$levelName->setBlock(new Vector3($randX+5, $Y-2, $randZ+3), new Dirt());
-			$levelName->setBlock(new Vector3($randX+5, $Y-2, $randZ+2), new Dirt());
-			$levelName->setBlock(new Vector3($randX+5, $Y-2, $randZ+1), new Dirt());
+			$sender->getLevel()->setBlockIdAt($x+5, $Y-2, $z+6, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+5, $Y-2, $z+5, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+5, $Y-2, $z+4, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+5, $Y-2, $z+3, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+5, $Y-2, $z+2, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+5, $Y-2, $z+1, $iddirt);
 			
 			// 3rd side
-			$levelName->setBlock(new Vector3($randX+4, $Y-2, $randZ+6), new Dirt());
-			$levelName->setBlock(new Vector3($randX+4, $Y-2, $randZ+5), new Dirt());
-			$levelName->setBlock(new Vector3($randX+4, $Y-2, $randZ+4), new Dirt());
-			$levelName->setBlock(new Vector3($randX+4, $Y-2, $randZ+3), new Dirt());
-			$levelName->setBlock(new Vector3($randX+4, $Y-2, $randZ+2), new Dirt());
-			$levelName->setBlock(new Vector3($randX+4, $Y-2, $randZ+1), new Dirt());
+			$sender->getLevel()->setBlockIdAt($x+4, $Y-2, $z+6, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+4, $Y-2, $z+5, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+4, $Y-2, $z+4, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+4, $Y-2, $z+3, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+4, $Y-2, $z+2, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+4, $Y-2, $z+1, $iddirt);
 			
 			// 4th side
-			$levelName->setBlock(new Vector3($randX+3, $Y-2, $randZ+6), new Dirt());
-			$levelName->setBlock(new Vector3($randX+3, $Y-2, $randZ+5), new Dirt());
-			$levelName->setBlock(new Vector3($randX+3, $Y-2, $randZ+4), new Dirt());
-			$levelName->setBlock(new Vector3($randX+3, $Y-2, $randZ+3), new Dirt());
-			$levelName->setBlock(new Vector3($randX+3, $Y-2, $randZ+2), new Dirt());
-			$levelName->setBlock(new Vector3($randX+3, $Y-2, $randZ+1), new Dirt());
+			$sender->getLevel()->setBlockIdAt($x+3, $Y-2, $z+6, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+3, $Y-2, $z+5, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+3, $Y-2, $z+4, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+3, $Y-2, $z+3, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+3, $Y-2, $z+2, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+3, $Y-2, $z+1, $iddirt);
 			
 			// 5th side
-			$levelName->setBlock(new Vector3($randX+2, $Y-2, $randZ+6), new Dirt());
-			$levelName->setBlock(new Vector3($randX+2, $Y-2, $randZ+5), new Dirt());
-			$levelName->setBlock(new Vector3($randX+2, $Y-2, $randZ+4), new Dirt());
-			$levelName->setBlock(new Vector3($randX+2, $Y-2, $randZ+3), new Dirt());
-			$levelName->setBlock(new Vector3($randX+2, $Y-2, $randZ+2), new Dirt());
-			$levelName->setBlock(new Vector3($randX+2, $Y-2, $randZ+1), new Dirt());
+			$sender->getLevel()->setBlockIdAt($x+2, $Y-2, $z+6, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+2, $Y-2, $z+5, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+2, $Y-2, $z+4, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+2, $Y-2, $z+3, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+2, $Y-2, $z+2, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+2, $Y-2, $z+1, $iddirt);
 			
 			// 6th side
-			$levelName->setBlock(new Vector3($randX+1, $Y-2, $randZ+6), new Dirt());
-			$levelName->setBlock(new Vector3($randX+1, $Y-2, $randZ+5), new Dirt());
-			$levelName->setBlock(new Vector3($randX+1, $Y-2, $randZ+4), new Dirt());
-			$levelName->setBlock(new Vector3($randX+1, $Y-2, $randZ+3), new Dirt());
-			$levelName->setBlock(new Vector3($randX+1, $Y-2, $randZ+2), new Dirt());
-			$levelName->setBlock(new Vector3($randX+1, $Y-2, $randZ+1), new Dirt());
+			$sender->getLevel()->setBlockIdAt($x+1, $Y-2, $z+6, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+1, $Y-2, $z+5, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+1, $Y-2, $z+4, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+1, $Y-2, $z+3, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+1, $Y-2, $z+2, $iddirt);
+			$sender->getLevel()->setBlockIdAt($x+1, $Y-2, $z+1, $iddirt);
 			
-			// Tree
-			$type = 0;
-			Tree::growTree($levelName, $randX+6, $Y+1, $randZ+6, new Random(mt_rand()), Sapling::OAK);
 			
 			// Teleport the player to their new island
-			$player->teleport(new Position($randX, $Y+5, $randZ, $this->getServer()->getLevelByName($levelName)));
+			$player->teleport(new Position($x, $Y+5, $z, $this->getServer()->getLevelByName($levelName)));
 			$player->sendMessage(TextFormat::GREEN . "Welcome to your new island");
 			$player->sendMessage(TextFormat::GREEN . "If your island didn't spawn,");
 			$player->sendMessage(TextFormat::GREEN . "Use /is delete");
@@ -437,10 +447,7 @@ class Main extends Base implements Listener{
 			$player->getInventory()->addItem(Item::get(265));
 			$player->getInventory()->addItem(Item::get(265));
 			
-			// Chest
-			$player->getInventory()->addItem(Item::get(54));
-			
-			$this->getLogger()->info($name . TextFormat::YELLOW . " made an island");
+			$this->getLogger()->info($name . TextFormat::YELLOW . " made an island!");
 		}
 	}
 	
