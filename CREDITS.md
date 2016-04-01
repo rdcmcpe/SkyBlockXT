@@ -7,6 +7,7 @@ Contributors:
 * @Skyladd
 
 Main Plugin by:
-* **@thebigsmileXD**
-* ImagicalCorp
+* Linuzo
+
+Plugin now is being Created/Updated by me, TheKillerTacos :D
 
