@@ -9,7 +9,7 @@ website: http://thekillertacos.tk/index.php/skyblockxt
 commands:
   is:
     usage: /is <help> <page>
-    description: Tells the sender a list of SkyBlock commands
+    description: Tells the player a list of SkyBlock commands
     permission: is.command.help
 permissions:
   is:
