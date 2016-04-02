@@ -25,6 +25,7 @@ use pocketmine\tile\Tile;
 use pocketmine\tile\Chest;
 use pocketmine\block\Sapling;
 use pocketmine\utils\Random;
+use SkyBlockXT\utils\SkyBlockGenerator;
 
 class Main extends Base implements Listener{
 	public function onEnable(){
