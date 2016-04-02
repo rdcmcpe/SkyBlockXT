@@ -28,6 +28,9 @@ use pocketmine\utils\Random;
 
 class Main extends Base implements Listener{
 	public function onEnable(){
+
+		//custom generator
+		Generator::addGenerator ( SkyBlockGenerator::class, "skyblock" );
 		
 		if(!(is_dir($this->getDataFolder().""))){ //would it crash?
 			@mkdir($this->getDataFolder()."");
