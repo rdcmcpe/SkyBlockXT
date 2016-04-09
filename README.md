@@ -15,6 +15,9 @@
   and more much features planned coming by its way! wait for further release to get the Stable and working plugin!
   
   
+##TODO
+Dont forget to read the TODO list! here the [Link](https://github.com/XenoNova/SkyBlockXT/issues/17)
+  
 ## Island Concept:
   This is how the island will  be generated after ALPHA Release!
 ![Concept](http://static.planetminecraft.com/files/resource_media/screenshot/1301/skyblock_4567067.jpg)
