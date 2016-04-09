@@ -18,7 +18,7 @@
 ## Island Concept:
   This is how the island will  be generated after ALPHA Release!
 ![Concept](http://static.planetminecraft.com/files/resource_media/screenshot/1301/skyblock_4567067.jpg)
-### Planned ALPHA Release Date: *15/04/16* or Sooner
+### Planned ALPHA Release Date: *15/04/16* - *23/04/16*
 
 
 > XenoNova Creations © 2016 & TKRT Creations © 2014-2016, you may use this plugin, but not claim it as yours.
