@@ -208,9 +208,46 @@ class IsleGen extends Level{ //Well what i´m doing? could be Listener too
 			
 			// Give the player a starter kit
 			
-			// SkyGridRex: Add chest code and items, if you can, find the
-			// Skyblock items that are placed on a chest,
-			$sender->getLevel()->setBlockIdAt($x+6, $Y, $z+3, $idChest); //Sets Chest block.
+    public function onRun($currentTick)
+    {
+        if(!isset(SKBGame::getApi()->players[$this->game])){
+            $this->main->getServer()->getScheduler()->cancelTask($this->getTaskId());
+            return;
+        }
+        $this->secs--;
+        if($this->secs === 1){
+            foreach($this->main->getServer()->getLevelByName($this->main->getConfig()->getAll()["skb_games"][$this->game]["level"])->getTiles() as $chest){
+                if($chest instanceof Chest) {
+                    $chest->getInventory()->clearAll();
+                    for ($i = 0; $i < 8; ++$i) {
+                        $items = array(
+                            Item::get(0, 0, 0),
+                            Item::get(17, 0, mt_rand(5,10)),
+                            Item::get(Item::BREAD, 0, 6),
+                            Item::get(0, 0, 0),
+                            Item::get(260, 0, 4),
+                            Item::get(268, 0, 1),
+                            Item::get(0, 0, 0),
+                            Item::get(306, 0, 1),
+                            Item::get(308, 0, 1),
+                            Item::get(0, 0, 0),
+                            Item::get(301, 0, 1),
+                            Item::get(299, 0, 1),
+                            Item::get(0, 0, 0),
+                            Item::get(267, 0, 1),
+                            Item::get(264, 0, mt_rand(0, 2)),
+                            Item::get(0, 0, 0),
+                            Item::get(265, 0, mt_rand(0, 3)),
+                            Item::get(266, 0, mt_rand(0, 3))
+                        );
+                        $itemRnd = mt_rand(0, count($items) - 1);
+                        $item = $items[$itemRnd];
+                        $chest->getInventory()->addItem($item);
+                    }
+                }
+            }
+        }			
+$sender->getLevel()->setBlockIdAt($x+6, $Y, $z+3, $idChest); //Sets Chest block.
 			$this->getLogger()->info($name . TextFormat::YELLOW . " made an island! [TKRT]");
 		}
 	}
