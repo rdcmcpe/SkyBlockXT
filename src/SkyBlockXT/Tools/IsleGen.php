@@ -1,6 +1,6 @@
 <?php
 
-namespace SkyBlockXT/Tools/IsleGen; // SkyGridRex, check if this is wrong!
+namespace SkyBlockXT/Tools; // SkyGridRex, check if this is wrong!
 
 use pocketmine\Player;
 use pocketmine\utils\Config;
