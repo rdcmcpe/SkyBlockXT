@@ -1,6 +1,6 @@
 <?php
 
-namespace SkyBlockXT/Tools; // SkyGridRex, check if this is wrong!
+namespace SkyBlockXT/Tools; 
 
 use pocketmine\Player;
 use pocketmine\utils\Config;
@@ -14,6 +14,7 @@ use pocketmine\level\Location;
 use pocketmine\math\Vector3; // Soon to be Removed (on this plugin :D)
 use pocketmine\utils\Random; // Is this Needed?]
 
+class IsleGen extends Level{ //Well what i´m doing? could be Listener too
 
 	public function makeIsland($name){ //Soon to be changed!
 		$player = $this->getServer()->getPlayer($name);
