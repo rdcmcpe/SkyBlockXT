@@ -1,5 +1,4 @@
-	
-	<?php
+<?php
 
 namespace SkyBlockXT/Tools/IsleGen; // SkyGridRex, check if this is wrong!
 
@@ -41,7 +40,7 @@ use pocketmine\utils\Random; // Is this Needed?]
 			$iddirt = 3;
 			$idwood = 17;
 			$idleaves = 18;
-			$idchest = 54;
+			$idChest = 54;
 			$sender = $this->getServer()->getPlayer($name)
 			// End of Callers>
 			
@@ -208,55 +207,9 @@ use pocketmine\utils\Random; // Is this Needed?]
 			
 			// Give the player a starter kit
 			
-			// String
-			$player->getInventory()->addItem(Item::get(287));
-			$player->getInventory()->addItem(Item::get(287));
-			$player->getInventory()->addItem(Item::get(287));
-			$player->getInventory()->addItem(Item::get(287));
-			$player->getInventory()->addItem(Item::get(287));
-			
-			// Emerald
-			$player->getInventory()->addItem(Item::get(388));
-			$player->getInventory()->addItem(Item::get(388));
-			$player->getInventory()->addItem(Item::get(388));
-			$player->getInventory()->addItem(Item::get(388));
-			$player->getInventory()->addItem(Item::get(388));
-			
-			// Sapling
-			$player->getInventory()->addItem(Item::get(6));
-			$player->getInventory()->addItem(Item::get(6));
-			$player->getInventory()->addItem(Item::get(6));
-			$player->getInventory()->addItem(Item::get(6));
-			$player->getInventory()->addItem(Item::get(6));
-			
-			// Water
-			$player->getInventory()->addItem(Item::get(8));
-			$player->getInventory()->addItem(Item::get(8));
-			
-			// Lava
-			$player->getInventory()->addItem(Item::get(10));
-			
-			// Seeds
-			$player->getInventory()->addItem(Item::get(295));
-			$player->getInventory()->addItem(Item::get(295));
-			$player->getInventory()->addItem(Item::get(295));
-			$player->getInventory()->addItem(Item::get(295));
-			$player->getInventory()->addItem(Item::get(295));
-			
-			// Melon seeds
-			$player->getInventory()->addItem(Item::get(362));
-			
-			// Cactus
-			$player->getInventory()->addItem(Item::get(81));
-			
-			// Iron
-			$player->getInventory()->addItem(Item::get(265));
-			$player->getInventory()->addItem(Item::get(265));
-			$player->getInventory()->addItem(Item::get(265));
-			$player->getInventory()->addItem(Item::get(265));
-			$player->getInventory()->addItem(Item::get(265));
-			$player->getInventory()->addItem(Item::get(265));
-			
+			// SkyGridRex: Add chest code and items, if you can, find the
+			// Skyblock items that are placed on a chest,
+			$sender->getLevel()->setBlockIdAt($x+6, $Y, $z+3, $idChest); //Sets Chest block.
 			$this->getLogger()->info($name . TextFormat::YELLOW . " made an island! [TKRT]");
 		}
 	}
