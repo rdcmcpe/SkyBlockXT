@@ -31,6 +31,12 @@ use SkyBlockXT\Tools\SkyLand;
 class Main extends Base implements Listener{
 	public function onEnable(){
 		$this->getLogger()->info(TextFormat::GREEN . "Obtaining Lang files...");
+		// TEMPORAL MULTILANGUAGE SUPPORT
+		$MLang = $this->getFile("Lang-" . $defLang . ".yml");
+		$msg_pluginloaded = $Mlang->getLine("Load_PluginLoaded"); // Will this work? Debugging it on Popper!
+		// TEMPORAL MULTILANGUAGE SUPPORT
+		
+		// File/Folder Creation - Soon to Change the way it configures
 		if(!(is_dir($this->getDataFolder().""))){ //would it crash? I guess not
 			@mkdir($this->getDataFolder()."");
 		}
@@ -41,12 +47,10 @@ class Main extends Base implements Listener{
 		}
 		if(!(is_dir($this->getDataFolder()."Islands/"))){
 			@mkdir($this->getDataFolder()."Islands/");
-		};
+		}
+		// End of File/Folder Creation
 		
-		// TEMPORAL MULTILANGUAGE SUPPORT
-		
-		// TEMPORAL MULTILANGUAGE SUPPORT
-		$this->getLogger()->info(TextFormat::GREEN . $msg_pluginloaded)
+		$this->getLogger()->info(TextFormat::GREEN . $msg_pluginloaded);
 	}
 	
 	public function onLoad(){
