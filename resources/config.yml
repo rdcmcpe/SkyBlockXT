@@ -7,6 +7,7 @@ Lobby: "world"
 MinY: 20 # Dont change if you dont want to have Unwanted results!
 DisX: 125 # Distance Between Islands on X Coordinate
 DisZ: 125 # Distance between Islands on Z Coordinate
+SkyWorldName: Skyblock #The name that will load and generate the map in
 
 #---------------BETA--------------#
 
