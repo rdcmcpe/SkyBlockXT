@@ -12,12 +12,12 @@ use pocketmine\level\Position;
 use pocketmine\level\Level;
 use pocketmine\level\Location;
 use pocketmine\math\Vector3; // Soon to be Removed (on this plugin :D)
-use pocketmine\utils\Random; // Is this Needed?]
+use pocketmine\utils\Random; // Is this Needed
 
-class IsleGen extends Level{ //Well what i´m doing? could be Listener too
+class SkyLand extends Level { //Well what i´m doing? could be Listener too
 
-	public function makeIsland($name){ //Soon to be changed!
-		$player = $this->getServer()->getPlayer($name);
+    public function onRun($currentTick) {
+    	$player = $this->getServer()->getPlayer($name);
 		if(!($player instanceof Player)){
 			return "Error: Player not found";
 		}else{
@@ -197,26 +197,9 @@ class IsleGen extends Level{ //Well what i´m doing? could be Listener too
 			$sender->getLevel()->setBlockIdAt($x+1, $Y-2, $z+3, $iddirt);
 			$sender->getLevel()->setBlockIdAt($x+1, $Y-2, $z+2, $iddirt);
 			$sender->getLevel()->setBlockIdAt($x+1, $Y-2, $z+1, $iddirt);
-			
-			
-			// Teleport the player to their new island
-			$player->teleport(new Position($x, $Y+5, $z, $this->getServer()->getLevelByName($levelName)));
-			$player->sendMessage(TextFormat::GREEN . "Welcome to your new island");
-			$player->sendMessage(TextFormat::GREEN . "If your island didn't spawn,");
-			$player->sendMessage(TextFormat::GREEN . "Use /is delete");
-			$player->sendMessage(TextFormat::GREEN . "Then make a new island");
-			
-			// Give the player a starter kit
-			
-    public function onRun($currentTick)
-    {
-        if(!isset(SKBGame::getApi()->players[$this->game])){
-            $this->main->getServer()->getScheduler()->cancelTask($this->getTaskId());
-            return;
-        }
-        $this->secs--;
+        /*
         if($this->secs === 1){
-            foreach($this->main->getServer()->getLevelByName($this->main->getConfig()->getAll()["skb_games"][$this->game]["level"])->getTiles() as $chest){
+            foreach($this->main->getServer()->getLevelByName($this->main->getConfig()->getAll()->getTiles() as $chest){
                 if($chest instanceof Chest) {
                     $chest->getInventory()->clearAll();
                     for ($i = 0; $i < 8; ++$i) {
@@ -245,9 +228,9 @@ class IsleGen extends Level{ //Well what i´m doing? could be Listener too
                         $chest->getInventory()->addItem($item);
                     }
                 }
+                */
             }
-        }			
-$sender->getLevel()->setBlockIdAt($x+6, $Y, $z+3, $idChest); //Sets Chest block.
-			$this->getLogger()->info($name . TextFormat::YELLOW . " made an island! [TKRT]");
+        }		$msg_Skyland_WorldGenerated = $this->getFile($lang.yml);
+			$sender->getLevel()->setBlockIdAt($x+6, $Y, $z+3, $idChest); //Sets Chest block.
+			$this->getLogger()->info(TextFormat::YELLOW . $msg_Skyland_WorldGenerated);
 		}
-	}
