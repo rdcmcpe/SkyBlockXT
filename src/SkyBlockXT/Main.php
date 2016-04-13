@@ -17,13 +17,12 @@ use pocketmine\level\Location;
 use pocketmine\plugin\PluginBase as Base;
 use pocketmine\math\Vector3;
 use pocketmine\utils\Random;
-use SkyBlockXT\utils\SkyBlockGenerator; //Will be Replaced Soon
-use SkyBlockXT\Tools\IsleGen;
+use SkyBlockXT\utils\SkyGen; // Now secondary generator, idk how it works :L
+use SkyBlockXT\Tools\SkyLand;
 
 
 
 //WIP:
-//use SkyBlockXT\Tools\Skyland;
 
 //use SkyBlockXT\Tools\;
 
@@ -31,8 +30,8 @@ use SkyBlockXT\Tools\IsleGen;
 
 class Main extends Base implements Listener{
 	public function onEnable(){
-
-		if(!(is_dir($this->getDataFolder().""))){ //would it crash?
+		$this->getLogger()->info(TextFormat::GREEN . "Obtaining Lang files...");
+		if(!(is_dir($this->getDataFolder().""))){ //would it crash? I guess not
 			@mkdir($this->getDataFolder()."");
 		}
 		$this->saveDefaultConfig();
@@ -42,8 +41,12 @@ class Main extends Base implements Listener{
 		}
 		if(!(is_dir($this->getDataFolder()."Islands/"))){
 			@mkdir($this->getDataFolder()."Islands/");
-		}
-		$this->getLogger()->info(TextFormat::GREEN . "Done!");
+		};
+		
+		// TEMPORAL MULTILANGUAGE SUPPORT
+		
+		// TEMPORAL MULTILANGUAGE SUPPORT
+		$this->getLogger()->info(TextFormat::GREEN . $msg_pluginloaded)
 	}
 	
 	public function onLoad(){
@@ -51,14 +54,13 @@ class Main extends Base implements Listener{
 	  //In here will be only be used for Plugin Functions, not Plugins data or Related like onEnabled
 	  
 		//custom generator
-		Generator::addGenerator ( SkyBlockGenerator::class, "skyblock" );
-	  $this->makeIsland = new IsleGen($this);
+		Generator::addGenerator ( SkyWorld::class, "skyblock" );
+	  	$this->makeIsland = new SkyLand($this);
 	  
 	}
 	
 	public function onDisable(){
-		$this->getLogger()->info(TextFormat::RED . "SkyBlock disabled! The Server Crashed or did it stop? [TKRT]");
-		$this->getLogger()->info(TextFormat::GOLD . "or just a little reload?                              [TKRT]");
+		$this->getLogger()->info(TextFormat::RED . $msg_serverstop);
 	}
 	
 	public function onCommand(CommandSender $sender, Command $command, $label, array $args){
@@ -139,37 +141,6 @@ class Main extends Base implements Listener{
 						$sender->sendMessage(TextFormat::RED . "You do not have permission to do that");
 						return true;
 					}
-					
-				}elseif($args[0] == "find"){
-					if($sender->hasPermission("is") || $sender->hasPermission("is.command") || $sender->hasPermission("is.command.find")){
-						if(isset($args[1])){
-							$p = $sender->getServer()->getPlayer($args[1]);
-							if($p instanceof Player){
-								$name = $p->getName();
-								if(file_exists($this->getDataFolder()."Islands/".$name.".txt")){
-									$sender->sendMessage("The coords for ".$name."'s island are");
-									$sender->sendMessage(file_get_contents($this->getDataFolder()."Islands/".$name.".txt"));
-									$sender->sendMessage(file_get_contents($this->getDataFolder()."Players/".$name.".txt"));
-									return true;
-								}else{
-									$sender->sendMessage($name . " does not have an island");
-									return true;
-								}
-							}elseif(file_exists($this->getDataFolder()."Islands/".$args[1].".txt")){
-								$sender->sendMessage("The coords for ".$args[1]."'s island are");
-								$sender->sendMessage(file_get_contents($this->getDataFolder()."Islands/".$args[1].".txt"));
-								$sender->sendMessage("in world ". file_get_contents($this->getDataFolder()."Players/".$args[1].".txt"));
-								return true;
-							}
-						}else{
-							$sender->sendMessage(TextFormat::YELLOW . "You need to specify a player");
-							return true;
-						}
-					}else{
-						$sender->sendMessage(TextFormat::YELLOW . "You cannot find the coords of a player's island");
-						return true;
-					}
-					
 				}elseif($args[0] == "delete"){
 					if($sender->hasPermission("is") || $sender->hasPermission("is.command") || $sender->hasPermission("is.command.delete")){
 						if(!(isset($args[1]))){
