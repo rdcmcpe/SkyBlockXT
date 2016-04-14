@@ -1,6 +1,6 @@
 <?php
 
-namespace SkyBlockXT/Tools; 
+namespace SkyBlockXT\Tools; 
 
 use pocketmine\Player;
 use pocketmine\utils\Config;
