@@ -37,10 +37,10 @@ permissions:
             default: op
             description: Skyland Permission for Configurations commands
             children:
-              skyland.cmd.config.isperworld
+              skyland.cmd.config.isperworld:
                 default: op
                 description: Configuration Permission for changing Island generated per world
-              skyland.cmd.config.isgenlike
+              skyland.cmd.config.isgenlike:
                 default: op
                  description: Configuration Permission for Changing Island Template [WIP] #1 and 2
   is:
