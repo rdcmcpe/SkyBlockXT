@@ -18,10 +18,4 @@ DefaultWorldName: Skyland
 
 EnableAntiTrollSystem: true
 PVPenableonislands: false
-
-#World Settings:
-MinY: 20 # Dont change if you dont want to have Unwanted results!
-DisX: 125 # Distance Between Islands on X Coordinate
-DisZ: 125 # Distance between Islands on Z Coordinate
-
 #WIP=============================WIP#
