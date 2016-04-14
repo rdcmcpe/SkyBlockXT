@@ -19,7 +19,7 @@ class SkyLand extends Level { //Well what i´m doing? could be Listener too
     public function onRun($currentTick) {
     	$player = $this->getServer()->getPlayer($name);
 		if(!($player instanceof Player)){
-			return "Error: Player not found";
+			return "Error: Player not found? WTF?!?!?!";
 		}else{
 			
 			// Make a file for the island
