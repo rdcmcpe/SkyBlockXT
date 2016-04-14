@@ -66,11 +66,11 @@ class Main extends Base implements Listener{
 	  //In here will be only be used for Plugin Functions, not Plugins data or Related like onEnabled
 	  
 		//custom generator
-		Generator::addGenerator(SkyWorld::class, "SkyWorld"); //Main Generator
-		Generator::addGenerator ( SkyWorld::class, "Skyblock" ); //Secondary Generator
+		Generator::addGenerator(SkyWorld::class, "SkyWorld"); //Main Generator - 1
+		Generator::addGenerator ( SkyWorld::class, "Skyblock" ); //Secondary Generator - 2
 	  	$this->makeIsland = new SkyLand($this);
-	  	if()
-	  
+	  	# Create code for: If skyworld is false then generate world with gen 1 or 2
+	  	# Then Setblock on all world
 	}
 	
 	public function onDisable(){
