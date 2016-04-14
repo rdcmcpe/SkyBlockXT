@@ -226,10 +226,11 @@ class SkyLand extends Level { //Well what i´m doing? could be Listener too
                 }
 			}
                 */
-            }
         		$defLang = $this->getConfig()->get("Language");
 			$MLang = $this->getFile("Lang-" . $defLang . ".yml");
-        		$msg_Skyland_WorldGenerated = $MLang->("INFO_IslandCreated");
+        		$msg_Skyland_WorldGenerated = $MLang->get("INFO_IslandCreated");
 			$sender->getLevel()->setBlockIdAt($x+6, $Y, $z+3, $idChest); //Sets Chest block.
 			$this->getLogger()->info(TextFormat::YELLOW . $msg_Skyland_WorldGenerated);
+		
+    }
 }
