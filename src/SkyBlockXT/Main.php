@@ -56,16 +56,21 @@ class Main extends Base implements Listener{
 		$this->getLogger()->info(TextFormat::GREEN . "Obtaining Lang files...");
 		
 		// TEMPORAL MULTILANGUAGE SUPPORT
-		$defLang = $this->getConfig()->get("Language");
-		$MLang = $this->getFile("Lang-" . $defLang . ".yml");
+		$defLang = $this->getConfig()->get('Lang');
+        	if(!(is_dir($this->getDataFolder()."Lang-".$defLang.".yml")))
+		{
+			$this->plugin->saveResource("Lang-".$defLang.".yml", true);
+		 }
+		$MLang = $this->getResource("Lang-" . $defLang . ".yml");
 		$msg_pluginloaded = $Mlang->get("INFO_PluginLoaded"); // Will this work? Debugging it on Popper!
+		$msg_pluginserverstop = $Mlang->get("INFO_ServerStopped"); // Will this work? Debugging it on Popper!
 		// TEMPORAL MULTILANGUAGE SUPPORT
 		
 		$this->getLogger()->info(TextFormat::BLUE . $msg_pluginloaded);
 	}
 	
 	public function onLoad(){
-		// Registering Key [Going to be used for stats and backups!]
+		// Registering Key SkyLock 32b [Going to be used for stats and backups!]
 		$password = $this->getConfig()->get("Language") + $this->getConfig()->get("IslandPerWorld") + $this->getServerName();
 		$hash = crypt($password);
 		$this->getLogger()->info(TextFormat::RED . "This is your UUID from SkyblockXT Plugin: ".$hash.);
