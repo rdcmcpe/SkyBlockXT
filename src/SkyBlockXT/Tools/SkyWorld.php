@@ -9,7 +9,7 @@ use pocketmine\level\ChunkManager;
 use pocketmine\utils\Random;
 
 class WorldGen extends Generator {
-	const NAME = "SkyWorld";
+	
 	private $options;
 	private $block, $radius, $floorLevel,$biome,$baseFloor;
 	/** @var ChunkManager */
