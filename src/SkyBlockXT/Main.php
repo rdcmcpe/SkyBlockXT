@@ -53,7 +53,7 @@ class Main extends Base implements Listener{
 		$this->getLogger()->info(TextFormat::GREEN . "Obtaining Lang files...");
 		
 		// TEMPORAL MULTILANGUAGE SUPPORT
-		$defLang = $this->get config
+		$defLang = $this->getConfig()->get("Language");
 		$MLang = $this->getFile("Lang-" . $defLang . ".yml");
 		$msg_pluginloaded = $Mlang->get("INFO_PluginLoaded"); // Will this work? Debugging it on Popper!
 		// TEMPORAL MULTILANGUAGE SUPPORT
