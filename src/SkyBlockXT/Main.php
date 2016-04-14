@@ -2,6 +2,7 @@
 
 namespace SkyBlockXT;
 
+use pocketmine\level\generator\Generator;
 use pocketmine\Player;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
@@ -17,8 +18,9 @@ use pocketmine\level\Location;
 use pocketmine\plugin\PluginBase as Base;
 use pocketmine\math\Vector3;
 use pocketmine\utils\Random;
-use SkyBlockXT\utils\SkyGen; // Now secondary generator, idk how it works :L
+use SkyBlockXT\utils\SkyBlockGenerator; // Now secondary generator, idk how it works :L
 use SkyBlockXT\Tools\SkyLand;
+use SkyBlockXT\Tools\SkyWorld;
 
 
 
