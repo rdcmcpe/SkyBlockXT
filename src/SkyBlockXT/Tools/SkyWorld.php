@@ -1,5 +1,7 @@
 <?php
+
 namespace SkyBlockXT\Tools;
+
 use pocketmine\plugin\PluginBase;
 use pocketmine\level\generator\Generator;
 use pocketmine\block\Block;
