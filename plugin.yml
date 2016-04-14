@@ -1,24 +1,55 @@
 name: SkyBlockXT
-version: 0.0.1
+version: 0.0.1-000
 api: [1.14.0, 1.12.0, 1.13.0, 1.3.1, 1.4.0]
 main: SkyBlockXT\Main
 desc: A Awesome SkyBlock Plugin! with extended Support and Features!
-author: TKRT CC, SkygridRex & XenoNova Team
+author: TKRT C, SkygridRex & XenoNova Team
 load: STARTUP
-website: http://thekillertacos.tk/index.php/skyblockxt
+website: http://thekillertacos.tk/
 commands:
   is:
     usage: /is <help> <page>
-    description: Tells the player a list of SkyBlock commands
+    description: Tells the player a list of SkyBlockXT commands
     permission: is.command.help
+  skyland:
+    usage: /skyland <help> <page> 
+    description: Skyland Generator Commands
+    permission: skyland.cmd.help
 permissions:
+  skyland:
+    default: false
+    description: SkyLand Permissions For OPs only!
+    children:
+      skyland.cmd:
+        default: op
+        description: Main Skyland Permission
+        children:
+          skyland.cmd.help
+            default: op
+            description: Skyland Permission for Help
+          skyland.cmd.genworld
+            default:op
+            description: Skyland Permission for World Generation
+          skyland.cmd.delworld
+            default: op
+            description: Skyland Permission for World Deletion
+          skyland.cmd.config
+            default: op
+            description: Skyland Permission for Configurations commands
+            children:
+              skyland.cmd.config.isperworld
+                default: op
+                description: Configuration Permission for changing Island generated per world
+              skyland.cmd.config.isgenlike
+                default: op
+                 description: Configuration Permission for Changing Island Template [WIP] #1 and 2
   is:
     default: false
-    description: Allows the player to use all of the SkyBlock features
+    description: Allows the player to use all of the SkyBlockXT features
     children:
       is.command:
         default: op
-        description: Allows the player to use all of the SkyBlock commands
+        description: Allows the player to use all of the SkyBlockXT commands
         children:
           is.command.help:
             default: true
@@ -26,9 +57,6 @@ permissions:
           is.command.create:
             default: true
             description: Allows the player to use the create command
-          is.command.find:
-            default: op
-            description: Allows the player to use the home command
           is.command.delete:
             default: true
             description: Allows the player to delete their island
