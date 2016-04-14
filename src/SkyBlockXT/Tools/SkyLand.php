@@ -16,34 +16,30 @@ use pocketmine\utils\Random; // Is this Needed
 
 class SkyLand extends Level { //Well what i´m doing? could be Listener too
 
-    public function onRun($currentTick) {
-    	$player = $this->getServer()->getPlayer($name);
-		if(!($player instanceof Player)){
-			return "Error: Player not found? WTF?!?!?!";
-		}else{
-			
-			// Make a file for the island
-			$islandFile = fopen($this->getDataFolder()."Islands/".$name.".txt", "w");
-			fwrite($islandFile, $x.", ".$Y.", ".$z);
-			$playerFile = fopen($this->getDataFolder()."Players/".$name.".txt", "w");
-			fwrite($playerFile, $player->getLevel()->getName());
-			
-			// Top layer of the island
-			// Callers:
-			//$x = rand(1, 800);
-			//$z = rand(1, 800);
-			$minY = $this->getConfig("MinimumY");
-			$z = 100;
-			$x = 100;
-			$Y = $minY;
-			$id= 2;
-			$idsand = 12;
-			$iddirt = 3;
-			$idwood = 17;
-			$idleaves = 18;
-			$idChest = 54;
-			$sender = $this->getServer()->getPlayer($name)
-			// End of Callers>
+    public function onRun($currentTick, $sender) {
+    		$player = $this->getServer()->getPlayer($name);
+		// Make a file for the island
+		$islandFile = fopen($this->getDataFolder()."Islands/".$name.".txt", "w");
+		fwrite($islandFile, $x.", ".$Y.", ".$z);
+		$playerFile = fopen($this->getDataFolder()."Players/".$name.".txt", "w");
+		fwrite($playerFile, $player->getLevel()->getName());
+		
+		// Top layer of the island
+		// Callers:
+		//$x = rand(1, 800);
+		//$z = rand(1, 800);
+		$minY = $this->getConfig("MinimumY");
+		$z = 100;
+		$x = 100;
+		$Y = $minY;
+		$id= 2;
+		$idsand = 12;
+		$iddirt = 3;
+		$idwood = 17;
+		$idleaves = 18;
+		$idChest = 54;
+		$sender = $this->getServer()->getPlayer($name)
+		// End of Callers>
 			
 			// 1st side
 			$sender->getLevel()->setBlockIdAt($x, $Y, $z, $id);
@@ -230,7 +226,10 @@ class SkyLand extends Level { //Well what i´m doing? could be Listener too
                 }
                 */
             }
-        }		$msg_Skyland_WorldGenerated = $this->getFile($lang.yml);
+        }
+        		$defLang = $this->getConfig()->get("Language");
+			$MLang = $this->getFile("Lang-" . $defLang . ".yml");
+        		$msg_Skyland_WorldGenerated = $MLang->("INFO_IslandCreated");
 			$sender->getLevel()->setBlockIdAt($x+6, $Y, $z+3, $idChest); //Sets Chest block.
 			$this->getLogger()->info(TextFormat::YELLOW . $msg_Skyland_WorldGenerated);
 		}
