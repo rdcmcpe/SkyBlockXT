@@ -24,16 +24,16 @@ permissions:
         default: op
         description: Main Skyland Permission
         children:
-          skyland.cmd.help
+          skyland.cmd.help:
             default: op
             description: Skyland Permission for Help
-          skyland.cmd.genworld
+          skyland.cmd.genworld:
             default:op
             description: Skyland Permission for World Generation
-          skyland.cmd.delworld
+          skyland.cmd.delworld:
             default: op
             description: Skyland Permission for World Deletion
-          skyland.cmd.config
+          skyland.cmd.config:
             default: op
             description: Skyland Permission for Configurations commands
             children:
