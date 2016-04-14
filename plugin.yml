@@ -3,7 +3,7 @@ version: 0.0.1-000
 api: [1.14.0, 1.12.0, 1.13.0, 1.3.1, 1.4.0]
 main: SkyBlockXT\Main
 desc: A Awesome SkyBlock Plugin! with extended Support and Features!
-author: TKRT C, SkygridRex & XenoNova Team
+author: TKRT CC, SkygridRex & XenoNova Team
 load: STARTUP
 website: http://thekillertacos.tk/
 commands:
@@ -42,7 +42,7 @@ permissions:
                 description: Configuration Permission for changing Island generated per world
               skyland.cmd.config.isgenlike:
                 default: op
-                 description: Configuration Permission for Changing Island Template [WIP] #1 and 2
+                description: Configuration Permission for Changing Island Template [WIP] #1 and 2
   is:
     default: false
     description: Allows the player to use all of the SkyBlockXT features
