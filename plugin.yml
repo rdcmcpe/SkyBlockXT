@@ -28,7 +28,7 @@ permissions:
             default: op
             description: Skyland Permission for Help
           skyland.cmd.genworld:
-            default:op
+            default: op
             description: Skyland Permission for World Generation
           skyland.cmd.delworld:
             default: op
