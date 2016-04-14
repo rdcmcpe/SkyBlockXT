@@ -1,12 +1,14 @@
 # Credits:
 ****
 
-Leading Developer:  @TheKillerTacos
+##Leading Developer:  @TheKillerTacos
 
-Contributors:
+##Contributors:
 * @Skyladd
+* @SkyGridRex
+* T
 
-Main Plugin by:
+###Main Plugin by:
 * Linuzo
 
 Plugin now is being Created/Updated by me, TheKillerTacos :D
