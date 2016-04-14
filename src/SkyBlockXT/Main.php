@@ -30,12 +30,9 @@ use SkyBlockXT\Tools\SkyLand;
 
 class Main extends Base implements Listener{
 	public function onEnable(){
-		$this->getLogger()->info(TextFormat::GREEN . "Obtaining Lang files...");
-		// TEMPORAL MULTILANGUAGE SUPPORT
-		$MLang = $this->getFile("Lang-" . $defLang . ".yml");
-		$msg_pluginloaded = $Mlang->getLine("Load_PluginLoaded"); // Will this work? Debugging it on Popper!
-		// TEMPORAL MULTILANGUAGE SUPPORT
 		
+		$this->saveDefaultConfig();
+		$this->getLogger()->info(TextFormat::AQUA . "Saving/Creating/Loading Configuration files");
 		// File/Folder Creation - Soon to Change the way it configures
 		if(!(is_dir($this->getDataFolder().""))){ //would it crash? I guess not
 			@mkdir($this->getDataFolder()."");
@@ -48,9 +45,20 @@ class Main extends Base implements Listener{
 		if(!(is_dir($this->getDataFolder()."Islands/"))){
 			@mkdir($this->getDataFolder()."Islands/");
 		}
+		$this->getLogger()->info(TextFormat::AQUA . "Done!");
+		
 		// End of File/Folder Creation
 		
-		$this->getLogger()->info(TextFormat::GREEN . $msg_pluginloaded);
+		$this->getLogger()->info(TextFormat::YELLOW . "New Task:");
+		$this->getLogger()->info(TextFormat::GREEN . "Obtaining Lang files...");
+		
+		// TEMPORAL MULTILANGUAGE SUPPORT
+		$defLang = $this->get config
+		$MLang = $this->getFile("Lang-" . $defLang . ".yml");
+		$msg_pluginloaded = $Mlang->get("INFO_PluginLoaded"); // Will this work? Debugging it on Popper!
+		// TEMPORAL MULTILANGUAGE SUPPORT
+		
+		$this->getLogger()->info(TextFormat::BLUE . $msg_pluginloaded);
 	}
 	
 	public function onLoad(){
