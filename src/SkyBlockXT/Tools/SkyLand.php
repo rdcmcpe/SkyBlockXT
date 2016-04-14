@@ -38,7 +38,7 @@ class SkyLand extends Level { //Well what i´m doing? could be Listener too
 		$idwood = 17;
 		$idleaves = 18;
 		$idChest = 54;
-		$sender = $this->getServer()->getPlayer($name)
+		$sender = $this->getServer()->getPlayer($name);
 		// End of Callers>
 			
 			// 1st side
