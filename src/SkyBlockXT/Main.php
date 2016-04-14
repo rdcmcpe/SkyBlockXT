@@ -53,7 +53,7 @@ class Main extends Base implements Listener{
 		// End of File/Folder Creation
 		
 		$this->getLogger()->info(TextFormat::YELLOW . "New Task:");
-		$this->getLogger()->info(TextFormat::GREEN . "Obtaining Lang files...");
+		$this->getLogger()->info(TextFormat::GREEN . "Obtaining languages files...");
 		
 		// TEMPORAL MULTILANGUAGE SUPPORT
 		$defLang = $this->getConfig()->get('Lang');
@@ -107,7 +107,7 @@ class Main extends Base implements Listener{
 							$sender->sendMessage(TextFormat::GREEN . "/is create");
 							$sender->sendMessage(TextFormat::GREEN . "/is home");
 							$sender->sendMessage(TextFormat::GREEN . "/is sethome");
-							$sender->sendMessage(TextFormat::GREEN . "/is find (op only)");
+							$sender->sendMessage(TextFormat::GREEN . "/is find (admin only)");
 							return true;
 						}elseif($args[1] == "2"){
 							$sender->sendMessage(. $bn ."More commands coming soon");
@@ -121,7 +121,7 @@ class Main extends Base implements Listener{
 					if($sender->hasPermission("is") || $sender->hasPermission("is.command") || $sender->hasPermission("is.command.create")){
 						$senderIs = $this->getDataFolder()."Islands/".$sender->getName().".txt";
 						if($sender->getLevel()->getName() == $this->getConfig()->get("Lobby")){
-							$sender->sendMessage(TextFormat::YELLOW. $bn ."You can't make an island in spawn, silly");
+							$sender->sendMessage(TextFormat::YELLOW. $bn ."You are not allowed to generate an island here");
 							return true;
 							
 						}else{
@@ -131,7 +131,7 @@ class Main extends Base implements Listener{
 								return true;
 							}else{
 							  
-								$sender->sendMessage(TextFormat::YELLOW . $bn ."You already have an island");
+								$sender->sendMessage(TextFormat::YELLOW . $bn ."You already have an active island");
 								return true;
 							}
 						}
@@ -150,7 +150,7 @@ class Main extends Base implements Listener{
 						  
 							$level = $this->getServer()->getLevelByName(yaml_parse_file($this->getDataFolder()."Players/".$sender->getName().".txt"));
 							if($level !== null){
-								$sender->sendMessage(TextFormat::GREEN. $bn ."Teleporting to your island...");
+								$sender->sendMessage(TextFormat::GREEN. $bn ."Teleporting you to your island...");
 								if($sender->getLevel()->getName() !== $level->getName()){
 									$sender->sendMessage(. $bn ."You are not in the same world as your island. Use ".TextFormat::YELLOW."/mw tp ".$level->getName().TextFormat::RESET." and try again");
 									return true;
@@ -161,7 +161,7 @@ class Main extends Base implements Listener{
 								}
 								
 							}else{
-								$sender->sendMessage(TextFormat::RED. $bn . "An error has occored.");
+								$sender->sendMessage(TextFormat::RED. $bn . "An error has occurred.");
 								return true;
 							}
 						}
@@ -173,7 +173,7 @@ class Main extends Base implements Listener{
 				}elseif($args[0] == "delete"){
 					if($sender->hasPermission("is") || $sender->hasPermission("is.command") || $sender->hasPermission("is.command.delete")){
 						if(!(isset($args[1]))){
-							$sender->sendMessage(. $bn ."Are you sure? Use /is delete yes to confirm");
+							$sender->sendMessage(. $bn ."Are you sure you want to do this?\nUse /is delete yes to confirm");
 							return true;
 						}elseif($args[1] == "yes"){
 								if(file_exists($this->getDataFolder()."Islands/".$sender->getName().".txt")){
@@ -181,7 +181,7 @@ class Main extends Base implements Listener{
 									$sender->sendMessage(. $bn ."Your island has been deleted");
 									return true;
 								}else{
-									$sender->sendMessage(. $bn ."You don't have an island");
+									$sender->sendMessage(. $bn ."You don't have any islands");
 									return true;
 								}
 							}elseif($args[1] == "no"){
@@ -191,14 +191,14 @@ class Main extends Base implements Listener{
 								return false;
 							}
 						}else{
-							$sender->sendMessage(. $bn ."You cannot delete your island");
+							$sender->sendMessage(. $bn ."Island deletion has been cancelled");
 							return true;
 						}
 						
 					}elseif($args[0] == "sethome"){
 						if($sender->hasPermission("is") || $sender->hasPermission("is.command") || $sender->hasPermission("is.command.sethome")){
 							if(!(isset($args[1]))){
-								$sender->sendMessage(. $bn ."Are you sure? Make sure you are on your island");
+								$sender->sendMessage(. $bn ."You will be setting your home on your island, Make sure you are standing on it");
 								$sender->sendMessage(. $bn ."Your island will be lost if you're not on your island. Do /is sethome yes to confirm");
 								return true;
 							}elseif($args[1] == "yes"){
@@ -208,10 +208,10 @@ class Main extends Base implements Listener{
 									unlink($file);
 									$newFile = fopen($file, "w");
 									fwrite($newFile, $sender->x.", ".$sender->y.", ".$sender->z);;
-									$sender->sendMessage("Set your home.");
+									$sender->sendMessage("Your home has been set!");
 									return true;
 								}else{
-									$sender->sendMessage(. $bn ."You don't have an island");
+									$sender->sendMessage(. $bn ."You don't have any islands");
 									return true;
 								}
 							}elseif($args[1] == "no"){
