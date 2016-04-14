@@ -58,8 +58,10 @@ class Main extends Base implements Listener{
 	  //In here will be only be used for Plugin Functions, not Plugins data or Related like onEnabled
 	  
 		//custom generator
-		Generator::addGenerator ( SkyWorld::class, "skyblock" );
+		Generator::addGenerator(SkyWorld::class, "SkyWorld"); //Main Generator
+		Generator::addGenerator ( SkyWorld::class, "Skyblock" ); //Secondary Generator
 	  	$this->makeIsland = new SkyLand($this);
+	  	if()
 	  
 	}
 	
