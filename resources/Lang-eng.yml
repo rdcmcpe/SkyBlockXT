@@ -4,3 +4,25 @@
 #Infomational Msgs
 INFO_PluginLoaded: Plugin Loaded succesfully! Language selected: ENG
 INFO_ServerStopped: Did the server Stopped? or just crashed?
+
+###
+# You may edit these to suit your needs, If you mess up... just delete this file and restart server and
+# it will generate a new brand new copy itself.
+###
+
+Active_Island: You already have an active island
+No_Islands: You don't have any islands
+Cannot_Create: You cannot create an island
+Cannot_Create_Here:
+No_Island: You don't have an island. Use /is create to make one
+Teleporting: Teleporting you to your island...
+Delete_Island: Are you sure you want to do this?\nUse /is delete yes to confirm
+Island_Removed: Your island has been deleted
+Island_Removed_Cancel: Okay, we won't delete your island
+Island_SetHome: You will be setting your home on your island, Make sure you are standing on it
+Island_SetHome_Confirm: Your island will be lost if you're not on your island. Do /is sethome yes to confirm
+HomeSet: Your home has been set!
+Island_Home_Cancel: Okay, we won't set your home
+Help_Menu_Error: You cannot view the help menu
+No_Permission: You do not have permission to do that
+Error: An error has occurred
