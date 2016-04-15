@@ -12,9 +12,9 @@ use pocketmine\level\Position;
 use pocketmine\level\Level;
 use pocketmine\level\Location;
 use pocketmine\math\Vector3; // Soon to be Removed (on this plugin :D)
-use pocketmine\utils\Random; // Is this Needed
+//use pocketmine\utils\Random; Nope
 
-class SkyLand extends Level { //Well what i´m doing? could be Listener too
+class SkyLand{
 
     public function onRun($currentTick, $sender) {
     		$player = $this->getServer()->getPlayer($name);
