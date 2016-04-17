@@ -21,7 +21,7 @@ Dont forget to read the TODO list! here the [Link](https://github.com/XenoNova/S
 ## Island Concept:
   This is how the island will  be generated **after*** PRE-ALPHA Release!
 ![Concept](http://static.planetminecraft.com/files/resource_media/screenshot/1301/skyblock_4567067.jpg)
-### Planned PRE-ALPHA Release Date: *15/04/16* - *20/04/16*
+### Planned PRE-ALPHA Release Date: Now Pending! See [here](https://github.com/XenoNova/SkyBlockXT/issues/21) Why!
 > After* = The concept will be creatd AFTER the release, or within development of PRE-ALPHA to ALPHA Milestone
 
 ## [IMPORTANT] SkyKey 32b & 64b, the new SkyblockXT Secure Encryption
