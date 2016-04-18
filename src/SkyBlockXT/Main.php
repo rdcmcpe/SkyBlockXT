@@ -56,14 +56,19 @@ class Main extends Base implements Listener{
 		$this->getLogger()->info(TextFormat::GREEN . "Obtaining languages files...");
 		
 		// TEMPORAL MULTILANGUAGE SUPPORT
-		$defLang = $this->getConfig()->get('Lang');
-        	if(!(is_dir($this->getDataFolder()."Lang-".$defLang.".yml")))
-		{
+		$defLang = $this->getConfig()->get('Language');
+        	if(!(is_dir($this->getDataFolder()."Lang-".$defLang.".yml"))){
 			$this->plugin->saveResource("Lang-".$defLang.".yml", true);
+		 }else{
+			 
 		 }
 		$MLang = $this->getResource("Lang-" . $defLang . ".yml");
-		$msg_pluginloaded = $Mlang->get("INFO_PluginLoaded"); // Will this work? Debugging it on Popper!
-		$msg_pluginserverstop = $Mlang->get("INFO_ServerStopped"); // Will this work? Debugging it on Popper!
+		$info_pluginloaded = $Mlang->get("INFO_PluginLoaded"); // Will this work? Debugging it on Popper!
+		$info_pluginserverstop = $Mlang->get("INFO_ServerStopped"); // Will this work? Debugging it on Popper!
+		$help_showlist = $Mlang->get("HELP_ShowList");
+		$help_morecmdsoon = $Mlang->get("HELP_MoreCMDSoon");
+		
+		
 		// TEMPORAL MULTILANGUAGE SUPPORT
 		
 		$this->getLogger()->info(TextFormat::BLUE . $msg_pluginloaded);
@@ -71,18 +76,24 @@ class Main extends Base implements Listener{
 	
 	public function onLoad(){
 		// Registering Key SkyLock 32b [Going to be used for stats and backups!]
-		$password = $this->getConfig()->get("Language") + $this->getConfig()->get("IslandPerWorld") + $this->getServerName();
-		$hash = crypt($password);
-		$this->getLogger()->info(TextFormat::RED . "This is your UUID from SkyblockXT Plugin: ".$hash.);
-		$this->getLogger()->info(TextFormat::RED . "By now its useless, but it will make a UUID for Backup systems and IsLock")
-		$this->getlogger()->info(TextFormat::RED . "So if you get hacked your players info will be backuped with a ecrypted password")
-		$this->getlogger()->info(TextFormat::RED . "This 'Feature' Will not be deactivatable until encryption changes from 32bit to 128bit!")
+		$UUID_Data = $this->getConfig()->get("Language") + $this->getConfig()->get("IslandPerWorld") + $this->getServerName();
+		$hash = crypt($UUID_Data);
+		$this->getLogger()->info(TextFormat::GOLD . "This is your UUID from SkyblockXT Plugin: ".$hash." Its useless by now and just for Debugging :P");
+		//$this->getLogger()->info(TextFormat::RED . "By now its useless, but it will make a UUID for Backup systems and IsLock")
+		//$this->getlogger()->info(TextFormat::RED . "So if you get hacked your players info will be backuped with a ecrypted password")
+		//$this->getlogger()->info(TextFormat::RED . "This 'Feature' Will not be deactivatable until encryption changes from 32bit to 128bit!")
 		
-		 //In here will be only be used for Plugin Functions, not Plugins data or Related like onEnabled
+		//In here will be only be used for Plugin Functions, not Plugins data or Related like onEnabled
 	  
 		//custom generator
 		Generator::addGenerator(SkyWorld::class, "SkyWorld"); //Main Generator - 1
+		if($this->getConfig()->get('EnableDebug') == true){
+		$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] SkyWorld Generator Added (1)");
+		}
 		Generator::addGenerator ( SkyWorld::class, "Skyblock" ); //Secondary Generator - 2
+		if($this->getConfig()->get('EnableDebug') == true){
+		$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] SkyBlock Generator Added (2)");
+		}
 	  	# Create code for: If skyworld is false then generate world with gen 1 or 2
 	  	# Then Setblock on all world
 	}
@@ -95,22 +106,21 @@ class Main extends Base implements Listener{
 		$bn = "[SkyblockXT]";
 		if(strtolower($command->getName()) == "is"){
 			if(!(isset($args[0]))){
-				$sender->sendMessage(TextFormat::YELLOW . $bn ."You didn't add a subcommand");
-				$sender->sendMessage(TextFormat::GREEN . $bn . "Use: " . TextFormat::RESET . "/is help");
+				$sender->sendMessage(TextFormat::YELLOW . $bn . $gen_is_didntaddsubcmd);
+				$sender->sendMessage(TextFormat::GREEN . $bn . $gen_use . TextFormat::RESET . "/is help");
 				return true;
 			}elseif(isset($args[0])){
 				if($args[0] == "help"){
 					if($sender->hasPermission("is") || $sender->hasPermission("is.help")){
 						if(!(isset($args[1])) or $args[1] == "1"){
-							$sender->sendMessage(TextFormat::GREEN . $bn ."Showing help page 1 of 1");
+							$sender->sendMessage(TextFormat::GREEN . $bn . $help_showlist);
 							$sender->sendMessage(TextFormat::GREEN . "/is help");
 							$sender->sendMessage(TextFormat::GREEN . "/is create");
 							$sender->sendMessage(TextFormat::GREEN . "/is home");
 							$sender->sendMessage(TextFormat::GREEN . "/is sethome");
-							$sender->sendMessage(TextFormat::GREEN . "/is find (admin only)");
 							return true;
 						}elseif($args[1] == "2"){
-							$sender->sendMessage(. $bn ."More commands coming soon");
+							$sender->sendMessage(. $bn . $help_morecmdsoon);
 							return true;
 						}
 					}else{
