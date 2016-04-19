@@ -10,7 +10,7 @@ use pocketmine\level\generator\biome\Biome;
 use pocketmine\level\ChunkManager;
 use pocketmine\utils\Random;
 
-class SkyWorld extends Generator {
+class SkyWorld extends Generator{
 	
 	private $options;
 	private $block, $radius, $floorLevel,$biome,$baseFloor;
