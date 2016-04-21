@@ -8,23 +8,30 @@
 
 INFO.PluginLoaded: Plugin Loaded succesfully! Language selected: English
 INFO.ServerStopped: Did the server Stopped? or just crashed?
+INFO.NewPlayerJoined: A New player joined: 
+INFO.WelcomeBackPlayer: Welcome Back
 GEN.Error: An error has occurred.
-GEN.Permitons.Error: You do not have permission to do that.
+GEN.Permitions.Error: You do not have permission to do that.
 GEN.ISCMD.NoSubCommand: You Didnt add a SubCommand!
 GEN.Use.Help: Please Use
 HELP.MoreCMDSoon: More Commands soon!
 HELP.ShowList: Showing Help List:
 HELP.Error: You can't view the help menu.
 
+IS.Create.Error: You are not allowed to generate an island here
 IS.Active: You already have an active island.
 IS.DontHaveIsland: You don't have any islands.
-IS.NoPermission: You can't create an island.
-IS.NoIsland: You dont have an Island! Use /is create to make one.
+IS.NoPermition: You can't create an island.
 IS.Teleporting: Teleporting to your island...
+
+# This one is going to be removed on a future Update:
+IS.Home.Error: You are not in the same World as your island!
+
 IS.DeleteIsland:  Are you sure you want to do this? Use /is delete yes to confirm.
 IS.DeleteIsland.Confirm: Your Island Has been Deleted!
 IS.DeleteIsland.Cancel: Well, We won't delete your island.
+IS.DeleteIsland.Error: You don't have any islands.
 IS.SetHome: You will be setting your home on your island, Make sure you are standing on it.
-IS.SetHome.Confirmation:  Your island will be lost if you're not on your island. Do /is sethome yes to confirm
+IS.SetHome.2:  Your island will be lost if you're not on your island. Do /is sethome yes to confirm
 IS.SetHome.Set: Your Home has been Set!
 IS.SetHome.Cancel: Ok! We won't set Home!
