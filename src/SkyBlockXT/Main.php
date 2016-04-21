@@ -31,7 +31,7 @@ use SkyBlockXT\Tools\SkyWorld;
 
 class Main extends Base implements Listener{
 	public function onEnable(){
-	$tkrt = FormatColor::AQUA . "[TKRT-SkyBlockXT P.A]"
+	$tkrt = FormatColor::AQUA . "[TKRT-SkyBlockXT P.A]";
 		if($this->saveDefaultConfig() === true) {
 			$this->getLogger()->info(TextFormat::AQUA . "Config Files Created!");
 			if($this->getConfig()->get('EnableDebug') == true){
@@ -54,10 +54,31 @@ class Main extends Base implements Listener{
 			 
 		 }
 		$MLang = $this->getResource("Lang-" . $defLang . ".yml");
-		$info_pluginloaded = $Mlang->get("INFO.PluginLoaded"); // Will this work? Debugging it on Popper!
-		$info_pluginserverstop = $Mlang->get("INFO.ServerStopped"); // Will this work? Debugging it on Popper!
+		$info_pluginloaded = $Mlang->get("INFO.PluginLoaded"); 
+		$info_newplayerjoin = $Mlang->get("INFO.NewPlayerJoined");
+		$info_serverstop = $Mlang->get("INFO.ServerStopped"); 
+		$info_welcomeback = $MLang->get("INFO.WelcomeBackPlayer");
 		$help_showlist = $Mlang->get("HELP.ShowList");
 		$help_morecmdsoon = $Mlang->get("HELP.MoreCMDSoon");
+		$help_error = $Mlang->get("HELP.Error");
+		$gen_error = $Mlang->get("GEN.Error");
+		$gen_Permitions_error = $Mlang->get("GEN.Permitions.Errors");
+		$gen_iscmd_notscmd = $Mlang->get("GEN.ISCMD.NoSubCommand");
+		$gen_usehelp = $Mlang->get("GEN.Use.Help");
+		$is_create_error = $Mlang->get("IS.Create.Error");
+		$is_active = $Mlang->get("IS.Active");
+		$is_noisland = $Mlang->get("IS.DontHaveIsland");
+		$is_nopermission = $Mlang->get("IS.NoPermition");
+		$is_teleporting = $Mlang->get("IS.Teleporting");
+		$is_home_error = $Mlang->get("IS.Home.Error");
+		$is_deleteisland = $Mlang->get("IS.DeleteIsland");
+		$is_deleteisland_confirm = $Mlang->get("IS.DeleteIsland.Confirm");
+		$is_deleteisland_cancel = $Mlang->get("IS.DeleteIsland.Cancel");
+		$is_deleteisland_error = $Mlang->get("IS.DeleteIsland.Error");
+		$is_sethome = $Mlang->get("IS.SetHome");
+		$is_sethome_2 = $Mlang->get("IS.SetHome.2");
+		$is_sethome_set = $Mlang->get("IS.SetHome.Set");
+		$is_sethome_cancel = $Mlang->get("IS.SetHome.Cancel");
 		
 		
 		// TEMPORAL MULTILANGUAGE SUPPORT ------------------------------------------------
@@ -66,15 +87,13 @@ class Main extends Base implements Listener{
 		if(!(is_dir($this->getDataFolder()."/"))){ //would it crash? I guess not
 			@mkdir($this->getDataFolder()."/");
 		}
-		$this->saveDefaultConfig();
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
-		if(!(is_dir($this->getDataFolder()."Players/"))){
+	if(!(is_dir($this->getDataFolder()."Players/"))){
 			@mkdir($this->getDataFolder()."Players/");
 		}
-		if(!(is_dir($this->getDataFolder()."Islands/"))){
+	if(!(is_dir($this->getDataFolder()."Islands/"))){
 			@mkdir($this->getDataFolder()."Islands/");
 		}
-		$this->getLogger()->info(TextFormat::AQUA . "Done!");
 		// End of File/Folder Creation
 	
 		$this->getLogger()->info(TextFormat::BLUE . $msg_pluginloaded);
@@ -127,14 +146,14 @@ class Main extends Base implements Listener{
 							return true;
 						}
 					}else{
-						$sender->sendMessage(TextFormat::RED . $bn ."You cannot view the help menu");
+						$sender->sendMessage(TextFormat::RED . $bn . $help_error);
 						return true;
 					}
 				}elseif($args[0] == "create"){
 					if($sender->hasPermission("is") || $sender->hasPermission("is.command") || $sender->hasPermission("is.command.create")){
 						$senderIs = $this->getDataFolder()."Islands/".$sender->getName().".txt";
 						if($sender->getLevel()->getName() == $this->getConfig()->get("Lobby")){
-							$sender->sendMessage(TextFormat::YELLOW . $bn ."You are not allowed to generate an island here");
+							$sender->sendMessage(TextFormat::YELLOW . $bn . $is_create_error);
 							return true;
 							
 						}else{
@@ -144,99 +163,93 @@ class Main extends Base implements Listener{
 								return true;
 							}else{
 							  
-								$sender->sendMessage(TextFormat::YELLOW . $bn ."You already have an active island");
+								$sender->sendMessage(TextFormat::YELLOW . $bn . $is_active);
 								return true;
 							}
 						}
 						
 					}else{
-						$sender->sendMessage(TextFormat::RED . $bn ."You cannot create an island");
+						$sender->sendMessage(TextFormat::RED . $bn . $is_nopermission);
 						return true;
 					}
 					
 				}elseif($args[0] == "home"){
 					if($sender->hasPermission("is") || $sender->hasPermission("is.command") || $sender->hasPermission("is.command.home")){
 						if(!(file_exists($this->getDataFolder()."Islands/".$sender->getName().".txt"))){
-							$sender->sendMessage($bn ."You don't have an island. Use /is create to make one");
+							$sender->sendMessage($bn . $is_noisland);
 							return true;
 						}else{
 						  
 							$level = $this->getServer()->getLevelByName(yaml_parse_file($this->getDataFolder()."Players/".$sender->getName().".txt"));
 							if($level !== null){
-								$sender->sendMessage(TextFormat::GREEN . $bn ."Teleporting you to your island...");
+								$sender->sendMessage(TextFormat::GREEN . $bn . $is_teleporting);
 								if($sender->getLevel()->getName() !== $level->getName()){
-									$sender->sendMessage($bn ."You are not in the same world as your island. Use ".TextFormat::YELLOW."/mw tp ".$level->getName().TextFormat::RESET." and try again");
+									$sender->sendMessage($bn . $is_home_error);
 									return true;
 								}else{
 									$sender->teleport(new Vector3(yaml_parse_file($this->getDataFolder()."Islands/".$sender->getName().".txt")));
-									$sender->sendMessage(TextFormat::GREEN . $bn ."Done!");
 									return true;
 								}
 								
 							}else{
-								$sender->sendMessage(TextFormat::RED . $bn . "An error has occurred.");
+								$sender->sendMessage(TextFormat::RED . $bn . $gen_error);
 								return true;
 							}
 						}
 						
 					}else{
-						$sender->sendMessage(TextFormat::RED . $bn ."You do not have permission to do that");
+						$sender->sendMessage(TextFormat::RED . $bn . $gen_Permitions_error);
 						return true;
 					}
 				}elseif($args[0] == "delete"){
 					if($sender->hasPermission("is") || $sender->hasPermission("is.command") || $sender->hasPermission("is.command.delete")){
 						if(!(isset($args[1]))){
-							$sender->sendMessage($bn ."Are you sure you want to do this?\nUse /is delete yes to confirm");
+							$sender->sendMessage($bn . $is_deleteisland);
 							return true;
 						}elseif($args[1] == "yes"){
 								if(file_exists($this->getDataFolder()."Islands/".$sender->getName().".txt")){
 									unlink($this->getDataFolder()."Islands/".$sender->getName().".txt");
-									$sender->sendMessage($bn ."Your island has been deleted");
+									$sender->sendMessage($bn . $is_deleteisland_confirm);
 									return true;
 								}else{
-									$sender->sendMessage($bn ."You don't have any islands");
+									$sender->sendMessage($bn . $is_deleteisland_error);
 									return true;
 								}
 							}elseif($args[1] == "no"){
-								$sender->sendMessage($bn ."Okay, we won't delete your island");
+								$sender->sendMessage($bn . $is_deleteisland_cancel);
 								return true;
 							}else{
 								return false;
 							}
-						}else{
-							$sender->sendMessage($bn ."Island deletion has been cancelled");
-							return true;
 						}
 						
 					}elseif($args[0] == "sethome"){
 						if($sender->hasPermission("is") || $sender->hasPermission("is.command") || $sender->hasPermission("is.command.sethome")){
 							if(!(isset($args[1]))){
-								$sender->sendMessage($bn ."You will be setting your home on your island, Make sure you are standing on it");
-								$sender->sendMessage($bn ."Your island will be lost if you're not on your island. Do /is sethome yes to confirm");
+								$sender->sendMessage($bn . $is_sethome);
+								$sender->sendMessage($bn . $is_sethome_2);
 								return true;
 							}elseif($args[1] == "yes"){
 								if(file_exists($this->getDataFolder()."Islands/".$sender->getName().".txt")){
-									$sender->sendMessage("Setting your home...");
 									$file = $this->getDataFolder()."Islands/".$sender->getName().".txt";
 									unlink($file);
 									$newFile = fopen($file, "w");
 									fwrite($newFile, $sender->x.", ".$sender->y.", ".$sender->z);;
-									$sender->sendMessage("Your home has been set!");
+									$sender->sendMessage($is_sethome_set);
 									return true;
 								}else{
-									$sender->sendMessage($bn ."You don't have any islands");
+									$sender->sendMessage($bn . $is_noisland);
 									return true;
 								}
 							}elseif($args[1] == "no"){
-								$sender->sendMessage($bn ."Okay, we won't set your home");
+								$sender->sendMessage($bn . $is_sethome_cancel);
 								return true;
 							}else{
-								$sender->sendMessage($bn ."Unknown subcommand: ".$args[1]);
 								$sender->sendMessage($bn ."/sethome <yes | no>");
 								return true;
 							}
 						}else{
-							$sender->sendMessage($bn ."You don't have permission to set your home");
+							$sender->sendMessage($bn . $gen_Permitions_error);
 							return true;
 						}
 					}
@@ -249,9 +262,9 @@ class Main extends Base implements Listener{
 	public function onPlayerJoinEvent(PlayerJoinEvent $event){
 		$player = $event->getPlayer();
 		if(file_exists($this->getDataFolder()."Players/".$player->getName().".txt")){
-			$player->sendMessage("Welcome back, " . $player->getName());
+			$player->sendMessage($info_welcomeback. $player->getName());
 		}else{
-			$this->getLogger()->notice(TextFormat::GOLD . $INFO_newplayerjoin . $player->getName());
+			$this->getLogger()->notice(TextFormat::GOLD . $info_newplayerjoin . $player->getName());
 		}
 	}
 }
