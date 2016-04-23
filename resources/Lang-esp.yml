@@ -1,0 +1,37 @@
+#Archivo de idioma en Español
+la función # pre-alfa
+
+###
+# Es posible editar estos para adaptarse a sus necesidades, Si se equivoca ... sólo elimina este archivo y reinicia el servidor y
+# Se generará una nueva copia de la misma.
+###
+
+INFO.PluginLoaded: Plugin Cargado con éxito! Del idioma: Español
+INFO.ServerStopped: ¿Se detiene el servidor? o simplemente estrellado?
+INFO.NewPlayerJoined: Un nuevo jugador se unió:
+INFO.WelcomeBackPlayer: Bienvenido de nuevo
+GEN.Error: Se ha producido un error.
+GEN.Permitions.Error: No tiene permiso para hacer eso.
+GEN.ISCMD.NoSubCommand: Debe añadir un subcomando!
+GEN.Use.Help: Use
+HELP.MoreCMDSoon: Más comandos pronto!
+HELP.ShowList: Mostrando Lista de ayuda:
+HELP.Error: Usted no puede ver el menú de ayuda.
+
+IS.Create.Error: No está autorizado para generar una isla aquí.
+IS.Active: Ya tiene una isla activa.
+IS.DontHaveIsland: Usted no tiene ninguna isla.
+IS.NoPermition: No se puede crear una isla.
+IS.Teleporting: Teletransportando a su isla ...
+
+# Este va a ser eliminado en futuras actualizaciones:
+IS.Home.Error: Usted no está en el mismo mundo que su isla!
+
+IS.DeleteIsland: ¿Estás seguro que quieres hacer esto? Uso /is  delete yes para confirmar.
+IS.DeleteIsland.Confirm: Su isla ha sido suprimida!
+IS.DeleteIsland.Cancel: Bueno, No vamos a eliminar su isla.
+IS.DeleteIsland.Error: Usted no tiene ninguna islas.
+IS.SetHome: Usted va a establecer su hogar en su isla, Asegúrese de que estár sobre ella.
+IS.SetHome.2: Su isla se perderá si no estás en tu isla. Escribe /is sethome yes para confirmar.
+IS.SetHome.Set: su hogar se ha fijado!
+IS.SetHome.Cancel: Ok! No fijaremos tu casa.
