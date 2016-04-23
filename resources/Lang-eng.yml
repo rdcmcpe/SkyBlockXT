@@ -12,7 +12,7 @@ INFO.NewPlayerJoined: A New player joined:
 INFO.WelcomeBackPlayer: Welcome Back
 GEN.Error: An error has occurred.
 GEN.Permitions.Error: You do not have permission to do that.
-GEN.ISCMD.NoSubCommand: You Didnt add a SubCommand!
+GEN.ISCMD.NoSubCommand: You din't add a SubCommand!
 GEN.Use.Help: Please Use
 HELP.MoreCMDSoon: More Commands soon!
 HELP.ShowList: Showing Help List:
