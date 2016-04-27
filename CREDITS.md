@@ -1,15 +1,16 @@
 # Credits:
 ****
 
-##Leading Developer:  @TheKillerTacos
+##Leading Developer:
+* [@TheKillerTacos](https://github.com/TheKillerTacos)
 
 ##Contributors:
-* @Skyladd
-* @SkyGridRex
-* T
+* [@Skyladd](https://github.com/Skyladd)
+* [@SkyGridRex](https://github.com/SkygridRex)
+* [@AndreTheGamer](https://github.com/AndreTheGamer)
 
-###Main Plugin by:
+
+This Plugin/Code is now being Created & Updated by TKRT Creations © 2014-2016 Main Dev Team: XenoNova Team © 2016
+
+**Base Code by:**
 * Linuzo
-
-Plugin now is being Created/Updated by me, TheKillerTacos :D
-
