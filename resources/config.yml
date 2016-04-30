@@ -1,21 +1,22 @@
+#---------------BETA--------------#
+
 # What is the name of the lobby world
 Lobby: "world"
 
-#---------------BETA--------------#
-
 #World Settings:
-MinY: 20 # Dont change if you dont want to have Unwanted results!
-DisX: 125 # Distance Between Islands on X Coordinate
-DisZ: 125 # Distance between Islands on Z Coordinate
-SkyWorldName: Skyblock #The name that will load and generate the map in
+#Dont change Y if you dont want to have Unwanted results!
+MinY: 20
+# Distance Between Islands on X Coordinate
+DisX: 125 
+# Distance between Islands on Z Coordinate
+DisZ: 125 
+#The name that will load and generate the map in
+SkyWorldName: Skyblock 
+
 #Plugin Settings:
 Language: eng
-
-#---------------BETA--------------#
-
-#WIP=============================WIP#
-IslandPerWorld: 100
-
 EnableAntiTrollSystem: true
 PVPEnableOnIslands: false
-#WIP=============================WIP#
+#WIP
+IslandPerWorld: 100
+
