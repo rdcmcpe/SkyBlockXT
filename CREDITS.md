@@ -6,7 +6,7 @@
 
 ##Contributors:
 * [@Skyladd](https://github.com/Skyladd)
-* [@SkyGridRex](https://github.com/SkygridRex)
+* [@SkygridRex](https://github.com/SkygridRex)
 * [@AndreTheGamer](https://github.com/AndreTheGamer)
 
 
