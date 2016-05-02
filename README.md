@@ -7,7 +7,7 @@
   and More Feateatures!
   
   See [Credits](https://github.com/XenoNova/SkyBlockXT/blob/master/CREDITS.md) File to see Contributors!
-  Also Dont forget to visit [SkyblockXT](http://skyblockxt.tk/) website! [Free Domain :(] To see latest Compiled releases and Stable One!
+  Also Dont forget to visit [SkyblockXT](http://skyblockxt.tk/) website! [Not working at this moment] To see latest Compiled releases and Stable One!
   
 ##Want to be a contributor?
 So you Want to Contribute on this Project?
