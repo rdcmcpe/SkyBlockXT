@@ -11,7 +11,7 @@
   
 ##Want to be a contributor?
 So you Want to Contribute on this Project?
-You need to Know the Basics of PHP & HTML<!--[(?)](http://thekillertacos.tk/skxt/basics.html/) (Link may not work)-->
+You need to Know the Basics of PHP & HTML
 Know PocketMine API, From PHP5 and PHP7
 Make Pull Request for Code changing, if any Syntax error ( () [] {} ; etc) it can be fixed directly
 Know English (Since its More known in Community), Spanish allowed.
@@ -24,6 +24,7 @@ Dont forget to read the TODO list! here the [Link](https://github.com/XenoNova/S
   This is how the island will  be generated **after** PRE-ALPHA Release!
 ![Concept](http://static.planetminecraft.com/files/resource_media/screenshot/1301/skyblock_4567067.jpg)
 
+> * One of the best Skyblock Plugin out there - May be the best one working for the public we know
 
 
 > XenoNova Dev Team © 2016, TKRT Creations © 2014-2016 - You may **USE** this plugin but not **CLAIM** it as yours!
