@@ -11,7 +11,7 @@
   
 ##Want to be a contributor?
 So you Want to Contribute on this Project?
-You need to Know the Basics of PHP & HTML[(?)](http://thekillertacos.tk/skxt/basics.html/) (Link may not work)
+You need to Know the Basics of PHP & HTML<!--[(?)](http://thekillertacos.tk/skxt/basics.html/) (Link may not work)-->
 Know PocketMine API, From PHP5 and PHP7
 Make Pull Request for Code changing, if any Syntax error ( () [] {} ; etc) it can be fixed directly
 Know English (Since its More known in Community), Spanish allowed.
