@@ -31,25 +31,20 @@ use SkyBlockXT\Tools\SkyWorld;
 
 class Main extends Base implements Listener{
 	public function onEnable(){
-	$tkrt = FormatColor::AQUA . "[TKRT-SkyBlockXT P.A]";
-		if($this->saveDefaultConfig() === true) {
-			$this->getLogger()->info(TextFormat::AQUA . "Config Files Created!");
-			if($this->getConfig()->get('EnableDebug') == true){
-				$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] Saved Configuration Files: " .$tkrt);
-				$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] config.yml at SkyBlockXT Folder" .$tkrt);
-				$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] Loading Language Files..... " .$tkrt);
-			}
-		}else{
-			if(!(is_dir($this->getDataFolder()."/"))){ //would it crash? I guess not
-			@mkdir($this->getDataFolder()."/");
-			}
-			$this->saveDefaultConfig()
-		}
+	$tkrt = TextFormat::AQUA . "[TKRT-SkyBlockXT P.A]";
+	$this->getLogger()->info(TextFormat::AQUA . "Config Files Created!");
+	$this->saveDefaultConfig();
+	if($this->getConfig()->get('EnableDebug') == true){
+		$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] Saved Configuration Files: " .$tkrt);
+		$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] config.yml at SkyBlockXT Folder" .$tkrt);
+		$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] Loading Language Files..... " .$tkrt);
+	}
+			
 		
 		// TEMPORAL MULTILANGUAGE SUPPORT ------------------------------------------------
 		$defLang = $this->getConfig()->get('Language');
-        if(!(is_dir($this->getDataFolder()."Lang-".$defLang.".yml"))){
-			$this->plugin->saveResource("Lang-".$defLang.".yml", true);
+        if(!(is_dir($this->getDataFolder()."/Lang-".$defLang.".yml"))){
+			$this->plugin->saveResource("/Lang-".$defLang.".yml"); // NEED HELP! IDK HOW TO SAVE RESOURCES!
 		 }else{
 			 
 		 }
@@ -84,24 +79,17 @@ class Main extends Base implements Listener{
 		// TEMPORAL MULTILANGUAGE SUPPORT ------------------------------------------------
 		
 		// File/Folder Creation - Soon to Change the way it configures
-		if(!(is_dir($this->getDataFolder()."/"))){ //would it crash? I guess not
-			@mkdir($this->getDataFolder()."/");
-		}
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
-	if(!(is_dir($this->getDataFolder()."Players/"))){
+		if(!(is_dir($this->getDataFolder()."Players/"))){
 			@mkdir($this->getDataFolder()."Players/");
 		}
-	if(!(is_dir($this->getDataFolder()."Islands/"))){
+		if(!(is_dir($this->getDataFolder()."Islands/"))){
 			@mkdir($this->getDataFolder()."Islands/");
 		}
 		// End of File/Folder Creation
 	
 		$this->getLogger()->info(TextFormat::BLUE . $msg_pluginloaded);
-	}
-	
-	public function onLoad(){
-						
-		//In here will be only be used for Plugin Functions, not Plugins data or Related like onEnabled
+				//In here will be only be used for Plugin Functions, not Plugins data or Related like onEnabled
 
 			if($this->getConfig()->get('EnableDebug') == true){
 			$UUID_Data = $this->getConfig()->get("Language") + $this->getConfig()->get("IslandPerWorld") + $this->getServerName();
@@ -121,7 +109,7 @@ class Main extends Base implements Listener{
 	}
 	
 	public function onDisable(){
-		$this->getLogger()->info(TextFormat::RED . $msg_serverstop);
+		$this->getLogger()->info(TextFormat::RED . $info_serverstop);
 	}
 	
 	public function onCommand(CommandSender $sender, Command $command, $label, array $args){

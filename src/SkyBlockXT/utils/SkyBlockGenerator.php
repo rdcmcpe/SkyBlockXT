@@ -1,6 +1,6 @@
 <?php
 
-namespace SkyBlockXT/utils;
+namespace SkyBlockXT\utils;
 
 use SkyBlockXT\utils\SkyTree;
 use pocketmine\level\generator\Generator;
