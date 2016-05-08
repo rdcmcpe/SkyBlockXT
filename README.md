@@ -1,6 +1,8 @@
 ![Logo?](http://bgteste.ga/files/FotorCreated.jpg)
 # SkyBlockXT
 
+[![Join the chat at https://gitter.im/TKRT-Creations/SkyBlockXT](https://badges.gitter.im/TKRT-Creations/SkyBlockXT.svg)](https://gitter.im/TKRT-Creations/SkyBlockXT?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
   SkyblockXT, One of the Best Skyblock Plugin out there!*
   Play or Create a Skyblock Server with our plugin! is almost Bug free and Fast!
   Create Hundreds of islands with our world generator! Set it up for multiworld Support
