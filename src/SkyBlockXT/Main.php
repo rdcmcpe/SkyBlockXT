@@ -244,9 +244,54 @@ class Main extends Base implements Listener{
 						}
 					}
 				}
+				case "skyland":
+				if($sender->hasPemission("skyland") || $sender->hasPemission("skyland.cmd")){
+					if(isset($args[0])){
+						if(strtolower($args[0]) == "help"){
+							// There hasn't been any multilanguage setting fo this, so i just put it in english
+							$sender->sendMessage(TextFormat::BLUE."SkyLand command help");
+							$sender->sendMessage(TextFormat::GREEN."==================================");
+							$sender->sendMessage(TextFormat::GREEN."/skyland genworld <name>: ".TextFormat::RESET."Generate a new skyblock world");
+							$sender->sendMessage(TextFormat::GREEN."/skyland delworld <name>: ".TextFormat::RESET."Deletes a skyblock world");
+							$sender->sendMessage(TextFormat::GREEN."/skyland [help]: ".TextFormat::RESET."Shows a list of SkyLand commands");
+							$sender->sendMessage(TextFormat::GREEN."==================================");
+							return true;
+							// I'm sure there are more command, but i'm just putting these for now...
+						}else{
+							if(strtolower($args[0]) == "delworld"){
+								if(isset($args[1])){
+									$world = $this->getServer()->getLevelByName($args[1]);
+									if($world !== null){
+										if(isset($args[2])){
+											if(strtolower($args[2]) == "yes"){
+												if(is_dir($this->getServer()->getDataPath()."worlds/".$args[1])){
+													$level = $this->getServer()->getDataPath()."worlds/".$args[1];
+													rmdir($level);
+													return true;
+												}else{
+													$sender->sendMessage(TextForat::YELLOW."There is no level by that name!");
+													return true;
+												}
+											}else{
+												$sender->sendMessage(TextFormat::GREEN."Okay, we won't delete that world.");
+												return true;
+											}
+										}else{
+											$sender->sendMessage(TextFormat::YELLOW."Are you sure? This cannot be undone. Use /skyland delworld "$args[1]." yes to confirm.");
+											return true;
+										}
+									}else{
+										$sender->sendMessage(TextFormat::YELLOW."There is no level by that name!");
+										return true;
+									}
+								}else{
+									
+								}
+							}
+						}
+					}
+				}
 			}
-			case "skyland":
-				// SkyLand command here...
 		}
 
 	
