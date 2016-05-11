@@ -114,7 +114,8 @@ class Main extends Base implements Listener{
 		$is_sethome_set = $this->getResource("/Lang-".$defLang.".yml")->get("IS.SetHome.Set");
 		$is_sethome_cancel = $this->getResource("/Lang-".$defLang.".yml")->get("IS.SetHome.Cancel");
 		// TEMPORAL LANGUAGE SUPPORT ===================================
-		if(strtolower($command->getName()) == "is"){
+		switch(strtolower($command->getName())){
+			case "is":
 			if(!(isset($args[0]))){
 				$sender->sendMessage(TextFormat::YELLOW . $bn . $gen_is_didntaddsubcmd);
 				$sender->sendMessage(TextFormat::GREEN . $bn . $gen_use . TextFormat::RESET . "/is help");
@@ -243,6 +244,8 @@ class Main extends Base implements Listener{
 					}
 				}
 			}
+			case "skyland":
+				// SkyLand command here...
 		}
 
 	
