@@ -18,7 +18,7 @@ commands:
 permissions:
   skyland:
     default: false
-    description: SkyLand Permissions For OPs only!
+    description: SkyLand Permissions For OPs only! #If you want this to be op only, it needs to be set to op ._.
     children:
       skyland.cmd:
         default: op
