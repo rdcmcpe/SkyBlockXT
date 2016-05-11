@@ -31,7 +31,7 @@ use SkyBlockXT\Tools\SkyWorld;
 
 class Main extends Base implements Listener{
 	public function onEnable(){
-	$tkrt = TextFormat::AQUA . "[TKRT-SkyBlockXT P.A]";
+	$tkrt = TextFormat::AQUA . "[TKRT-SkyBlockXT]";
 	$this->getLogger()->info(TextFormat::AQUA . "Config Files Created!");
 	$this->saveDefaultConfig();
 	if($this->getConfig()->get('EnableDebug') == true){
@@ -39,43 +39,14 @@ class Main extends Base implements Listener{
 		$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] config.yml at SkyBlockXT Folder" .$tkrt);
 		$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] Loading Language Files..... " .$tkrt);
 	}
-			
-		
 		// TEMPORAL MULTILANGUAGE SUPPORT ------------------------------------------------
 		$defLang = $this->getConfig()->get('Language');
         if(!(is_dir($this->getDataFolder()."/Lang-".$defLang.".yml"))){
-			$this->plugin->saveResource("/Lang-".$defLang.".yml"); // NEED HELP! IDK HOW TO SAVE RESOURCES!
-		 }else{
-			 
-		 }
-		$MLang = $this->getResource("Lang-" . $defLang . ".yml");
-		$info_pluginloaded = $Mlang->get("INFO.PluginLoaded"); 
-		$info_newplayerjoin = $Mlang->get("INFO.NewPlayerJoined");
-		$info_serverstop = $Mlang->get("INFO.ServerStopped"); 
-		$info_welcomeback = $MLang->get("INFO.WelcomeBackPlayer");
-		$help_showlist = $Mlang->get("HELP.ShowList");
-		$help_morecmdsoon = $Mlang->get("HELP.MoreCMDSoon");
-		$help_error = $Mlang->get("HELP.Error");
-		$gen_error = $Mlang->get("GEN.Error");
-		$gen_Permitions_error = $Mlang->get("GEN.Permitions.Errors");
-		$gen_iscmd_notscmd = $Mlang->get("GEN.ISCMD.NoSubCommand");
-		$gen_usehelp = $Mlang->get("GEN.Use.Help");
-		$is_create_error = $Mlang->get("IS.Create.Error");
-		$is_active = $Mlang->get("IS.Active");
-		$is_noisland = $Mlang->get("IS.DontHaveIsland");
-		$is_nopermission = $Mlang->get("IS.NoPermition");
-		$is_teleporting = $Mlang->get("IS.Teleporting");
-		$is_home_error = $Mlang->get("IS.Home.Error");
-		$is_deleteisland = $Mlang->get("IS.DeleteIsland");
-		$is_deleteisland_confirm = $Mlang->get("IS.DeleteIsland.Confirm");
-		$is_deleteisland_cancel = $Mlang->get("IS.DeleteIsland.Cancel");
-		$is_deleteisland_error = $Mlang->get("IS.DeleteIsland.Error");
-		$is_sethome = $Mlang->get("IS.SetHome");
-		$is_sethome_2 = $Mlang->get("IS.SetHome.2");
-		$is_sethome_set = $Mlang->get("IS.SetHome.Set");
-		$is_sethome_cancel = $Mlang->get("IS.SetHome.Cancel");
-		
-		
+			$this->saveResource("/Lang-".$defLang.".yml");
+		}	
+		if($this->getConfig()->get('EnableDebug') == true){
+			$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] Language file Saved. Language selected:". $deflang .$tkrt);
+		}
 		// TEMPORAL MULTILANGUAGE SUPPORT ------------------------------------------------
 		
 		// File/Folder Creation - Soon to Change the way it configures
@@ -86,12 +57,15 @@ class Main extends Base implements Listener{
 		if(!(is_dir($this->getDataFolder()."Islands/"))){
 			@mkdir($this->getDataFolder()."Islands/");
 		}
+		if($this->getConfig()->get('EnableDebug') == true){
+			$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] Islands and player" .$tkrt);
+		}
 		// End of File/Folder Creation
-	
-		$this->getLogger()->info(TextFormat::BLUE . $msg_pluginloaded);
-				//In here will be only be used for Plugin Functions, not Plugins data or Related like onEnabled
 
-			if($this->getConfig()->get('EnableDebug') == true){
+		$info_pluginloaded = $this->getResource("/Lang-".$defLang.".yml")->get("INFO.PluginLoaded"); 
+		$this->getLogger()->info(TextFormat::BLUE . $msg_pluginloaded);
+
+			if($this->getConfig()->get('EnableUUID') == true){
 			$UUID_Data = $this->getConfig()->get("Language") + $this->getConfig()->get("IslandPerWorld") + $this->getServerName();
 			$hash = crypt($UUID_Data);
 			$this->getLogger()->info(TextFormat::GOLD . "This is your UUID from SkyblockXT Plugin: ".$hash." Its useless by now and just for Debugging :P" .$tkrt);
@@ -99,21 +73,47 @@ class Main extends Base implements Listener{
 
 		// Custom Generators
 		Generator::addGenerator(SkyWorld::class, "SkyWorld"); //Main Generator - 1
-			if($this->getConfig()->get('EnableDebug') == true){
-		$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] SkyWorld Generator Added (1)" .$tkrt);
-		}
+		if($this->getConfig()->get('EnableDebug') == true){
+			$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] SkyWorld Generator Added (1)" .$tkrt);
+			}
 		Generator::addGenerator ( SkyBlockGenerator::class, "Skyblock" ); //Secondary Generator - 2
-			if($this->getConfig()->get('EnableDebug') == true){
-		$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] SkyBlock Generator Added (2)" .$tkrt);
+		if($this->getConfig()->get('EnableDebug') == true){
+			$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] SkyBlock Generator Added (2)" .$tkrt);
 		}
 	}
 	
 	public function onDisable(){
+		$defLang = $this->getConfig()->get('Language');
+		$info_serverstop = $this->getResource("/Lang-".$defLang.".yml")->get("INFO.ServerStopped"); 
 		$this->getLogger()->info(TextFormat::RED . $info_serverstop);
 	}
 	
 	public function onCommand(CommandSender $sender, Command $command, $label, array $args){
 		$bn = "[SkyblockXT]";
+		// TEMPORAL LANGUAGE SUPPORT ===================================
+		$defLang = $this->getConfig()->get('Language');
+		$help_showlist = $this->getResource("/Lang-".$defLang.".yml")->get("HELP.ShowList");
+		$help_morecmdsoon = $this->getResource("/Lang-".$defLang.".yml")->get("HELP.MoreCMDSoon");
+		$help_error = $this->getResource("/Lang-".$defLang.".yml")->get("HELP.Error");
+		$gen_error = $this->getResource("/Lang-".$defLang.".yml")->get("GEN.Error");
+		$gen_Permitions_error = $this->getResource("/Lang-".$defLang.".yml")->get("GEN.Permitions.Errors");
+		$gen_iscmd_notscmd = $this->getResource("/Lang-".$defLang.".yml")->get("GEN.ISCMD.NoSubCommand");
+		$gen_usehelp = $this->getResource("/Lang-".$defLang.".yml")->get("GEN.Use.Help");
+		$is_create_error = $this->getResource("/Lang-".$defLang.".yml")->get("IS.Create.Error");
+		$is_active = $this->getResource("/Lang-".$defLang.".yml")->get("IS.Active");
+		$is_noisland = $this->getResource("/Lang-".$defLang.".yml")->get("IS.DontHaveIsland");
+		$is_nopermission = $this->getResource("/Lang-".$defLang.".yml")->get("IS.NoPermition");
+		$is_teleporting = $this->getResource("/Lang-".$defLang.".yml")->get("IS.Teleporting");
+		$is_home_error = $this->getResource("/Lang-".$defLang.".yml")->get("IS.Home.Error");
+		$is_deleteisland = $this->getResource("/Lang-".$defLang.".yml")->get("IS.DeleteIsland");
+		$is_deleteisland_confirm = $this->getResource("/Lang-".$defLang.".yml")->get("IS.DeleteIsland.Confirm");
+		$is_deleteisland_cancel = $this->getResource("/Lang-".$defLang.".yml")->get("IS.DeleteIsland.Cancel");
+		$is_deleteisland_error = $this->getResource("/Lang-".$defLang.".yml")->get("IS.DeleteIsland.Error");
+		$is_sethome = $this->getResource("/Lang-".$defLang.".yml")->get("IS.SetHome");
+		$is_sethome_2 = $this->getResource("/Lang-".$defLang.".yml")->get("IS.SetHome.2");
+		$is_sethome_set = $this->getResource("/Lang-".$defLang.".yml")->get("IS.SetHome.Set");
+		$is_sethome_cancel = $this->getResource("/Lang-".$defLang.".yml")->get("IS.SetHome.Cancel");
+		// TEMPORAL LANGUAGE SUPPORT ===================================
 		if(strtolower($command->getName()) == "is"){
 			if(!(isset($args[0]))){
 				$sender->sendMessage(TextFormat::YELLOW . $bn . $gen_is_didntaddsubcmd);
@@ -248,7 +248,13 @@ class Main extends Base implements Listener{
 	
 	// When a player joins
 	public function onPlayerJoinEvent(PlayerJoinEvent $event){
+		
 		$player = $event->getPlayer();
+		// TEMPORAL LANGUAGE SUPPORT =============================
+		$defLang = $this->getConfig()->get('Language');
+		$info_newplayerjoin = $this->getResource("/Lang-".$defLang.".yml")->get("INFO.NewPlayerJoined");
+		$info_welcomeback = $this->getResource("/Lang-".$defLang.".yml")->get("INFO.WelcomeBackPlayer");
+		// TEMPORAL LANGUAGE SUPPORT =============================
 		if(file_exists($this->getDataFolder()."Players/".$player->getName().".txt")){
 			$player->sendMessage($info_welcomeback. $player->getName());
 		}else{

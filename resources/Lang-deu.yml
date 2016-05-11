@@ -4,18 +4,20 @@
 ###
 # Sie können diese bearbeiten Ihre Bedürfnisse anpassen, wenn Sie mess up ... nur diese Datei löschen und neu starten, Server und
 # Es wird eine neue brandneue Kopie selbst zu generieren.
+# Dont use ' or ", if you do so, the File might get corrupted and the plugin will not load it correctly!!
+# And the Lang file gets  messed up :L also with - [Plz translate!]
 ###
 
 INFO.PluginLoaded: Plugin erfolgreich geladen! Gewählte Sprache: Deutsch
 INFO.ServerStopped: Hat der Server nicht mehr? oder gerade abgestürzt ist?
-INFO.NewPlayerJoined: Ein neuer Spieler beigetreten:
+INFO.NewPlayerJoined: Ein neuer Spieler beigetreten
 INFO.WelcomeBackPlayer: Willkommen zurück
 GEN.Error: Ein Fehler ist aufgetreten.
 GEN.Permitions.Error: Sie haben keine Berechtigung, das zu tun.
 GEN.ISCMD.NoSubCommand: Sie nicht einen SUBCOMMAND hinzuzufügen!
 Verwenden Sie bitte: GEN.Use.Help
 HELP.MoreCMDSoon: Weitere Befehle in Kürze!
-HELP.ShowList: Zeige Hilfe-Liste:
+HELP.ShowList: Zeige Hilfe Liste
 HELP.Error: Sie können nicht das Hilfemenü anzuzeigen.
 
 IS.Create.Error: Sie sind nicht eine Insel, hier zu generieren erlaubt

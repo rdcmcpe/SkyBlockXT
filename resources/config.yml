@@ -3,6 +3,9 @@
 # What is the name of the lobby world
 Lobby: "world"
 
+#Plugin Settings:
+Language: eng
+
 #World Settings:
 #Dont change Y if you dont want to have Unwanted results!
 MinY: 20
@@ -11,12 +14,18 @@ DisX: 125
 # Distance between Islands on Z Coordinate
 DisZ: 125 
 #The name that will load and generate the map in
-SkyWorldName: Skyblock 
+SkyWorldName: SkyblockXT
 
-#Plugin Settings:
-Language: eng
-EnableAntiTrollSystem: true
-PVPEnableOnIslands: false
+#Advanced & Debugging:
+EnableDebug: false
+EnableWorldGenerators: true
+EnableUUID: true
+
 #WIP
 IslandPerWorld: 100
+EnableAntiTrollSystem: true
+PVPEnableOnIslands: false
+AutoUpdateOnStart: true
 
+#TKRT Creations Copyright 2014-2016, XenoNova Team Project, SkyBlockXT Code is Now Fully being coded by XNT
+# If there is an update, Delete Config.yml and lang-language.yml, so it the plugin can update successfully

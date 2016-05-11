@@ -4,18 +4,20 @@ la función # pre-alfa
 ###
 # Es posible editar esto para que se adapté a sus necesidades, Si se equivoca ... sólo elimina este archivo y reinicia el servidor y
 # Se generará una nueva copia de la misma.
+# Porfavor de no utilizar ' o ", Porque si se usan, el Archivo puede dañarse, Y el plugin no podra cargar el lenguage correctamente!
+# Tambien no utilizes el guion -
 ###
 
 INFO.PluginLoaded: Plugin Cargado con éxito! Del idioma: Español
-INFO.ServerStopped: ¿Se detiene el servidor? o simplemente se estrépito?
-INFO.NewPlayerJoined: Un nuevo jugador se unió:
+INFO.ServerStopped: ¿Se detuvo el servidor? o el plugin se ha deshabilitado!?
+INFO.NewPlayerJoined: Un nuevo jugador se unió
 INFO.WelcomeBackPlayer: Bienvenido de nuevo
 GEN.Error: Se ha producido un error.
 GEN.Permitions.Error: No tiene permiso para hacer eso.
 GEN.ISCMD.NoSubCommand: Debe añadir un subcomando!
 GEN.Use.Help: Uso
 HELP.MoreCMDSoon: Más comandos pronto!
-HELP.ShowList: Mostrando Lista de ayuda:
+HELP.ShowList: Mostrando Lista de ayuda
 HELP.Error: Usted no puede ver el menú de ayuda.
 
 IS.Create.Error: No está autorizado para generar una isla aquí.
