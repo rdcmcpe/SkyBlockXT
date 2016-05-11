@@ -57,43 +57,97 @@ class SkyWorld extends Generator{
 		$zoff = $spz - $z;
 		return $rad2 > ($xoff * $xoff + $zoff * $zoff);
 	}
-	public function generateChunk($chunkX, $chunkZ) {
-		$spawn = $this->getSpawn();
-		// Adjust spawn so it is relative to current chunk...
-		$spawn->x = $spawn->x - ($chunkX << 4);
-		$spawn->z = $spawn->z - ($chunkZ << 4);
-		$inSpawn = (-$this->radius <= $spawn->x && $spawn->x < 16 + $this->radius  &&
-				-$this->radius <= $spawn->z && $spawn->z < 16 + $this->radius);
-		if ($inSpawn || $this->chunk === null) {
-			$chunk = $this->level->getChunk($chunkX,$chunkZ);
-			$chunk->setGenerated();
-			$c = Biome::getBiome($this->biome)->getColor();
-			$R = $c >> 16;
-			$G = ($c >> 8) & 0xff;
-			$B = $c & 0xff;
-			$rad2 = $this->radius * $this->radius;
-			for($Z = 0; $Z < 16; ++$Z){
-				for($X = 0; $X < 16; ++$X){
-					$chunk->setBiomeId($X, $Z, $biome);
-					$chunk->setBiomeColor($X, $Z, $R, $G, $B);
-					$chunk->setBlock($X, 0, $Z, $this->baseFloor, 0);
-					for($y = 1; $y < 128; ++$y){
-						$chunk->setBlock($X, $y, $Z, Block::AIR, 0);
+		public function generateChunk($chunkX, $chunkZ){
+		$CX = ($chunkX % 5) < 0?(($chunkX % 5) + 5):($chunkX % 5);
+		$CZ = ($chunkZ % 5) < 0?(($chunkZ % 5) + 5):($chunkZ % 5);
+		switch($CX . ":" . $CZ){
+			case '0:0':
+				{
+					if($this->chunk1 === null){
+						$this->chunk1 = clone $this->level->getChunk($chunkX, $chunkZ);
+						
+						$c = Biome::getBiome(1)->getColor();
+						$R = $c >> 16;
+						$G = ($c >> 8) & 0xff;
+						$B = $c & 0xff;
+						for($x = 0; $x < 16; $x++){
+							for($z = 0; $z < 16; $z++){
+								$this->chunk1->setBiomeColor($x, $z, $R, $G, $B);
+							}
+						}
+						for($x = 4; $x < 11; $x++){
+							for($z = 4; $z < 11; $z++){
+								$this->chunk1->setBlockId($x, self::bedrockheight + (68 - 64), $z, Block::GRASS);
+							}
+						}
+						$this->chunk1->setBlockId(7, self::bedrockheight + (65 - 64), 7, Block::SAND); // 1
+						$this->chunk1->setBlockId(7, self::bedrockheight + (66 - 64), 7, Block::SAND); // 2
+						$this->chunk1->setBlockId(7, self::bedrockheight + (67 - 64), 7, Block::SAND); // 3
+						$this->chunk1->setBlockId(7, self::bedrockheight + (69 - 64), 7, Block::LOG); // 5
+						$this->chunk1->setBlockId(7, self::bedrockheight + (70 - 64), 7, Block::LOG); // 6
+						$this->chunk1->setBlockId(7, self::bedrockheight + (71 - 64), 7, Block::LOG); // 7
+						$this->chunk1->setBlockId(7, self::bedrockheight + (72 - 64), 7, Block::LOG); // 8
+						$this->chunk1->setBlockId(7, self::bedrockheight + (73 - 64), 7, Block::LOG); // 9
+						$this->chunk1->setBlockId(4, self::bedrockheight + (68 - 64), 4, Block::AIR); // 68
+						$this->chunk1->setBlockId(4, self::bedrockheight + (68 - 64), 10, Block::AIR);
+						$this->chunk1->setBlockId(10, self::bedrockheight + (68 - 64), 4, Block::AIR);
+						$this->chunk1->setBlockId(10, self::bedrockheight + (68 - 64), 10, Block::AIR);
+						$this->chunk1->setBlockId(5, self::bedrockheight + (72 - 64), 5, Block::AIR); // 72
+						$this->chunk1->setBlockId(5, self::bedrockheight + (72 - 64), 9, Block::AIR);
+						$this->chunk1->setBlockId(9, self::bedrockheight + (72 - 64), 5, Block::AIR);
+						$this->chunk1->setBlockId(9, self::bedrockheight + (72 - 64), 9, Block::AIR);
+						$this->chunk1->setBlockId(5, self::bedrockheight + (73 - 64), 7, Block::LEAVES); // 73
+						$this->chunk1->setBlockId(7, self::bedrockheight + (73 - 64), 5, Block::LEAVES);
+						$this->chunk1->setBlockId(9, self::bedrockheight + (73 - 64), 7, Block::LEAVES);
+						$this->chunk1->setBlockId(7, self::bedrockheight + (73 - 64), 9, Block::LEAVES);
+						$this->chunk1->setBlockId(7, self::bedrockheight + (74 - 64), 6, Block::LEAVES); // 74
+						$this->chunk1->setBlockId(6, self::bedrockheight + (74 - 64), 7, Block::LEAVES);
+						$this->chunk1->setBlockId(8, self::bedrockheight + (74 - 64), 7, Block::LEAVES);
+						$this->chunk1->setBlockId(7, self::bedrockheight + (74 - 64), 8, Block::LEAVES);
+						$this->chunk1->setBlockId(7, self::bedrockheight + (75 - 64), 7, Block::LEAVES); // 75
+						// $this->chunk1->setBlockId(7, self::bedrockheight + (69 - 64), 8, Block::CHEST);
+						$this->chunk1->setBlockId(7, self::bedrockheight + (65 - 64), 8, Block::DIRT); // 65
+						$this->chunk1->setBlockId(8, self::bedrockheight + (65 - 64), 7, Block::DIRT);
+						$this->chunk1->setBlockId(7, self::bedrockheight + (65 - 64), 6, Block::DIRT);
+						$this->chunk1->setBlockId(6, self::bedrockheight + (65 - 64), 7, Block::DIRT);
+						$this->chunk1->setBlockId(5, self::bedrockheight + (66 - 64), 7, Block::DIRT); // 66
+						$this->chunk1->setBlockId(7, self::bedrockheight + (66 - 64), 5, Block::DIRT);
+						$this->chunk1->setBlockId(9, self::bedrockheight + (66 - 64), 7, Block::DIRT);
+						$this->chunk1->setBlockId(7, self::bedrockheight + (66 - 64), 9, Block::DIRT);
+						$this->chunk1->setBlockId(4, self::bedrockheight + (67 - 64), 7, Block::DIRT); // 67
+						$this->chunk1->setBlockId(7, self::bedrockheight + (67 - 64), 4, Block::DIRT);
+						$this->chunk1->setBlockId(7, self::bedrockheight + (67 - 64), 10, Block::DIRT);
+						$this->chunk1->setBlockId(10, self::bedrockheight + (67 - 64), 7, Block::DIRT);
 					}
-					if (self::inSpawn($rad2,$spawn->x,$spawn->z,$X,$Z)) {
-						$chunk->setBlock($X,$this->floorLevel,$Z,$this->block);
+					$chunk = clone $this->chunk1;
+					$chunk->setX($chunkX);
+					$chunk->setZ($chunkZ);
+					$this->level->setChunk($chunkX, $chunkZ, $chunk);
+					break;
+				}
+			
+			default:
+				{
+					if($this->chunk2 === null){
+						$this->chunk2 = clone $this->level->getChunk($chunkX, $chunkZ);
+						
+						$c = Biome::getBiome(1)->getColor();
+						$R = $c >> 16;
+						$G = ($c >> 8) & 0xff;
+						$B = $c & 0xff;
+						for($x = 0; $x < 16; $x++){
+							for($z = 0; $z < 16; $z++){
+								$this->chunk2->setBiomeColor($x, $z, $R, $G, $B);
+							}
+						}
+						$chunk = clone $this->chunk2;
+						$chunk->setX($chunkX);
+						$chunk->setZ($chunkZ);
+						$this->level->setChunk($chunkX, $chunkZ, $chunk);
+						break;
 					}
 				}
-			}
-			if (!$inSpawn) {
-				$this->chunk = clone $chunk;
-			}
-		} else {
-			$chunk = clone $this->chunk;
 		}
-		$chunk->setX($chunkX);
-		$chunk->setZ($chunkZ);
-		$this->level->setChunk($chunkX,$chunkZ,$chunk);
 	}
 	public function populateChunk($chunkX, $chunkZ) {
 		// Don't do nothing here...

@@ -118,19 +118,6 @@ class SkyBlockGenerator extends Generator{
 								$this->chunk1->setBlockId($x, self::bedrockheight + (68 - 64), $z, Block::GRASS);
 							}
 						}
-						for($x = 5; $x < 10; $x++){
-							for($z = 5; $z < 10; $z++){
-								$this->chunk1->setBlockId($x, self::bedrockheight + (67 - 64), $z, Block::DIRT);
-								$this->chunk1->setBlockId($x, self::bedrockheight + (72 - 64), $z, Block::LEAVES); // 72
-							}
-						}
-						for($x = 6; $x < 9; $x++){
-							for($z = 6; $z < 9; $z++){
-								$this->chunk1->setBlockId($x, self::bedrockheight + (73 - 64), $z, Block::LEAVES); // 73
-								$this->chunk1->setBlockId($x, self::bedrockheight + (66 - 64), $z, Block::DIRT); // 66
-							}
-						}
-						$this->chunk1->setBlockId(7, self::bedrockheight + (64 - 64), 7, Block::BEDROCK); // 0
 						$this->chunk1->setBlockId(7, self::bedrockheight + (65 - 64), 7, Block::SAND); // 1
 						$this->chunk1->setBlockId(7, self::bedrockheight + (66 - 64), 7, Block::SAND); // 2
 						$this->chunk1->setBlockId(7, self::bedrockheight + (67 - 64), 7, Block::SAND); // 3
@@ -156,7 +143,7 @@ class SkyBlockGenerator extends Generator{
 						$this->chunk1->setBlockId(8, self::bedrockheight + (74 - 64), 7, Block::LEAVES);
 						$this->chunk1->setBlockId(7, self::bedrockheight + (74 - 64), 8, Block::LEAVES);
 						$this->chunk1->setBlockId(7, self::bedrockheight + (75 - 64), 7, Block::LEAVES); // 75
-						                                                                                 // $this->chunk1->setBlockId(7, self::bedrockheight + (69 - 64), 8, Block::CHEST);
+						// $this->chunk1->setBlockId(7, self::bedrockheight + (69 - 64), 8, Block::CHEST);
 						$this->chunk1->setBlockId(7, self::bedrockheight + (65 - 64), 8, Block::DIRT); // 65
 						$this->chunk1->setBlockId(8, self::bedrockheight + (65 - 64), 7, Block::DIRT);
 						$this->chunk1->setBlockId(7, self::bedrockheight + (65 - 64), 6, Block::DIRT);
