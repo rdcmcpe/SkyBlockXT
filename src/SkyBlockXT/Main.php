@@ -61,9 +61,10 @@ class Main extends Base implements Listener{
 			$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] Islands and player" .$tkrt);
 		}
 		// End of File/Folder Creation
-
-		$info_pluginloaded = $this->getResource("/Lang-".$defLang.".yml")->get("INFO.PluginLoaded"); 
-		$this->getLogger()->info(TextFormat::BLUE . $msg_pluginloaded);
+		
+		$langConfig = new Config($this->getDataFolder()."Lang-".$defLang.".yml", Config::YAML);
+		$info_pluginloaded = $langConfig->get("INFO.PluginLoaded");
+		$this->getLogger()->info(TextFormat::BLUE . $info_pluginloaded);
 
 			if($this->getConfig()->get('EnableUUID') == true){
 			$UUID_Data = $this->getConfig()->get("Language") + $this->getConfig()->get("IslandPerWorld") + $this->getServerName();
