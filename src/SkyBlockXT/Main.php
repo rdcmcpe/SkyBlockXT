@@ -31,7 +31,6 @@ class Main extends Base implements Listener{
 		$tkrt = TextFormat::AQUA . "[TKRT-SkyBlockXT]";
 		$this->getLogger()->info(TextFormat::AQUA . "Loading Plugin! Please wait....". $tkrt);
 		$this->FileConfigs = new FileConfig($this);
-		$this->FileConfigs();
 		//$this->messages = new Language($this);
 		
 		$defLang = $this->getConfig()->get('Language');
