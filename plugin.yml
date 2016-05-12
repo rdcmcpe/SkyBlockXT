@@ -1,9 +1,9 @@
 name: SkyBlockXT
-version: 0.0.1
-api: [2.0.0, 1.14.0, 1.12.0, 1.13.0, 1.3.1, 1.4.0]
+version: 0.0.1-260
+api: [2.0.0, 1.14.0, 1.13.1, 1.13.0, 1.12.0]
 main: SkyBlockXT\Main
 desc: An Awesome SkyBlock Plugin! With extended Support and Features!
-author: TKRT C, SkygridRex & XenoNova Team
+author: XenoNova Team Project, TKRT Creations
 load: STARTUP
 website: http://thekillertacos.tk/
 commands:
@@ -11,38 +11,35 @@ commands:
     usage: /is <help> <page>
     description: Tells the player a list of SkyBlockXT commands
     permission: is.command.help
-  skyland:
-    usage: /skyland <help> <page> 
-    description: Skyland Generator Commands
-    permission: skyland.cmd.help
+  skyworld:
+    usage: /skyworld <help> <page> 
+    description: SkyWorld Generator Commands
+    permission: skyWorld.cmd.help
 permissions:
-  skyland:
-    default: false
-    description: SkyLand Permissions For OPs only! #If you want this to be op only, it needs to be set to op ._.
+  skyworld:
+    default: op
+    description: SkyWorld Permissions For OPs only! 
     children:
-      skyland.cmd:
+      skyworld.cmd:
         default: op
-        description: Main Skyland Permission
+        description: Main SkyWorld Permission
         children:
-          skyland.cmd.help:
+          skyworld.cmd.help:
             default: op
-            description: Skyland Permission for Help
-          skyland.cmd.genworld:
+            description: SkyWorld Permission for Help
+          skyworld.cmd.genworld:
             default: op
-            description: Skyland Permission for World Generation
-          skyland.cmd.delworld:
+            description: SkyWorld Permission for World Generation
+          skyworld.cmd.delworld:
             default: op
-            description: Skyland Permission for World Deletion
-          skyland.cmd.config:
+            description: SkyWorld Permission for World Deletion
+          skyworld.cmd.config:
             default: op
-            description: Skyland Permission for Configurations commands
+            description: SkyWorld Permission for Configurations commands
             children:
-              skyland.cmd.config.isperworld:
+              skyworld.cmd.config.isperworld:
                 default: op
                 description: Configuration Permission for changing Island generated per world
-              skyland.cmd.config.isgenlike:
-                default: op
-                description: Configuration Permission for Changing Island Template [WIP] #1 and 2
   is:
     default: false
     description: Allows the player to use all of the SkyBlockXT features
