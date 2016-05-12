@@ -7,7 +7,8 @@ use pocketmine\utils\TextFormat;
 use pocketmine\event\Listener;
 
 
-class FileConfig extends Listener{
+class FileConfig {
+	
 public Function onLoad {
     $tkrt = TextFormat::AQUA . "[TKRT-SkyBlockXT]";
   // File/Folder Creation - Soon to Change the way it configures

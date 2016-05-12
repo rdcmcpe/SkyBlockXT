@@ -22,35 +22,40 @@ use pocketmine\Server;
 use SkyBlockXT\utils\SkyBlockGenerator;
 use SkyBlockXT\Tools\SkyLand;
 use SkyBlockXT\Tools\SkyWorld;
-use SkyBlockXT\Language;
-use SkyBlockXT\FileConfig;
+use SkyBlockXT\Tools\Language;
+use SkyBlockXT\Tools\FileConfig;
 
 
 class Main extends Base implements Listener{
 	public function onEnable(){
-	$tkrt = TextFormat::AQUA . "[TKRT-SkyBlockXT]";
-	$this->getLogger()->info(TextFormat::AQUA . "Loading Plugin! Please wait....");
-		$defLang = $this->getConfig("Language");
+		$tkrt = TextFormat::AQUA . "[TKRT-SkyBlockXT]";
+		$this->getLogger()->info(TextFormat::AQUA . "Loading Plugin! Please wait....". $tkrt);
+		$this->FileConfigs = new FileConfig($this);
+		$this->FileConfigs();
+		//$this->messages = new Language($this);
+		
+		$defLang = $this->getConfig()->get('Language');
+		$this->saveResource("Lang-".$defLang.".yml");
 		$langConfig = new Config($this->getDataFolder()."Lang-".$defLang.".yml", Config::YAML);
 		$info_pluginloaded = $langConfig->get("INFO.PluginLoaded");
 		$this->getLogger()->info(TextFormat::BLUE ."".$info_pluginloaded."");
-		$this->FileConfig->Load();
 		
-		// Custom Generators
+		// Custom Generators - THEY CRASH THE PLUGIN!! OTHER WAY ADD THEM??
 		//Generator::addGenerator(SkyWorld::class, "SkyWorld"); //Main Generator - 1
-		if($this->getConfig()->get('EnableDebug') == true){
-			$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] SkyWorld Generator Added (1)" .$tkrt);
-			}
+		//if($this->getConfig()->get('EnableDebug') == true){
+		//	$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] SkyWorld Generator Added (1)" .$tkrt);
+		//	}
 		//Generator::addGenerator ( SkyBlockGenerator::class, "Skyblock" ); //Secondary Generator - 2
-		if($this->getConfig()->get('EnableDebug') == true){
-			$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] SkyBlock Generator Added (2)" .$tkrt);
-		}
+		//if($this->getConfig()->get('EnableDebug') == true){
+		//	$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] SkyBlock Generator Added (2)" .$tkrt);
+		//}
 	}
 	
 	public function onDisable(){
 		$defLang = $this->getConfig()->get('Language');
-		$info_serverstop = $this->getResource("Lang-".$defLang.".yml")->get("INFO.ServerStopped"); 
-		$this->getLogger()->info(TextFormat::RED . $info_serverstop);
+		$langConfig = new Config($this->getDataFolder()."Lang-".$defLang.".yml", Config::YAML);
+		$info_serverstop = $langConfig->get("INFO.ServerStopped"); 
+		$this->getLogger()->info(TextFormat::RED . "".$info_serverstop."");
 	}
 	
 	public function onCommand(CommandSender $sender, Command $command, $label, array $args){
