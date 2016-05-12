@@ -19,65 +19,29 @@ use pocketmine\plugin\PluginBase as Base;
 use pocketmine\math\Vector3;
 use pocketmine\utils\Random;
 use pocketmine\Server;
-use SkyBlockXT\utils\SkyBlockGenerator; // Now secondary generator, idk how it works :L
+use SkyBlockXT\utils\SkyBlockGenerator;
 use SkyBlockXT\Tools\SkyLand;
 use SkyBlockXT\Tools\SkyWorld;
+use SkyBlockXT\Language;
+use SkyBlockXT\FileConfig;
 
-//WIP:
-
-//use SkyBlockXT\Tools\;
-
-//use SkyBlockXT\Tools\AntiTroll;
 
 class Main extends Base implements Listener{
 	public function onEnable(){
 	$tkrt = TextFormat::AQUA . "[TKRT-SkyBlockXT]";
-	$this->getLogger()->info(TextFormat::AQUA . "Config Files Created!");
-	$this->saveDefaultConfig();
-	if($this->getConfig()->get('EnableDebug') == true){
-		$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] Saved Configuration Files: " .$tkrt);
-		$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] config.yml at SkyBlockXT Folder" .$tkrt);
-		$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] Loading Language Files..... " .$tkrt);
-	}
-		// TEMPORAL MULTILANGUAGE SUPPORT ------------------------------------------------
-		$defLang = $this->getConfig()->get('Language');
-        if(!(is_dir($this->getDataFolder()."/Lang-".$defLang.".yml"))){
-			$this->saveResource("/Lang-".$defLang.".yml");
-		}	
-		if($this->getConfig()->get('EnableDebug') == true){
-			$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] Language file Saved. Language selected:". $deflang .$tkrt);
-		}
-		// TEMPORAL MULTILANGUAGE SUPPORT ------------------------------------------------
-		
-		// File/Folder Creation - Soon to Change the way it configures
-		$this->getServer()->getPluginManager()->registerEvents($this, $this);
-		if(!(is_dir($this->getDataFolder()."Players/"))){
-			@mkdir($this->getDataFolder()."Players/");
-		}
-		if(!(is_dir($this->getDataFolder()."Islands/"))){
-			@mkdir($this->getDataFolder()."Islands/");
-		}
-		if($this->getConfig()->get('EnableDebug') == true){
-			$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] Islands and player" .$tkrt);
-		}
-		// End of File/Folder Creation
-		
+	$this->getLogger()->info(TextFormat::AQUA . "Loading Plugin! Please wait....");
+		$defLang = $this->getConfig("Language");
 		$langConfig = new Config($this->getDataFolder()."Lang-".$defLang.".yml", Config::YAML);
 		$info_pluginloaded = $langConfig->get("INFO.PluginLoaded");
-		$this->getLogger()->info(TextFormat::BLUE . $info_pluginloaded);
-
-			if($this->getConfig()->get('EnableUUID') == true){
-			$UUID_Data = $this->getConfig()->get("Language") + $this->getConfig()->get("IslandPerWorld") + $this->getServerName();
-			$hash = crypt($UUID_Data);
-			$this->getLogger()->info(TextFormat::GOLD . "This is your UUID from SkyblockXT Plugin: ".$hash." Its useless by now and just for Debugging :P" .$tkrt);
-		}
-
+		$this->getLogger()->info(TextFormat::BLUE ."".$info_pluginloaded."");
+		$this->FileConfig->Load();
+		
 		// Custom Generators
-		Generator::addGenerator(SkyWorld::class, "SkyWorld"); //Main Generator - 1
+		//Generator::addGenerator(SkyWorld::class, "SkyWorld"); //Main Generator - 1
 		if($this->getConfig()->get('EnableDebug') == true){
 			$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] SkyWorld Generator Added (1)" .$tkrt);
 			}
-		Generator::addGenerator ( SkyBlockGenerator::class, "Skyblock" ); //Secondary Generator - 2
+		//Generator::addGenerator ( SkyBlockGenerator::class, "Skyblock" ); //Secondary Generator - 2
 		if($this->getConfig()->get('EnableDebug') == true){
 			$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] SkyBlock Generator Added (2)" .$tkrt);
 		}
@@ -85,7 +49,7 @@ class Main extends Base implements Listener{
 	
 	public function onDisable(){
 		$defLang = $this->getConfig()->get('Language');
-		$info_serverstop = $this->getResource("/Lang-".$defLang.".yml")->get("INFO.ServerStopped"); 
+		$info_serverstop = $this->getResource("Lang-".$defLang.".yml")->get("INFO.ServerStopped"); 
 		$this->getLogger()->info(TextFormat::RED . $info_serverstop);
 	}
 	
@@ -93,27 +57,27 @@ class Main extends Base implements Listener{
 		$bn = "[SkyblockXT]";
 		// TEMPORAL LANGUAGE SUPPORT ===================================
 		$defLang = $this->getConfig()->get('Language');
-		$help_showlist = $this->getResource("/Lang-".$defLang.".yml")->get("HELP.ShowList");
-		$help_morecmdsoon = $this->getResource("/Lang-".$defLang.".yml")->get("HELP.MoreCMDSoon");
-		$help_error = $this->getResource("/Lang-".$defLang.".yml")->get("HELP.Error");
-		$gen_error = $this->getResource("/Lang-".$defLang.".yml")->get("GEN.Error");
-		$gen_Permitions_error = $this->getResource("/Lang-".$defLang.".yml")->get("GEN.Permitions.Errors");
-		$gen_iscmd_notscmd = $this->getResource("/Lang-".$defLang.".yml")->get("GEN.ISCMD.NoSubCommand");
-		$gen_usehelp = $this->getResource("/Lang-".$defLang.".yml")->get("GEN.Use.Help");
-		$is_create_error = $this->getResource("/Lang-".$defLang.".yml")->get("IS.Create.Error");
-		$is_active = $this->getResource("/Lang-".$defLang.".yml")->get("IS.Active");
-		$is_noisland = $this->getResource("/Lang-".$defLang.".yml")->get("IS.DontHaveIsland");
-		$is_nopermission = $this->getResource("/Lang-".$defLang.".yml")->get("IS.NoPermition");
-		$is_teleporting = $this->getResource("/Lang-".$defLang.".yml")->get("IS.Teleporting");
-		$is_home_error = $this->getResource("/Lang-".$defLang.".yml")->get("IS.Home.Error");
-		$is_deleteisland = $this->getResource("/Lang-".$defLang.".yml")->get("IS.DeleteIsland");
-		$is_deleteisland_confirm = $this->getResource("/Lang-".$defLang.".yml")->get("IS.DeleteIsland.Confirm");
-		$is_deleteisland_cancel = $this->getResource("/Lang-".$defLang.".yml")->get("IS.DeleteIsland.Cancel");
-		$is_deleteisland_error = $this->getResource("/Lang-".$defLang.".yml")->get("IS.DeleteIsland.Error");
-		$is_sethome = $this->getResource("/Lang-".$defLang.".yml")->get("IS.SetHome");
-		$is_sethome_2 = $this->getResource("/Lang-".$defLang.".yml")->get("IS.SetHome.2");
-		$is_sethome_set = $this->getResource("/Lang-".$defLang.".yml")->get("IS.SetHome.Set");
-		$is_sethome_cancel = $this->getResource("/Lang-".$defLang.".yml")->get("IS.SetHome.Cancel");
+		$help_showlist = $this->getResource("Lang-".$defLang.".yml")->get("HELP.ShowList");
+		$help_morecmdsoon = $this->getResource("Lang-".$defLang.".yml")->get("HELP.MoreCMDSoon");
+		$help_error = $this->getResource("Lang-".$defLang.".yml")->get("HELP.Error");
+		$gen_error = $this->getResource("Lang-".$defLang.".yml")->get("GEN.Error");
+		$gen_Permitions_error = $this->getResource("Lang-".$defLang.".yml")->get("GEN.Permitions.Errors");
+		$gen_iscmd_notscmd = $this->getResource("Lang-".$defLang.".yml")->get("GEN.ISCMD.NoSubCommand");
+		$gen_usehelp = $this->getResource("Lang-".$defLang.".yml")->get("GEN.Use.Help");
+		$is_create_error = $this->getResource("Lang-".$defLang.".yml")->get("IS.Create.Error");
+		$is_active = $this->getResource("Lang-".$defLang.".yml")->get("IS.Active");
+		$is_noisland = $this->getResource("Lang-".$defLang.".yml")->get("IS.DontHaveIsland");
+		$is_nopermission = $this->getResource("Lang-".$defLang.".yml")->get("IS.NoPermition");
+		$is_teleporting = $this->getResource("Lang-".$defLang.".yml")->get("IS.Teleporting");
+		$is_home_error = $this->getResource("Lang-".$defLang.".yml")->get("IS.Home.Error");
+		$is_deleteisland = $this->getResource("Lang-".$defLang.".yml")->get("IS.DeleteIsland");
+		$is_deleteisland_confirm = $this->getResource("Lang-".$defLang.".yml")->get("IS.DeleteIsland.Confirm");
+		$is_deleteisland_cancel = $this->getResource("Lang-".$defLang.".yml")->get("IS.DeleteIsland.Cancel");
+		$is_deleteisland_error = $this->getResource("Lang-".$defLang.".yml")->get("IS.DeleteIsland.Error");
+		$is_sethome = $this->getResource("Lang-".$defLang.".yml")->get("IS.SetHome");
+		$is_sethome_2 = $this->getResource("Lang-".$defLang.".yml")->get("IS.SetHome.2");
+		$is_sethome_set = $this->getResource("Lang-".$defLang.".yml")->get("IS.SetHome.Set");
+		$is_sethome_cancel = $this->getResource("Lang-".$defLang.".yml")->get("IS.SetHome.Cancel");
 		// TEMPORAL LANGUAGE SUPPORT ===================================
 		switch(strtolower($command->getName())){
 			case "is":
@@ -244,19 +208,22 @@ class Main extends Base implements Listener{
 						}
 					}
 				}
-				case "skyland":
-				if($sender->hasPemission("skyland") || $sender->hasPemission("skyland.cmd")){
+				case "skyworld":
+				if($sender->hasPemission("skyworld") || $sender->hasPemission("skyworld.cmd")){
 					if(isset($args[0])){
 						if(strtolower($args[0]) == "help"){
 							// There hasn't been any multilanguage setting fo this, so i just put it in english
-							$sender->sendMessage(TextFormat::BLUE."SkyLand command help");
+							// Ill later add them...
+							$sender->sendMessage(TextFormat::BLUE."SkyWorld command help");
 							$sender->sendMessage(TextFormat::GREEN."==================================");
-							$sender->sendMessage(TextFormat::GREEN."/skyland genworld <name>: ".TextFormat::RESET."Generate a new skyblock world");
-							$sender->sendMessage(TextFormat::GREEN."/skyland delworld <name>: ".TextFormat::RESET."Deletes a skyblock world");
-							$sender->sendMessage(TextFormat::GREEN."/skyland [help]: ".TextFormat::RESET."Shows a list of SkyLand commands");
+							$sender->sendMessage(TextFormat::GREEN."/skyworld genworld <name>: ".TextFormat::RESET."Generate a new skyblock world");
+							$sender->sendMessage(TextFormat::GREEN."/skyworld delworld <name>: ".TextFormat::RESET."Deletes a skyblock world");
+							$sender->sendMessage(TextFormat::GREEN."/skyworld [help]: ".TextFormat::RESET."Shows a list of SkyLand commands");
+							$sender->sendMessage(TextFormat::GREEN."/skyworld [help]: ".TextFormat::RESET."Shows a list of SkyLand commands");
 							$sender->sendMessage(TextFormat::GREEN."==================================");
 							return true;
 							// I'm sure there are more command, but i'm just putting these for now...
+							// Ok!
 						}else{
 							if(strtolower($args[0]) == "delworld"){
 								if(isset($args[1])){
@@ -277,7 +244,7 @@ class Main extends Base implements Listener{
 												return true;
 											}
 										}else{
-											$sender->sendMessage(TextFormat::YELLOW."Are you sure? This cannot be undone. Use /skyland delworld "$args[1]." yes to confirm.");
+											$sender->sendMessage(TextFormat::YELLOW."Are you sure? This cannot be undone. Use /skyworld delworld ".$args[1]." yes to confirm.");
 											return true;
 										}
 									}else{
