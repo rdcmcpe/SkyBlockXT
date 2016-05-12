@@ -14,7 +14,7 @@ use pocketmine\level\Location;
 use pocketmine\math\Vector3; // Soon to be Removed (on this plugin :D)
 //use pocketmine\utils\Random; Nope
 
-class SkyLand{
+class SkyLand {
 
     public function onRun($currentTick, $sender) {
     		$player = $this->getServer()->getPlayer($name);
