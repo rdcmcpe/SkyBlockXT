@@ -1,18 +1,26 @@
 # Features in this Folder
 The features and code found on this folder are:
 
-##SkyLand 0.1
-By: TheKillerTacos (TKRT)
+##SkyTools 
+By: @TheKillerTacos
 
 Functions:
- * Generates many islands in a world
+ * Reset Island
+  * Chest Refill and inventory deletion
+ * Island Protection
+ * Kit(s)
+ * TeamXT - Team up with friends!
+ * SafeTP (AntiTroll Replacement)
  
 Colaborators: TheKillerTacos
 
 ##SkyWorld (Mod from EmptyWorld)
-By: alejandroliu
+By: @alejandroliu
 
 Functions:
- * Creates a EmptyWorld so Skyland can generate Island in there
+ * Generates a world With islands and registers them to
+ file for user claiming
+ * MultiWorld Support
+ * Chest Filling
 
-Colaboratos: TheKillerTacos
+Colaborators: @TheKillerTacos
