@@ -222,8 +222,7 @@ class Main extends Base implements Listener{
 							$sender->sendMessage(TextFormat::GREEN."==================================");
 							$sender->sendMessage(TextFormat::GREEN."/skyworld genworld <name>: ".TextFormat::RESET."Generate a new skyblock world");
 							$sender->sendMessage(TextFormat::GREEN."/skyworld delworld <name>: ".TextFormat::RESET."Deletes a skyblock world");
-							$sender->sendMessage(TextFormat::GREEN."/skyworld [help]: ".TextFormat::RESET."Shows a list of SkyLand commands");
-							$sender->sendMessage(TextFormat::GREEN."/skyworld [help]: ".TextFormat::RESET."Shows a list of SkyLand commands");
+							$sender->sendMessage(TextFormat::GREEN."/skyworld [help]: ".TextFormat::RESET."Shows a list of SkyWorld commands");
 							$sender->sendMessage(TextFormat::GREEN."==================================");
 							return true;
 							// I'm sure there are more command, but i'm just putting these for now...
@@ -256,8 +255,11 @@ class Main extends Base implements Listener{
 										return true;
 									}
 								}else{
-									
+									$sender->sendMessage(TextFormat::YELLOW."You need to specify a world!");
+									return false;
 								}
+							}elseif($args[0] == "genworld"){
+								
 							}
 						}
 					}
