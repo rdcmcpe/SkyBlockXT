@@ -24,3 +24,18 @@ Functions:
  * Chest Filling
 
 Colaborators: @TheKillerTacos
+
+##FileConfig
+By: @TheKillerTacos
+
+Functions:
+* When Class load, Saves Configuration files 
+* Saves Players Data
+* Saves Island Data (xyz)
+
+##Language
+By: @TheKillerTacos
+
+Functions:
+* Give MultiLang support
+* Separate Temporal Multilang support from Main.php to give Faster loading 

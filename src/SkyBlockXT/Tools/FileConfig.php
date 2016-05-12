@@ -1,6 +1,6 @@
 <?php
 
-namespace SkyBlockXT;
+namespace SkyBlockXT\Tools;
 
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
@@ -9,7 +9,7 @@ use pocketmine\event\Listener;
 
 class FileConfig {
 	
-public Function onLoad {
+public function onLoad() {
     $tkrt = TextFormat::AQUA . "[TKRT-SkyBlockXT]";
   // File/Folder Creation - Soon to Change the way it configures
 	$this->getServer()->getPluginManager()->registerEvents($this, $this);

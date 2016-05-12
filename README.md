@@ -10,7 +10,12 @@
   
   See [Credits](https://github.com/XenoNova/SkyBlockXT/blob/master/CREDITS.md) File to see Contributors!
   Also Dont forget to visit [SkyblockXT](http://skyblockxt.tk/) website! [Not working at this moment] To see latest Compiled releases and Stable One!
-  
+
+#Plugin Unfinished!
+
+Yes this plugin is still on Work In Progress, Please wait for LATEST Release,
+Since the releases that we got are just tests I made in the begining of the Repo
+
 ##Want to be a contributor?
 So you Want to Contribute on this Project?
 You need to Know the Basics of PHP & HTML
