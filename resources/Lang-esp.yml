@@ -1,22 +1,22 @@
 #---------------BETA--------------#
 
-# Cual es el mundo del Lobby:
+#El mundo del Lobby:
 Lobby: "world"
 
-# Configuracion del Plugin:
+# Configuración del Plugin:
 Language: esp
 
-#Configuracion de mundo:
-#Dont change Y if you dont want to have Unwanted results!
+#Configuración del mundo:
+#No cambies esto si para evitar resultados no deseados!
 MinY: 20
-# Distance Between Islands on X Coordinate
+#Distancia entre las islas de la coordenada X
 DisX: 125 
-# Distance between Islands on Z Coordinate
+#Distancia entre las islas de la coordenada Z
 DisZ: 125 
-#The name that will load and generate the map in
+#El nombre del mapa que se generara:
 SkyWorldName: SkyblockXT
 
-#Advanced & Debugging:
+#Depuración y Avanzado:
 EnableDebug: false
 EnableWorldGenerators: true
 EnableUUID: true
@@ -42,7 +42,7 @@ AutoUpdateOnStart: true
 ###
 
 INFO.PluginLoaded: Plugin Cargado con éxito! Del idioma: Español
-INFO.ServerStopped: ¿Se detuvo el servidor? o el plugin se ha deshabilitado!?
+INFO.ServerStopped: ¿Se detuvo el servidor? o el plugin se ha detenido!?
 INFO.NewPlayerJoined: Un nuevo jugador se unió
 INFO.WelcomeBackPlayer: Bienvenido de nuevo
 GEN.Error: Se ha producido un error.
