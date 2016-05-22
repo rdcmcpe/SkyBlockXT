@@ -1,13 +1,13 @@
 #---------------BETA--------------#
 
-# What is the name of the lobby world
+#The name of the lobby world
 Lobby: "world"
 
 #Plugin Settings:
 Language: eng
 
 #World Settings:
-#Dont change Y if you dont want to have Unwanted results!
+#Dont change it if you dont want to have Unwanted results!
 MinY: 20
 # Distance Between Islands on X Coordinate
 DisX: 125 
