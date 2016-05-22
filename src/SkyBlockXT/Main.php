@@ -46,7 +46,7 @@ class Main extends Base implements Listener{
 	}
 	
 	public function onDisable(){
-		$defLang = $this->getConfig()->get('Language');
+		
 		$langConfig = new Config($this->getDataFolder()."Lang-".$defLang.".yml", Config::YAML);
 		$info_serverstop = $langConfig->get("INFO.ServerStopped"); 
 		$this->getLogger()->info(TextFormat::RED . "".$info_serverstop."");
@@ -55,28 +55,28 @@ class Main extends Base implements Listener{
 	public function onCommand(CommandSender $sender, Command $command, $label, array $args){
 		$bn = "[SkyblockXT]";
 		// TEMPORAL LANGUAGE SUPPORT ===================================
-		$defLang = $this->getConfig()->get('Language');
-		$help_showlist = $this->getResource("Lang-".$defLang.".yml")->get("HELP.ShowList");
-		$help_morecmdsoon = $this->getResource("Lang-".$defLang.".yml")->get("HELP.MoreCMDSoon");
-		$help_error = $this->getResource("Lang-".$defLang.".yml")->get("HELP.Error");
-		$gen_error = $this->getResource("Lang-".$defLang.".yml")->get("GEN.Error");
-		$gen_Permitions_error = $this->getResource("Lang-".$defLang.".yml")->get("GEN.Permitions.Errors");
-		$gen_iscmd_notscmd = $this->getResource("Lang-".$defLang.".yml")->get("GEN.ISCMD.NoSubCommand");
-		$gen_usehelp = $this->getResource("Lang-".$defLang.".yml")->get("GEN.Use.Help");
-		$is_create_error = $this->getResource("Lang-".$defLang.".yml")->get("IS.Create.Error");
-		$is_active = $this->getResource("Lang-".$defLang.".yml")->get("IS.Active");
-		$is_noisland = $this->getResource("Lang-".$defLang.".yml")->get("IS.DontHaveIsland");
-		$is_nopermission = $this->getResource("Lang-".$defLang.".yml")->get("IS.NoPermition");
-		$is_teleporting = $this->getResource("Lang-".$defLang.".yml")->get("IS.Teleporting");
-		$is_home_error = $this->getResource("Lang-".$defLang.".yml")->get("IS.Home.Error");
-		$is_deleteisland = $this->getResource("Lang-".$defLang.".yml")->get("IS.DeleteIsland");
-		$is_deleteisland_confirm = $this->getResource("Lang-".$defLang.".yml")->get("IS.DeleteIsland.Confirm");
-		$is_deleteisland_cancel = $this->getResource("Lang-".$defLang.".yml")->get("IS.DeleteIsland.Cancel");
-		$is_deleteisland_error = $this->getResource("Lang-".$defLang.".yml")->get("IS.DeleteIsland.Error");
-		$is_sethome = $this->getResource("Lang-".$defLang.".yml")->get("IS.SetHome");
-		$is_sethome_2 = $this->getResource("Lang-".$defLang.".yml")->get("IS.SetHome.2");
-		$is_sethome_set = $this->getResource("Lang-".$defLang.".yml")->get("IS.SetHome.Set");
-		$is_sethome_cancel = $this->getResource("Lang-".$defLang.".yml")->get("IS.SetHome.Cancel");
+		
+		$help_showlist = $this->getConfig()->get("HELP.ShowList");
+		$help_morecmdsoon = $this->getConfig()->get("HELP.MoreCMDSoon");
+		$help_error = $this->getConfig()->get("HELP.Error");
+		$gen_error = $this->getConfig()->get("GEN.Error");
+		$gen_Permitions_error = $this->getConfig()->get("GEN.Permitions.Errors");
+		$gen_iscmd_notscmd = $this->getConfig()->get("GEN.ISCMD.NoSubCommand");
+		$gen_usehelp = $this->getConfig()->get("GEN.Use.Help");
+		$is_create_error = $this->getConfig()->get("IS.Create.Error");
+		$is_active = $this->getConfig()->get("IS.Active");
+		$is_noisland = $this->getConfig()->get("IS.DontHaveIsland");
+		$is_nopermission = $this->getConfig()->get("IS.NoPermition");
+		$is_teleporting = $this->getConfig()->get("IS.Teleporting");
+		$is_home_error = $this->getConfig()->get("IS.Home.Error");
+		$is_deleteisland = $this->getConfig()->get("IS.DeleteIsland");
+		$is_deleteisland_confirm = $this->getConfig()->get("IS.DeleteIsland.Confirm");
+		$is_deleteisland_cancel = $this->getConfig()->get("IS.DeleteIsland.Cancel");
+		$is_deleteisland_error = $this->getConfig()->get("IS.DeleteIsland.Error");
+		$is_sethome = $this->getConfig()->get("IS.SetHome");
+		$is_sethome_2 = $this->getConfig()->get("IS.SetHome.2");
+		$is_sethome_set = $this->getConfig()->get("IS.SetHome.Set");
+		$is_sethome_cancel = $this->getConfig()->get("IS.SetHome.Cancel");
 		// TEMPORAL LANGUAGE SUPPORT ===================================
 		switch(strtolower($command->getName())){
 			case "is":
@@ -268,9 +268,9 @@ class Main extends Base implements Listener{
 		
 		$player = $event->getPlayer();
 		// TEMPORAL LANGUAGE SUPPORT =============================
-		$defLang = $this->getConfig()->get('Language');
-		$info_newplayerjoin = $this->getResource("/Lang-".$defLang.".yml")->get("INFO.NewPlayerJoined");
-		$info_welcomeback = $this->getResource("/Lang-".$defLang.".yml")->get("INFO.WelcomeBackPlayer");
+		
+		$info_newplayerjoin = $this->getConfig()->get("INFO.NewPlayerJoined");
+		$info_welcomeback = $this->getConfig()->get("INFO.WelcomeBackPlayer");
 		// TEMPORAL LANGUAGE SUPPORT =============================
 		if(file_exists($this->getDataFolder()."Players/".$player->getName().".txt")){
 			$player->sendMessage($info_welcomeback. $player->getName());

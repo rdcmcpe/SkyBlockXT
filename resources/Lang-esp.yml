@@ -1,5 +1,38 @@
+#---------------BETA--------------#
+
+# Cual es el mundo del Lobby:
+Lobby: "world"
+
+# Configuracion del Plugin:
+Language: esp
+
+#Configuracion de mundo:
+#Dont change Y if you dont want to have Unwanted results!
+MinY: 20
+# Distance Between Islands on X Coordinate
+DisX: 125 
+# Distance between Islands on Z Coordinate
+DisZ: 125 
+#The name that will load and generate the map in
+SkyWorldName: SkyblockXT
+
+#Advanced & Debugging:
+EnableDebug: false
+EnableWorldGenerators: true
+EnableUUID: true
+
+#WIP
+IslandPerWorld: 100
+EnableSkyTools: true
+PVPEnableOnIslands: false
+AutoUpdateOnStart: true
+
+#TKRT Creations Copyright 2014-2016, XenoNova Team Project, SkyBlockXT Code is Now Fully being coded by XNT
+# If there is an update, Delete Config.yml and lang-language.yml, so the plugin can update successfully
+
+#Soporte Multilenguage Temporal, Luego Cambiara:
+
 #Archivo de idioma en Español
-la función # pre-alfa
 
 ###
 # Es posible editar esto para que se adapté a sus necesidades, Si se equivoca ... sólo elimina este archivo y reinicia el servidor y
@@ -37,3 +70,4 @@ IS.SetHome: Usted va a establecer su hogar en una isla, Asegúrese de que estár
 IS.SetHome.2: Su isla se perderá si no estás en ella. Escribe /is sethome yes para confirmar.
 IS.SetHome.Set: su hogar se ha fijado!
 IS.SetHome.Cancel: Ok! No fijaremos tu casa.
+dla: esp

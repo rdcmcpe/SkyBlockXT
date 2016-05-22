@@ -23,9 +23,52 @@ EnableUUID: true
 
 #WIP
 IslandPerWorld: 100
-EnableAntiTrollSystem: true
+EnableSkyTools: true
 PVPEnableOnIslands: false
 AutoUpdateOnStart: true
 
 #TKRT Creations Copyright 2014-2016, XenoNova Team Project, SkyBlockXT Code is Now Fully being coded by XNT
-# If there is an update, Delete Config.yml and lang-language.yml, so it the plugin can update successfully
+# If there is an update, Delete Config.yml and lang-language.yml, so the plugin can update successfully
+
+#Temporal Multi language support, Soon this will change:
+
+#English Language File
+#ALPHA feature
+
+###
+# You may edit these to suit your needs, If you mess up... just delete this file and restart server and
+# it will generate a new brand new copy itself.
+# Dont use ' or ", if you do so, the File might get corrupted and the plugin will not load it correctly!!
+# And the Lang file gets  messed up :L also with -
+###
+
+INFO.PluginLoaded: Plugin Loaded succesfully! Language selected: English
+INFO.ServerStopped: Did the server Stopped? or just crashed?
+INFO.NewPlayerJoined: A New player joined
+INFO.WelcomeBackPlayer: Welcome Back
+GEN.Error: An error has occurred.
+GEN.Permitions.Error: You do not have permission to do that.
+GEN.ISCMD.NoSubCommand: You didnt add a SubCommand!
+GEN.Use.Help: Please Use
+HELP.MoreCMDSoon: More Commands soon!
+HELP.ShowList: Showing Help List
+HELP.Error: You cant view the help menu.
+
+IS.Create.Error: You are not allowed to generate an island here
+IS.Active: You already have an active island.
+IS.DontHaveIsland: You dont have any islands.
+IS.NoPermition: You cant create an island.
+IS.Teleporting: Teleporting to your island...
+
+# This one is going to be removed on a future Update:
+IS.Home.Error: You are not in the same World as your island!
+
+IS.DeleteIsland:  Are you sure you want to do this? Use /is delete yes to confirm.
+IS.DeleteIsland.Confirm: Your Island Has been Deleted!
+IS.DeleteIsland.Cancel: Well, We wont delete your island.
+IS.DeleteIsland.Error: You dont have any islands.
+IS.SetHome: You will be setting your home on your island, Make sure you are standing on it.
+IS.SetHome.2:  Your island will be lost if youre not on your island. Do /is sethome yes to confirm
+IS.SetHome.Set: Your Home has been Set!
+IS.SetHome.Cancel: Ok! We wont set Home!
+dla: eng

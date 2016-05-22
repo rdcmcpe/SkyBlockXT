@@ -1,3 +1,37 @@
+#---------------BETA--------------#
+
+# What is the name of the lobby world
+Lobby: "world"
+
+#Plugin Settings:
+Language: deu
+
+#World Settings:
+#Dont change Y if you dont want to have Unwanted results!
+MinY: 20
+# Distance Between Islands on X Coordinate
+DisX: 125 
+# Distance between Islands on Z Coordinate
+DisZ: 125 
+#The name that will load and generate the map in
+SkyWorldName: SkyblockXT
+
+#Advanced & Debugging:
+EnableDebug: false
+EnableWorldGenerators: true
+EnableUUID: true
+
+#WIP
+IslandPerWorld: 100
+EnableSkyTools: true
+PVPEnableOnIslands: false
+AutoUpdateOnStart: true
+
+#TKRT Creations Copyright 2014-2016, XenoNova Team Project, SkyBlockXT Code is Now Fully being coded by XNT
+# If there is an update, Delete Config.yml and lang-language.yml, so the plugin can update successfully
+
+#Temporal Multi language support, Soon this will change:
+
 #deutsch Sprachdatei
 # Pre-Alpha-Funktion
 
@@ -37,3 +71,4 @@ IS.SetHome: Sie Ihr Zuhause auf Ihrer Insel werden Einstellung Stellen Sie siche
 IS.SetHome.2: Ihre Insel gehen verloren, wenn Sie nicht auf Ihrer Insel sind. schreiben /is sethome yes zu bestätigen
 IS.SetHome.Set: Ihre Startseite eingestellt wurde!
 IS.SetHome.Cancel: Ok!
+dla: deu
