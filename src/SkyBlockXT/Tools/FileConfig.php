@@ -39,7 +39,11 @@ public function onLoad() {
 			$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] Language file Saved. Language selected:". $deflang .$tkrt);
 		}
 		// TEMPORAL MULTILANGUAGE SUPPORT ------------------------------------------------
-		
+				
+		$defLang = $this->getConfig()->get('Language');
+		$langConfig = $this->getFile("Lang-".$defLang.".yml", Config::YAML);
+		$info_pluginloaded = $langConfig->get("INFO.PluginLoaded");
+		$this->getLogger()->info(TextFormat::BLUE ."".$info_pluginloaded."");
 
     }
 }

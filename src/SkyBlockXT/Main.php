@@ -32,12 +32,7 @@ class Main extends Base implements Listener{
 		$this->getLogger()->info(TextFormat::AQUA . "Loading Plugin! Please wait....". $tkrt);
 		$this->FileConfigs = new FileConfig($this);
 		//$this->messages = new Language($this);
-		
-		$defLang = $this->getConfig()->get('Language');
-		$this->saveResource("Lang-".$defLang.".yml");
-		$langConfig = new Config($this->getDataFolder()."Lang-".$defLang.".yml", Config::YAML);
-		$info_pluginloaded = $langConfig->get("INFO.PluginLoaded");
-		$this->getLogger()->info(TextFormat::BLUE ."".$info_pluginloaded."");
+
 		
 		// Custom Generators - THEY CRASH THE PLUGIN!! OTHER WAY ADD THEM??
 		//Generator::addGenerator(SkyWorld::class, "SkyWorld"); //Main Generator - 1
