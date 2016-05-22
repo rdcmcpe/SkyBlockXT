@@ -1,19 +1,19 @@
 #---------------BETA--------------#
 
-# What is the name of the lobby world
+#Der Name der Lobby Welt
 Lobby: "world"
 
-#Plugin Settings:
+#Plugin-Einstellungen:
 Language: deu
 
-#World Settings:
-#Dont change Y if you dont want to have Unwanted results!
+#Welt-Einstellungen:
+#Ändern Sie es nicht, wenn Sie nicht zu unerwünschten Ergebnissen führen wollen!
 MinY: 20
-# Distance Between Islands on X Coordinate
+#Die Entfernung zwischen den Inseln auf X-Koordinate
 DisX: 125 
-# Distance between Islands on Z Coordinate
+#Die Entfernung zwischen Inseln auf Z-Koordinate
 DisZ: 125 
-#The name that will load and generate the map in
+#Der Name, der die Karte in wird geladen und erzeugen
 SkyWorldName: SkyblockXT
 
 #Advanced & Debugging:
