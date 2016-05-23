@@ -35,6 +35,5 @@ Dont forget to read the TODO list! here the [Link](https://github.com/XenoNova/S
 
 
 > XenoNova Dev Team © 2016, TKRT Creations © 2014-2016 - You may **USE** this plugin but not **CLAIM** it as yours!
-> This Plugin uses GNU GPL3 License,  Everyone is permitted to copy and distribute verbatim copies
- of this license document, but changing it is not allowed.
+> This Plugin uses [Apache 2 License](/LICENSE)
  
