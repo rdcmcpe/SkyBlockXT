@@ -1,5 +1,5 @@
 name: SkyBlockXT
-version: 0.0.1-261-5 # The last 4 Numbers (-XXX-X) are Local versions, XXX is Actual Commit, and X is The times you have fixed the plugin within that Commit (Local)
+version: 0.0.1
 api: [2.0.0, 1.14.0, 1.13.1, 1.13.0, 1.12.0]
 main: SkyBlockXT\Main
 desc: An Awesome SkyBlock Plugin! With extended Support and Features!

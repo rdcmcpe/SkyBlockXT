@@ -29,6 +29,7 @@ use SkyBlockXT\Tools\FileConfig;
 class Main extends Base implements Listener{
 	public function onEnable(){
 		$tkrt = TextFormat::AQUA . "[TKRT-SkyBlockXT]";
+		$this->getLogger()->info(TextFormat::RED . "[WARNING]" . TextFormat::YELLOW . "IF YOUR SERVER HAS A PROTECTED FOLDER AND/OR PLUGIN HAS ONLY READ AND NOT WRITE PERMISSIONS, THE SERVER CAN CRASH!" . TextFormat::BLUE . $tkrt);
 		$this->getLogger()->info(TextFormat::AQUA . "Loading Plugin! Please wait....". $tkrt);
 		$this->FileConfigs = new FileConfig($this);
 		//$this->messages = new Language($this);
