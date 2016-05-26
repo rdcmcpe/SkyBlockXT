@@ -7,9 +7,13 @@ use pocketmine\Player;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
 use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\level\generator\object\Tree;
+use pocketmine\block\Sapling;
 use pocketmine\event\Listener;
 use pocketmine\item\Item;
 use pocketmine\block\Block;
+use pocketmine\block\Dirt;
+use pocketmine\block\Sand;
 use pocketmine\command\CommandSender;
 use pocketmine\command\Command;
 use pocketmine\level\Position;
@@ -28,21 +32,24 @@ use SkyBlockXT\Tools\FileConfig;
 
 class Main extends Base implements Listener{
 	public function onEnable(){
+		if(!(is_dir($this->getDataFolder()."Islands/"))){
+			mkdir($this->getDataFolder()."Islands/");
+		}
 		$tkrt = TextFormat::AQUA . "[TKRT-SkyBlockXT]";
 		$this->getLogger()->info(TextFormat::AQUA . "Loading Plugin! Please wait....". $tkrt);
 		$this->FileConfigs = new FileConfig($this);
 		//$this->messages = new Language($this);
 
 		
-		// Custom Generators - THEY CRASH THE PLUGIN!! OTHER WAY ADD THEM??
-		//Generator::addGenerator(SkyWorld::class, "SkyWorld"); //Main Generator - 1
-		//if($this->getConfig()->get('EnableDebug') == true){
-		//	$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] SkyWorld Generator Added (1)" .$tkrt);
-		//	}
-		//Generator::addGenerator ( SkyBlockGenerator::class, "Skyblock" ); //Secondary Generator - 2
-		//if($this->getConfig()->get('EnableDebug') == true){
-		//	$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] SkyBlock Generator Added (2)" .$tkrt);
-		//}
+		/* Custom Generators - THEY CRASH THE PLUGIN!! OTHER WAY ADD THEM??
+		Generator::addGenerator(SkyWorld::class, "SkyWorld"); //Main Generator - 1
+		if($this->getConfig()->get('EnableDebug') == true){
+			$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] SkyWorld Generator Added (1)" .$tkrt);
+			}
+		Generator::addGenerator ( SkyBlockGenerator::class, "Skyblock" ); //Secondary Generator - 2
+		if($this->getConfig()->get('EnableDebug') == true){
+			$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] SkyBlock Generator Added (2)" .$tkrt);
+		} */
 	}
 	
 	public function onDisable(){
@@ -104,7 +111,7 @@ class Main extends Base implements Listener{
 					}
 				}elseif($args[0] == "create"){
 					if($sender->hasPermission("is") || $sender->hasPermission("is.command") || $sender->hasPermission("is.command.create")){
-						$senderIs = $this->getDataFolder()."Islands/".$sender->getName().".txt";
+						$senderIs = $this->getDataFolder()."Islands/".$sender->getName().".yml";
 						if($sender->getLevel()->getName() == $this->getConfig()->get("Lobby")){
 							$sender->sendMessage(TextFormat::YELLOW . $bn . $is_create_error);
 							return true;
@@ -115,7 +122,7 @@ class Main extends Base implements Listener{
 								echo "WIP";
 								return true;
 							}else{
-							  
+							  	$this->createIsland($sender->getName());
 								$sender->sendMessage(TextFormat::YELLOW . $bn . $is_active);
 								return true;
 							}
@@ -128,19 +135,22 @@ class Main extends Base implements Listener{
 					
 				}elseif($args[0] == "home"){
 					if($sender->hasPermission("is") || $sender->hasPermission("is.command") || $sender->hasPermission("is.command.home")){
-						if(!(file_exists($this->getDataFolder()."Islands/".$sender->getName().".txt"))){
+						if(!(file_exists($this->getDataFolder()."Islands/".$sender->getName().".yml"))){
 							$sender->sendMessage($bn . $is_noisland);
 							return true;
 						}else{
-						  
-							$level = $this->getServer()->getLevelByName(yaml_parse_file($this->getDataFolder()."Players/".$sender->getName().".txt"));
+						  	$file = new Config($this->getDataFolder()."Islands/".$sender->getName().".yml", Config::YAML);
+							$level = $this->getServer()->getLevelByName($file->get("World"));
 							if($level !== null){
 								$sender->sendMessage(TextFormat::GREEN . $bn . $is_teleporting);
+								$x = $file->get("X");
+								$y = $file->get("Y");
+								$z = $file->get("Z");
 								if($sender->getLevel()->getName() !== $level->getName()){
-									$sender->sendMessage($bn . $is_home_error);
+									$sender->teleport(new Position($x, $y, $z, $level));
 									return true;
 								}else{
-									$sender->teleport(new Vector3(yaml_parse_file($this->getDataFolder()."Islands/".$sender->getName().".txt")));
+									$sender->teleport(new Vector3($x, $y, $z));
 									return true;
 								}
 								
@@ -160,8 +170,8 @@ class Main extends Base implements Listener{
 							$sender->sendMessage($bn . $is_deleteisland);
 							return true;
 						}elseif($args[1] == "yes"){
-								if(file_exists($this->getDataFolder()."Islands/".$sender->getName().".txt")){
-									unlink($this->getDataFolder()."Islands/".$sender->getName().".txt");
+								if(file_exists($this->getDataFolder()."Islands/".$sender->getName().".yml")){
+									unlink($this->getDataFolder()."Islands/".$sender->getName().".yml");
 									$sender->sendMessage($bn . $is_deleteisland_confirm);
 									return true;
 								}else{
@@ -183,11 +193,12 @@ class Main extends Base implements Listener{
 								$sender->sendMessage($bn . $is_sethome_2);
 								return true;
 							}elseif($args[1] == "yes"){
-								if(file_exists($this->getDataFolder()."Islands/".$sender->getName().".txt")){
-									$file = $this->getDataFolder()."Islands/".$sender->getName().".txt";
-									unlink($file);
-									$newFile = fopen($file, "w");
-									fwrite($newFile, $sender->x.", ".$sender->y.", ".$sender->z);;
+								if(file_exists($this->getDataFolder()."Islands/".$sender->getName().".yml")){
+									$file = new Config($this->getDataFolder()."Islands/".$sender->getName().".yml", Config::YAML);
+									$file->set("X", $sender->x);
+									$file->set("Y", $sender->y);
+									$file->set("Z", $sender->z);
+									$file->set("World", $sender->getLevel()->getName());
 									$sender->sendMessage($is_sethome_set);
 									return true;
 								}else{
@@ -277,5 +288,96 @@ class Main extends Base implements Listener{
 		}else{
 			$this->getLogger()->notice(TextFormat::GOLD . $info_newplayerjoin . $player->getName());
 		}
+	}
+	
+	// Island Generator
+	public function createIsland($name){
+		$player = $this->getServer()->getPlayerByName($name);
+		$x = rand(0, 1000);
+		$y = 100;
+		$z = rand(0, 1000);
+		$level = $player->getLevel();
+		
+		// Island config
+		$isFile = new Config($this->getDataFolder()."Islands/".$player->getName().".yml", Config::YAML);
+		$isFile->set("X", $x);
+		$isFile->set("Y", $y);
+		$isFile->set("Z", $z);
+		$isFile->set("World", $player->getLevel()->getName());
+		$file->save();
+		
+		// Make the island
+		$level->setBlock(new Vector3($x, $y, $z));
+		for($i = 1; $i <= 2; $i++){
+			if($i == 1){
+				$block = Sand();
+			}else{
+				$block = Dirt();
+			}
+			$level->setBlock(new Vector3($x, $y - $i, $z), new $block);
+		}
+		for($a = 1; $a <= 6; $a++){
+			for($b = 1; $b <= 6; $b++){
+				$level->setBlock(new Vector3($x + $a, $y, $z + $b));
+			}
+		}
+		
+		// Make a tree
+		Tree::growTree($level, $x + 6, $y + 1, $z + 6, new Random(mt_rand()), Sapling::OAK);
+		
+		// Teleport the player to their new island
+		$player->teleport(new Position($randX, $Y+5, $randZ, $this->getServer()->getLevelByName($levelName)));
+		$player->sendMessage(TextFormat::GREEN . "Welcome to your new island!");
+		$player->sendMessage(TextFormat::GREEN."Check your inventory for your starter kit.");
+		
+		// Starter Kit
+		// String
+		for($i = 1; $i == 5, $i++){
+			$player->getInventory()->addItem(Item::get("287"));
+		}
+		
+		// Emerald (you can delete this is you think it's not needed)
+		for($i = 1; $i == 5, $i++){
+			$player->getInventory()->addItem(Item::get("388"));
+		}
+		
+		// Saplings
+		for($i = 1; $i == 5, $i++){
+			$player->getInventory()->addItem(Item::get("6"));
+		}
+		
+		// Water (Not in buckets, because buckets don't work correctly on pocketmine)
+		for($i = 1; $i == 2, $i++){
+			$player->getInventory()->addItem(Item::get("8"));
+		}
+		
+		// Lava
+		$player->getInventory()->addItem(Item::get("10"));
+		
+		// Seeds
+		for($i = 1; $i == 5, $i++){
+			$player->getInventory()->addItem(Item::get("295"));
+		}
+		
+		// Melon Seeds
+		$player->getInventory()->addItem(Item::get("362"));
+		
+		// Cactus
+		$player->getInventory()->addItem(Item::get("81"));
+		
+		// Iron
+		for($i = 1; $i == 6, $i++){
+			$player->getInventory()->addItem(Item::get("265"));
+		}
+		
+		// Bones
+		for($i = 1; $i == 5, $i++){
+			$player->getInventory()->addItem(Item::get("352"));
+		}
+		
+		// Chest
+		$player->getInventory()->addItem(Item::get("54"));
+		
+		$this->getLogger()->info($player->getName().TextFormat::BLUE." made an island");
 	}
 }
