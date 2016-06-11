@@ -3,7 +3,7 @@
 
 [![Join the chat at https://gitter.im/TKRT-Creations/SkyBlockXT](https://badges.gitter.im/TKRT-Creations/SkyBlockXT.svg)](https://gitter.im/TKRT-Creations/SkyBlockXT?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-  SkyblockXT, One of the Best Skyblock Plugins out there!*
+  SkyblockXT, One of the Best Skyblock Plugin out there!*
   Play or Create a Skyblock Server with our plugin! It's almost Bug free and Fast!
   Create Hundreds of islands with our world generator! Set it up for multiworld Support
   and More Features!
@@ -13,7 +13,7 @@
 
 #Plugin Unfinished!
 
-Yes this plugin is still a Work In Progress, Please wait for LATEST Release,
+Yes this plugin is no finished yet, Please wait for LATEST Release,
 Since the releases that we got are just tests I made in the begining of the Repo
 
 ##Want to be a contributor?
