@@ -332,22 +332,22 @@ class Main extends Base implements Listener{
 		
 		// Starter Kit
 		// String
-		for($i = 1; $i == 5, $i++){
+		for($i = 1; $i == 5; $i++){
 			$player->getInventory()->addItem(Item::get("287"));
 		}
 		
 		// Emerald (you can delete this is you think it's not needed)
-		for($i = 1; $i == 5, $i++){
+		for($i = 1; $i == 5; $i++){
 			$player->getInventory()->addItem(Item::get("388"));
 		}
 		
 		// Saplings
-		for($i = 1; $i == 5, $i++){
+		for($i = 1; $i == 5; $i++){
 			$player->getInventory()->addItem(Item::get("6"));
 		}
 		
 		// Water (Not in buckets, because buckets don't work correctly on pocketmine)
-		for($i = 1; $i == 2, $i++){
+		for($i = 1; $i == 2; $i++){
 			$player->getInventory()->addItem(Item::get("8"));
 		}
 		
@@ -355,7 +355,7 @@ class Main extends Base implements Listener{
 		$player->getInventory()->addItem(Item::get("10"));
 		
 		// Seeds
-		for($i = 1; $i == 5, $i++){
+		for($i = 1; $i == 5; $i++){
 			$player->getInventory()->addItem(Item::get("295"));
 		}
 		
@@ -366,12 +366,12 @@ class Main extends Base implements Listener{
 		$player->getInventory()->addItem(Item::get("81"));
 		
 		// Iron
-		for($i = 1; $i == 6, $i++){
+		for($i = 1; $i == 6; $i++){
 			$player->getInventory()->addItem(Item::get("265"));
 		}
 		
 		// Bones
-		for($i = 1; $i == 5, $i++){
+		for($i = 1; $i == 5; $i++){
 			$player->getInventory()->addItem(Item::get("352"));
 		}
 		
