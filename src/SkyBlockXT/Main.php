@@ -38,10 +38,10 @@ class Main extends Base implements Listener{
 		$tkrt = TextFormat::AQUA . "[TKRT-SkyBlockXT]";
 		$this->getLogger()->info(TextFormat::AQUA . "Loading Plugin! Please wait....". $tkrt);
 		$this->FileConfigs = new FileConfig($this);
-		//$this->messages = new Language($this);
+		$this->messages = new Language($this);
 
 		
-		/* Custom Generators - THEY CRASH THE PLUGIN!! OTHER WAY ADD THEM??
+		
 		Generator::addGenerator(SkyWorld::class, "SkyWorld"); //Main Generator - 1
 		if($this->getConfig()->get('EnableDebug') == true){
 			$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] SkyWorld Generator Added (1)" .$tkrt);
@@ -49,7 +49,7 @@ class Main extends Base implements Listener{
 		Generator::addGenerator ( SkyBlockGenerator::class, "Skyblock" ); //Secondary Generator - 2
 		if($this->getConfig()->get('EnableDebug') == true){
 			$this->getLogger()->notice(TextFormat::GREEN . "[DEBUG] SkyBlock Generator Added (2)" .$tkrt);
-		} */
+		} 
 	}
 	
 	public function onDisable(){
