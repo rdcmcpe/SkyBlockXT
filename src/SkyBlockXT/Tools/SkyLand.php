@@ -193,7 +193,7 @@ class SkyLand {
 			$sender->getLevel()->setBlockIdAt($x+1, $Y-2, $z+3, $iddirt);
 			$sender->getLevel()->setBlockIdAt($x+1, $Y-2, $z+2, $iddirt);
 			$sender->getLevel()->setBlockIdAt($x+1, $Y-2, $z+1, $iddirt);
-        /*
+        
         if($this->secs === 1){
             foreach($this->main->getServer()->getLevelByName($this->main->getConfig()->getAll()->getTiles() as $chest){
                 if($chest instanceof Chest) {
@@ -225,7 +225,7 @@ class SkyLand {
                     }
                 }
 			}
-                */
+                
         		$defLang = $this->getConfig()->get("Language");
 			$MLang = $this->getFile("Lang-" . $defLang . ".yml");
         		$msg_Skyland_WorldGenerated = $MLang->get("INFO_IslandCreated");
